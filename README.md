@@ -9,12 +9,12 @@
 ### Description
 We are making a service to allow students to rate classes, similar to RateMyProfessor. We are going to limit classes to Purdue CS courses to simplify it for a demo.
 
-**Category:** Education
-**Mobile:** real-time, audio
-**Story:** The value of this idea is high to students looking to take certain classes. Potentially, other students would be able to use the app and would respond positively.
-**Market:** The market is all Purdue CS students, which is relatively small but we could potentially cater to that audience. This is more of a niche service.
-**Habit:** The frequency of the app's use depends on the user. consume & create
-**Scope:** The service isn't particularly complex. We only include Purdue CS courses, which we can create a back-end for by Demo Day.
+- **Category:** Education
+- **Mobile:** real-time, audio
+- **Story:** The value of this idea is high to students looking to take certain classes. Potentially, other students would be able to use the app and would respond positively.
+- **Market:** The market is all Purdue CS students, which is relatively small but we could potentially cater to that audience. This is more of a niche service.
+- **Habit:** The frequency of the app's use depends on the user. consume & create
+- **Scope:** The service isn't particularly complex. We only include Purdue CS courses, which we can create a back-end for by Demo Day.
 
 ## Product Spec
 
