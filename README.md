@@ -89,7 +89,7 @@ N/A
    | overallQuality | Number | overall score of each courses rated by users |
    | difficultyLevel | Number | difficulty level of each courses rated by users |
    | usefulnessPercentage | Number | percentage of people that foud the course useful|
-   | funPercentage | Number | percentage of people tha found the course fun|
+   | funPercentage | Number | percentage of people that found the course fun|
 
 ### Networking
 
