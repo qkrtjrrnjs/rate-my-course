@@ -90,3 +90,20 @@ N/A
    | difficultyLevel | Number | difficulty level of each courses rated by users |
    | usefulnessPercentage | Number | percentage of people that foud the course useful|
    | funPercentage | Number | percentage of people tha found the course fun|
+
+### Networking
+
+#### List of network requests by screen
+
+##### Stream Screen
+- (Read/GET) Query all CS courses and number of feedbacks for each course
+
+
+##### Detail Screen
+- (Read/GET) Query logged in user object
+- (Read/GET) Query all posts where user is author
+    - (Create/POST) Create a new like on a post
+    - (Create/POST) Create a new comment on a post
+
+##### survey/comment Screen
+- (Create/POST) Create a new post object
