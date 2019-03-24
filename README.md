@@ -4,6 +4,7 @@
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
+1. [Schema](#Schema)
 
 ## Overview
 ### Description
@@ -64,3 +65,28 @@ N/A
 ## Wireframes
 ### Digital Wireframes & Mockups & interactive prototypes
 [figma prototype](https://www.figma.com/file/EjJjVgg0Xs4ZXMg753z4ZR6L/Rate-my-course?node-id=0%3A1)
+
+## Schema
+### Models
+#### post
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | userImage | File | user profile image |
+   | username | String | name of user |
+   | comments      | String   | comments that made by users |
+   | commentsCount | Number   | number of comments that has been posted in each courses |
+   | likesCount | Number | number of likes for the post |
+   | createdAt | DateTime | date when post is created (default field) |
+   | updatedAt | DateTime | date when post is last updated (default field) |
+   
+#### postSummary
+   
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | courseName | String | name of course|
+   | overallQuality | Number | overall score of each courses rated by users |
+   | difficultyLevel | Number | difficulty level of each courses rated by users |
+   | usefulnessPercentage | Number | percentage of people that foud the course useful|
+   | funPercentage | Number | percentage of people tha found the course fun|
