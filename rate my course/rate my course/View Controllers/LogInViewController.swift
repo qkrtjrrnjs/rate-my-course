@@ -23,8 +23,11 @@ class LogInViewController: UIViewController {
     
     @IBAction func logIn(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { [weak self] user, error in
-            guard let strongSelf = self else { return }
-            
+            if error == nil && user != nil{
+                self?.performSegue(withIdentifier: "LogInToStream", sender: self)
+            }else{
+                print(error?.localizedDescription as Any)
+            }
         }
     }
     

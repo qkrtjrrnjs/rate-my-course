@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
     @IBAction func signUp(_ sender: Any) {
         Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
             if error == nil && authResult != nil{
-                
+                self.performSegue(withIdentifier: "SignUPToStream", sender: self)
             }else{
                 print(error?.localizedDescription as Any)
             }
