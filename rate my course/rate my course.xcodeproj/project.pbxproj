@@ -106,6 +106,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		830E512222498AFA00450171 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		83E1478E2242FDDC00C40066 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +138,7 @@
 		83E147992242FDDC00C40066 /* rate my course */ = {
 			isa = PBXGroup;
 			children = (
+				830E512222498AFA00450171 /* Extensions */,
 				83E147CC224924DE00C40066 /* View Controllers */,
 				83E1479A2242FDDC00C40066 /* AppDelegate.swift */,
 				83E1479E2242FDDC00C40066 /* Main.storyboard */,

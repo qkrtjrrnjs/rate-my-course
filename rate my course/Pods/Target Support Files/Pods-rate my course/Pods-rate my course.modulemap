@@ -1,0 +1,6 @@
+framework module Pods_rate_my_course {
+  umbrella header "Pods-rate my course-umbrella.h"
+
+  export *
+  module * { export * }
+}
