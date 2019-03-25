@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/chris/Desktop/Purdue/Semester 4/CS 490/rate-my-course/rate my course/rate my course/Stream.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:rate my course.xcodeproj">
    </FileRef>
    <FileRef

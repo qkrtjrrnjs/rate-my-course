@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D774F1E443811D9F766DDE1 /* Pods_rate_my_courseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E365EA5EA7CC8FD89995D435 /* Pods_rate_my_courseUITests.framework */; };
 		830E512422498BB800450171 /* shortExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E512322498BB800450171 /* shortExtensions.swift */; };
+		830E512822498F0F00450171 /* StreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E512722498F0F00450171 /* StreamViewController.swift */; };
 		83E1479B2242FDDC00C40066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E1479A2242FDDC00C40066 /* AppDelegate.swift */; };
 		83E1479D2242FDDC00C40066 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E1479C2242FDDC00C40066 /* LogInViewController.swift */; };
 		83E147A02242FDDC00C40066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83E1479E2242FDDC00C40066 /* Main.storyboard */; };
@@ -43,6 +44,8 @@
 		2FA9B45E4C93643795DF6682 /* Pods-rate my courseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rate my courseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rate my courseUITests/Pods-rate my courseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		51779B5EA80BC3D1DCD81BA6 /* Pods-rate my courseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rate my courseUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rate my courseUITests/Pods-rate my courseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		830E512322498BB800450171 /* shortExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortExtensions.swift; sourceTree = "<group>"; };
+		830E512722498F0F00450171 /* StreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamViewController.swift; sourceTree = "<group>"; };
+		830E512922498F3F00450171 /* Stream.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Stream.storyboard; path = "/Users/chris/Desktop/Purdue/Semester 4/CS 490/rate-my-course/rate my course/rate my course/Stream.storyboard"; sourceTree = "<absolute>"; };
 		83E147972242FDDC00C40066 /* rate my course.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rate my course.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83E1479A2242FDDC00C40066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83E1479C2242FDDC00C40066 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +119,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		830E512A22498F4200450171 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				83E1479E2242FDDC00C40066 /* Main.storyboard */,
+				830E512922498F3F00450171 /* Stream.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		83E1478E2242FDDC00C40066 = {
 			isa = PBXGroup;
 			children = (
@@ -141,10 +153,10 @@
 		83E147992242FDDC00C40066 /* rate my course */ = {
 			isa = PBXGroup;
 			children = (
+				830E512A22498F4200450171 /* Storyboards */,
 				830E512222498AFA00450171 /* Extensions */,
 				83E147CC224924DE00C40066 /* View Controllers */,
 				83E1479A2242FDDC00C40066 /* AppDelegate.swift */,
-				83E1479E2242FDDC00C40066 /* Main.storyboard */,
 				83E147A12242FDDE00C40066 /* Assets.xcassets */,
 				83E147A32242FDDE00C40066 /* LaunchScreen.storyboard */,
 				83E147A62242FDDE00C40066 /* Info.plist */,
@@ -176,6 +188,7 @@
 			children = (
 				83E147CA224924D800C40066 /* SignUpViewController.swift */,
 				83E1479C2242FDDC00C40066 /* LogInViewController.swift */,
+				830E512722498F0F00450171 /* StreamViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -421,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830E512822498F0F00450171 /* StreamViewController.swift in Sources */,
 				830E512422498BB800450171 /* shortExtensions.swift in Sources */,
 				83E147CB224924D800C40066 /* SignUpViewController.swift in Sources */,
 				83E1479D2242FDDC00C40066 /* LogInViewController.swift in Sources */,
