@@ -139,6 +139,7 @@
                         <outlet property="passwordField" destination="8E1-a3-b0g" id="cJD-JP-zWS"/>
                         <outlet property="usernameField" destination="eaB-Sb-s3w" id="4uT-Nz-CIB"/>
                         <outlet property="verifyPasswordField" destination="kRS-f9-2nE" id="KJp-M0-R3E"/>
+                        <segue destination="IsI-HX-Qv2" kind="presentation" identifier="moveToStream" id="a7d-4E-iXc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4VO-Ti-FTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,8 +218,16 @@
             </objects>
             <point key="canvasLocation" x="1126" y="483"/>
         </scene>
+        <!--Stream-->
+        <scene sceneID="gjo-qL-klE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Stream" id="IsI-HX-Qv2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Vh-Fz-9te" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2034" y="-272"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Zdu-JP-E71"/>
+        <segue reference="jMh-WL-7t5"/>
     </inferredMetricsTieBreakers>
 </document>
