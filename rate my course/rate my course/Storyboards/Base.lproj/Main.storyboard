@@ -139,7 +139,7 @@
                         <outlet property="passwordField" destination="8E1-a3-b0g" id="cJD-JP-zWS"/>
                         <outlet property="usernameField" destination="eaB-Sb-s3w" id="4uT-Nz-CIB"/>
                         <outlet property="verifyPasswordField" destination="kRS-f9-2nE" id="KJp-M0-R3E"/>
-                        <segue destination="IsI-HX-Qv2" kind="presentation" identifier="moveToStream" id="a7d-4E-iXc"/>
+                        <segue destination="Hop-L8-IGe" kind="presentation" identifier="SignUpToStream" id="sEe-Gg-XhR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4VO-Ti-FTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -212,6 +212,7 @@
                     <connections>
                         <outlet property="emailField" destination="9nu-aJ-btQ" id="wMY-u9-IL2"/>
                         <outlet property="passwordField" destination="b7f-zC-IWL" id="WO9-Z9-Cqe"/>
+                        <segue destination="Hop-L8-IGe" kind="presentation" identifier="LogInToStream" id="wBK-v7-crG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ty6-Mu-nov" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -219,15 +220,16 @@
             <point key="canvasLocation" x="1126" y="483"/>
         </scene>
         <!--Stream-->
-        <scene sceneID="gjo-qL-klE">
+        <scene sceneID="DqW-0S-IAw">
             <objects>
-                <viewControllerPlaceholder storyboardName="Stream" id="IsI-HX-Qv2" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Vh-Fz-9te" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Stream" id="Hop-L8-IGe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oms-iU-l87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2034" y="-272"/>
+            <point key="canvasLocation" x="2147" y="-279"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jMh-WL-7t5"/>
+        <segue reference="wBK-v7-crG"/>
+        <segue reference="Zdu-JP-E71"/>
     </inferredMetricsTieBreakers>
 </document>
