@@ -135,10 +135,10 @@
                         <viewLayoutGuide key="safeArea" id="d4D-Gw-eXW"/>
                     </view>
                     <connections>
-                        <outlet property="email" destination="cog-nQ-2nw" id="OL3-g9-kNy"/>
-                        <outlet property="password" destination="8E1-a3-b0g" id="2o4-a2-hq4"/>
-                        <outlet property="username" destination="eaB-Sb-s3w" id="fhO-td-NVe"/>
-                        <outlet property="verifyPassword" destination="kRS-f9-2nE" id="zJJ-Uy-Zvj"/>
+                        <outlet property="emailField" destination="cog-nQ-2nw" id="RMn-cR-Xwj"/>
+                        <outlet property="passwordField" destination="8E1-a3-b0g" id="cJD-JP-zWS"/>
+                        <outlet property="usernameField" destination="eaB-Sb-s3w" id="4uT-Nz-CIB"/>
+                        <outlet property="verifyPasswordField" destination="kRS-f9-2nE" id="KJp-M0-R3E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4VO-Ti-FTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -209,16 +209,16 @@
                         <viewLayoutGuide key="safeArea" id="4sI-Xr-i33"/>
                     </view>
                     <connections>
-                        <outlet property="email" destination="9nu-aJ-btQ" id="cvT-n8-Hhf"/>
-                        <outlet property="password" destination="b7f-zC-IWL" id="TtC-gF-NJK"/>
+                        <outlet property="emailField" destination="9nu-aJ-btQ" id="wMY-u9-IL2"/>
+                        <outlet property="passwordField" destination="b7f-zC-IWL" id="WO9-Z9-Cqe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ty6-Mu-nov" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1126" y="471"/>
+            <point key="canvasLocation" x="1126" y="483"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jMh-WL-7t5"/>
+        <segue reference="Zdu-JP-E71"/>
     </inferredMetricsTieBreakers>
 </document>
