@@ -54,14 +54,18 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUp(_ sender: Any) {
+        emailField.errorMessage = ""
+        passwordField.errorMessage = ""
+        verifyPasswordField.errorMessage = ""
         
         if passwordField.text! == verifyPasswordField.text!{
-            passwordField.errorMessage = ""
-            verifyPasswordField.errorMessage = ""
-            
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
                 if error == nil && authResult != nil{
-                    self.performSegue(withIdentifier: "SignUPToStream", sender: self)
+                    Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!) { [weak self] user, error in
+                        if error == nil && user != nil{
+                            self!.performSegue(withIdentifier: "SignUpToStream", sender: self)
+                        }
+                    }
                 }else{
                     if error!.localizedDescription == "The email address is badly formatted."{
                         self.emailField.errorMessage = "Invalid email address"
