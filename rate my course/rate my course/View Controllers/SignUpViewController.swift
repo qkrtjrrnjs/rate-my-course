@@ -11,7 +11,6 @@ import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
@@ -28,7 +27,20 @@ class SignUpViewController: UIViewController {
             if error == nil && authResult != nil{
                 self.performSegue(withIdentifier: "SignUPToStream", sender: self)
             }else{
-                print(error?.localizedDescription as Any)
+                //create alert controller
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: error?.localizedDescription,
+                    preferredStyle: .alert
+                )
+                //add cancel btn
+                alert.addAction(UIAlertAction(
+                    title: "OK",
+                    style: .default,
+                    handler: nil
+                ))
+                
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
