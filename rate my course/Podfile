@@ -8,6 +8,7 @@ target 'rate my course' do
   # Pods for rate my course
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
 
   target 'rate my courseTests' do
     inherit! :search_paths

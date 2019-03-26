@@ -8,28 +8,47 @@
 
 import UIKit
 import FirebaseAuth
+import SkyFloatingLabelTextField
 
 class SignUpViewController: UIViewController {
-
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var verifyPasswordField: UITextField!
     
+    var emailField: SkyFloatingLabelTextField!
+    var passwordField: SkyFloatingLabelTextField!
+    var verifyPasswordField: SkyFloatingLabelTextField!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //customize UITextField
-        emailField.textColor                        = UIColor.white
-        emailField.backgroundColor                  = UIColor(red:0.10, green:0.10, blue:0.10, alpha:1.0)
-        emailField.attributedPlaceholder            = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        //custom textfields
+        emailField = SkyFloatingLabelTextField(frame: CGRect(x: self.view.bounds.size.width / 4.2, y: self.view.bounds.size.height / 4, width: self.view.bounds.size.width / 1.8, height: self.view.bounds.size.height / 15))
+        emailField.placeholder          = "Email"
+        emailField.title                = "Email"
+        emailField.titleColor           = UIColor.black
+        emailField.selectedTitleColor   = UIColor.black
+        emailField.errorColor           = UIColor.red
+        emailField.addTarget(self, action: #selector(emailFieldDidChange(_:)), for: .editingChanged)
+        self.view.addSubview(emailField)
         
-        passwordField.textColor                     = UIColor.white
-        passwordField.backgroundColor               = UIColor(red:0.10, green:0.10, blue:0.10, alpha:1.0)
-        passwordField.attributedPlaceholder         = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        passwordField = SkyFloatingLabelTextField(frame: CGRect(x: self.view.bounds.size.width / 4.2, y: self.view.bounds.size.height / 2.8, width: self.view.bounds.size.width / 1.8, height: self.view.bounds.size.height / 15))
+        passwordField.placeholder           = "Password"
+        passwordField.title                 = "Password"
+        passwordField.titleColor            = UIColor.black
+        passwordField.selectedTitleColor    = UIColor.black
+        passwordField.errorColor            = UIColor.red
+        passwordField.isSecureTextEntry     = true
+        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), for: .editingChanged)
+        self.view.addSubview(passwordField)
         
-        verifyPasswordField.textColor               = UIColor.white
-        verifyPasswordField.backgroundColor         = UIColor(red:0.10, green:0.10, blue:0.10, alpha:1.0)
-        verifyPasswordField.attributedPlaceholder   = NSAttributedString(string: "Verify Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        verifyPasswordField = SkyFloatingLabelTextField(frame: CGRect(x: self.view.bounds.size.width / 4.2, y: self.view.bounds.size.height / 2.1, width: self.view.bounds.size.width / 1.8, height: self.view.bounds.size.height / 15))
+        verifyPasswordField.placeholder         = "Verfiy Password"
+        verifyPasswordField.title               = "Verfiy Password"
+        verifyPasswordField.titleColor          = UIColor.black
+        verifyPasswordField.selectedTitleColor  = UIColor.black
+        verifyPasswordField.errorColor          = UIColor.red
+        verifyPasswordField.isSecureTextEntry   = true
+        verifyPasswordField.addTarget(self, action: #selector(verifyPasswordFieldDidChange(_:)), for: .editingChanged)
+        self.view.addSubview(verifyPasswordField)
         
         self.hideKeyboardWhenTappedAround()
     }
@@ -37,35 +56,39 @@ class SignUpViewController: UIViewController {
     @IBAction func signUp(_ sender: Any) {
         
         if passwordField.text! == verifyPasswordField.text!{
+            passwordField.errorMessage = ""
+            verifyPasswordField.errorMessage = ""
+            
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
                 if error == nil && authResult != nil{
                     self.performSegue(withIdentifier: "SignUPToStream", sender: self)
                 }else{
-                    self.displayAlert(title: "Error", message: error!.localizedDescription)
+                    if error!.localizedDescription == "The email address is badly formatted."{
+                        self.emailField.errorMessage = "Invalid email address"
+                    }
+                    
+                    if error!.localizedDescription == "The password must be 6 characters long or more."{
+                        self.passwordField.errorMessage = "Invalid password"
+                    }
                 }
             }
         }
         else{
-            displayAlert(title: "Error", message: "Passwords do not match!")
+            passwordField.errorMessage = "Passwords do not match!"
+            verifyPasswordField.errorMessage = "Passwords do not match!"
         }
     }
     
-    func displayAlert(title: String, message: String){
-        //create alert controller
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        //add cancel btn
-        alert.addAction(UIAlertAction(
-            title: "OK",
-            style: .default,
-            handler: nil
-        ))
-        
-        self.present(alert, animated: true, completion: nil)
+    @objc func emailFieldDidChange(_ textfield: UITextField) {
+        emailField.errorMessage = ""
     }
     
+    @objc func passwordFieldDidChange(_ textfield: UITextField) {
+        passwordField.errorMessage = ""
+    }
+    
+    @objc func verifyPasswordFieldDidChange(_ textfield: UITextField) {
+        verifyPasswordField.errorMessage = ""
+    }
 
 }

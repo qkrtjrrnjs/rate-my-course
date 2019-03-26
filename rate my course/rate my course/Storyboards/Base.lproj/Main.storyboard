@@ -98,35 +98,11 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="jMh-WL-7t5"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cog-nQ-2nw">
-                                <rect key="frame" x="94" y="204" width="190" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8E1-a3-b0g">
-                                <rect key="frame" x="94" y="266" width="190" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRS-f9-2nE">
-                                <rect key="frame" x="94" y="327" width="190" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="d4D-Gw-eXW"/>
                     </view>
                     <connections>
-                        <outlet property="emailField" destination="cog-nQ-2nw" id="RMn-cR-Xwj"/>
-                        <outlet property="passwordField" destination="8E1-a3-b0g" id="cJD-JP-zWS"/>
-                        <outlet property="verifyPasswordField" destination="kRS-f9-2nE" id="KJp-M0-R3E"/>
                         <segue destination="Hop-L8-IGe" kind="presentation" identifier="SignUpToStream" id="sEe-Gg-XhR"/>
                     </connections>
                 </viewController>
@@ -210,6 +186,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="wBK-v7-crG"/>
-        <segue reference="gLN-xw-dCH"/>
+        <segue reference="TCU-Sf-Gnu"/>
     </inferredMetricsTieBreakers>
 </document>
