@@ -46,6 +46,19 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
                 self.classes = dataDictionary["value"] as! [[String:Any]]
+                
+                //remove repeating courses
+                var removeCount = 0
+                for i in 0..<self.classes.count - 1{
+                    let currClass = self.classes[i - removeCount]
+                    let nextClass = self.classes[i + 1 - removeCount]
+                    print(i)
+                    if currClass["Number"] as! String == nextClass["Number"] as! String{
+                        self.classes.remove(at: i - removeCount)
+                        removeCount += 1
+                    }
+                }
+                
                 self.classTableView.reloadData()
             }
         }

@@ -36,6 +36,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
                 self.majors = dataDictionary["value"] as! [[String:Any]]
+                
                 self.majorTableView.reloadData()
             }
         }
