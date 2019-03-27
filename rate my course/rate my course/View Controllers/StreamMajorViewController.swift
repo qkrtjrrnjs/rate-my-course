@@ -13,6 +13,8 @@ import ElasticTransition
 class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var majorTableView: UITableView!
+    @IBOutlet weak var majorSearchBar: UISearchBar!
+    
     
     let transition  = ElasticTransition()
     
