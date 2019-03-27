@@ -46,6 +46,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            UserDefaults.standard.set(false, forKey: "userlogin")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

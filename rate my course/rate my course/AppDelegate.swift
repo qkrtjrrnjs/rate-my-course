@@ -17,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let status = UserDefaults.standard.bool(forKey: "userlogin")
+        if status{
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Stream", bundle: nil)
+            let streamMajorViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "streamMajorViewController") as! UINavigationController
+            
+            self.window?.rootViewController = streamMajorViewController
+            
+            self.window?.makeKeyAndVisible()
+        }
         
         FirebaseApp.configure()
         return true

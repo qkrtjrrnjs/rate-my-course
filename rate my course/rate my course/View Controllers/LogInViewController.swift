@@ -60,6 +60,7 @@ class LogInViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { [weak self] user, error in
             if error == nil && user != nil{
+                UserDefaults.standard.set(true, forKey: "userlogin")
                 //this needs change
                 self?.performSegue(withIdentifier: "LogInToStream", sender: self)
             }else{

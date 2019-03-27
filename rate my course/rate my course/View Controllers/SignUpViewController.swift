@@ -67,6 +67,7 @@ class SignUpViewController: UIViewController {
                 if error == nil && authResult != nil{
                     Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!) { [weak self] user, error in
                         if error == nil && user != nil{
+                            UserDefaults.standard.set(true, forKey: "userlogin")
                             //this needs change
                             self!.performSegue(withIdentifier: "SignUpToStream", sender: self)
                         }
