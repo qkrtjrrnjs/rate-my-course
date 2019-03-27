@@ -17,6 +17,8 @@
 		832B14DA2249D40600F25C7B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832B14D92249D40500F25C7B /* InitialViewController.swift */; };
 		832B14FB2249DAF300F25C7B /* Bavro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */; };
 		832B14FD2249DB0000F25C7B /* KEL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14FC2249DB0000F25C7B /* KEL.ttf */; };
+		83BA4D3F224C22F000D75174 /* SpashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA4D3E224C22F000D75174 /* SpashViewController.swift */; };
+		83BA4D42224C239200D75174 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BA4D41224C239200D75174 /* splash.json */; };
 		83E1479B2242FDDC00C40066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E1479A2242FDDC00C40066 /* AppDelegate.swift */; };
 		83E1479D2242FDDC00C40066 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E1479C2242FDDC00C40066 /* LogInViewController.swift */; };
 		83E147A02242FDDC00C40066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83E1479E2242FDDC00C40066 /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		832B14D92249D40500F25C7B /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bavro-Regular.otf"; sourceTree = "<group>"; };
 		832B14FC2249DB0000F25C7B /* KEL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KEL.ttf; sourceTree = "<group>"; };
+		83BA4D3E224C22F000D75174 /* SpashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpashViewController.swift; sourceTree = "<group>"; };
+		83BA4D41224C239200D75174 /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		83E147972242FDDC00C40066 /* rate my course.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rate my course.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83E1479A2242FDDC00C40066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83E1479C2242FDDC00C40066 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,14 @@
 			path = KEL;
 			sourceTree = "<group>";
 		};
+		83BA4D40224C237600D75174 /* Lottie Animations */ = {
+			isa = PBXGroup;
+			children = (
+				83BA4D41224C239200D75174 /* splash.json */,
+			);
+			path = "Lottie Animations";
+			sourceTree = "<group>";
+		};
 		83E1478E2242FDDC00C40066 = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +212,7 @@
 		83E147992242FDDC00C40066 /* rate my course */ = {
 			isa = PBXGroup;
 			children = (
+				83BA4D40224C237600D75174 /* Lottie Animations */,
 				830577D3224B142600741697 /* Cells */,
 				832B14FE2249DB0600F25C7B /* Fonts */,
 				830E512A22498F4200450171 /* Storyboards */,
@@ -235,6 +248,7 @@
 		83E147CC224924DE00C40066 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				83BA4D3E224C22F000D75174 /* SpashViewController.swift */,
 				832B14D92249D40500F25C7B /* InitialViewController.swift */,
 				83E147CA224924D800C40066 /* SignUpViewController.swift */,
 				83E1479C2242FDDC00C40066 /* LogInViewController.swift */,
@@ -368,6 +382,7 @@
 				832B14D72249918D00F25C7B /* Stream.storyboard in Resources */,
 				83E147C922491EBB00C40066 /* GoogleService-Info.plist in Resources */,
 				832B14FD2249DB0000F25C7B /* KEL.ttf in Resources */,
+				83BA4D42224C239200D75174 /* splash.json in Resources */,
 				83E147A02242FDDC00C40066 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +462,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionAnimation/MotionAnimation.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -458,6 +474,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +515,7 @@
 				830E512822498F0F00450171 /* StreamMajorViewController.swift in Sources */,
 				830577D5224B144300741697 /* MajorCell.swift in Sources */,
 				830E512422498BB800450171 /* shortExtensions.swift in Sources */,
+				83BA4D3F224C22F000D75174 /* SpashViewController.swift in Sources */,
 				830577D9224BA91A00741697 /* StreamClassViewController.swift in Sources */,
 				83E147CB224924D800C40066 /* SignUpViewController.swift in Sources */,
 				832B14DA2249D40600F25C7B /* InitialViewController.swift in Sources */,

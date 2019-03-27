@@ -11,6 +11,7 @@ target 'rate my course' do
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod "ElasticTransition"
   pod "MotionAnimation" 
+  pod 'lottie-ios'
 
   target 'rate my courseTests' do
     inherit! :search_paths

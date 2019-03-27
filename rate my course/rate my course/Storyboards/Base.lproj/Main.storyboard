@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S8N-OF-1OZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,6 +15,24 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="c50-D8-gSj">
+            <objects>
+                <viewController id="S8N-OF-1OZ" customClass="SplashViewController" customModule="rate_my_course" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hBa-Nx-1F3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="h4C-XL-0Bn"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="splashToInitial" id="C5c-hU-omO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ilD-fa-lpi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-721" y="113"/>
+        </scene>
         <!--Initial View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -175,5 +193,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="sEe-Gg-XhR"/>
         <segue reference="gLN-xw-dCH"/>
+        <segue reference="C5c-hU-omO"/>
     </inferredMetricsTieBreakers>
 </document>
