@@ -10,6 +10,7 @@
 		0D774F1E443811D9F766DDE1 /* Pods_rate_my_courseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E365EA5EA7CC8FD89995D435 /* Pods_rate_my_courseUITests.framework */; };
 		830577D5224B144300741697 /* MajorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830577D4224B144300741697 /* MajorCell.swift */; };
 		830577D9224BA91A00741697 /* StreamClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830577D8224BA91A00741697 /* StreamClassViewController.swift */; };
+		830577DD224BAE2500741697 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830577DC224BAE2500741697 /* ClassCell.swift */; };
 		830E512422498BB800450171 /* shortExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E512322498BB800450171 /* shortExtensions.swift */; };
 		830E512822498F0F00450171 /* StreamMajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E512722498F0F00450171 /* StreamMajorViewController.swift */; };
 		832B14D72249918D00F25C7B /* Stream.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832B14D62249918D00F25C7B /* Stream.storyboard */; };
@@ -51,6 +52,7 @@
 		51779B5EA80BC3D1DCD81BA6 /* Pods-rate my courseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rate my courseUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rate my courseUITests/Pods-rate my courseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		830577D4224B144300741697 /* MajorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCell.swift; sourceTree = "<group>"; };
 		830577D8224BA91A00741697 /* StreamClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamClassViewController.swift; sourceTree = "<group>"; };
+		830577DC224BAE2500741697 /* ClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
 		830E512322498BB800450171 /* shortExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortExtensions.swift; sourceTree = "<group>"; };
 		830E512722498F0F00450171 /* StreamMajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamMajorViewController.swift; sourceTree = "<group>"; };
 		832B14D62249918D00F25C7B /* Stream.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stream.storyboard; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				830577D4224B144300741697 /* MajorCell.swift */,
+				830577DC224BAE2500741697 /* ClassCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830577DD224BAE2500741697 /* ClassCell.swift in Sources */,
 				830E512822498F0F00450171 /* StreamMajorViewController.swift in Sources */,
 				830577D5224B144300741697 /* MajorCell.swift in Sources */,
 				830E512422498BB800450171 /* shortExtensions.swift in Sources */,
