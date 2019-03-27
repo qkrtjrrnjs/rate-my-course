@@ -8,13 +8,15 @@
 
 import UIKit
 import FirebaseAuth
+import ElasticTransition
 
 class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var majorTableView: UITableView!
     
+    let transition  = ElasticTransition()
     
-    var majors = [[String: Any]]()
+    var majors      = [[String: Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +43,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         task.resume()
     }
     
-    
+    //logout
     @IBAction func logOut(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
@@ -62,6 +64,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         return majors.count
     }
     
+    //tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MajorCell") as! MajorCell
 
@@ -72,6 +75,26 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         cell.majorLabel.text    = "\(majorName) (\(majorAbbreviation))"
         
         return cell
+    }
+    
+    //segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //custom transition
+        transition.edge = .right
+        transition.sticky = false
+        
+        segue.destination.transitioningDelegate = transition
+        segue.destination.modalPresentationStyle = .custom
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = majorTableView.indexPath(for: cell)!
+        let major = majors[indexPath.row]
+        
+        let streamClassViewController = segue.destination as! StreamClassViewController
+        streamClassViewController.major = major
+        
+        majorTableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

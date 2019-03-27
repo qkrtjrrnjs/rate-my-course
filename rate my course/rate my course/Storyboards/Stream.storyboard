@@ -46,6 +46,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="majorLabel" destination="aNa-Ss-jKn" id="g5Z-uT-T8X"/>
+                                            <segue destination="BD7-oZ-A4I" kind="show" id="Teb-ms-drw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -69,6 +70,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qg4-iM-IgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3085.5999999999999" y="-279.31034482758622"/>
+        </scene>
+        <!--Stream Class View Controller-->
+        <scene sceneID="KJy-LJ-beR">
+            <objects>
+                <viewController id="BD7-oZ-A4I" customClass="StreamClassViewController" customModule="rate_my_course" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="51j-1s-eSh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QyL-rm-NYD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Tf-ti-dVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4002" y="-279"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="imW-fI-Gbl">

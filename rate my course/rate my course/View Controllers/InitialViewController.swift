@@ -20,8 +20,8 @@ class InitialViewController: UIViewController {
         super.viewDidLoad()
         
         //transition customization
-        transition.edge = .right
-        transition.sticky = false
+        transition.edge     = .right
+        transition.sticky   = false
 
         //button customization
         signUpButton.layer.cornerRadius     = 10
@@ -37,8 +37,8 @@ class InitialViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segue.destination.transitioningDelegate = transition
-        segue.destination.modalPresentationStyle = .custom
+        segue.destination.transitioningDelegate     = transition
+        segue.destination.modalPresentationStyle    = .custom
     }
     
 }

@@ -13,11 +13,11 @@ import ElasticTransition
 
 class SignUpViewController: UIViewController {
     
-    var emailField: SkyFloatingLabelTextField!
-    var passwordField: SkyFloatingLabelTextField!
-    var verifyPasswordField: SkyFloatingLabelTextField!
+    var emailField:             SkyFloatingLabelTextField!
+    var passwordField:          SkyFloatingLabelTextField!
+    var verifyPasswordField:    SkyFloatingLabelTextField!
 
-    var transition = ElasticTransition()
+    var transition              = ElasticTransition()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,16 +104,16 @@ class SignUpViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "signUpToInitial"{
             //transition customization
-            transition.edge = .left
-            transition.sticky = false
+            transition.edge     = .left
+            transition.sticky   = false
         }
         else{
             //transition customization
-            transition.edge = .right
-            transition.sticky = false
+            transition.edge     = .right
+            transition.sticky   = false
         }
-        segue.destination.transitioningDelegate = transition
-        segue.destination.modalPresentationStyle = .custom
+        segue.destination.transitioningDelegate     = transition
+        segue.destination.modalPresentationStyle    = .custom
     }
 
 }

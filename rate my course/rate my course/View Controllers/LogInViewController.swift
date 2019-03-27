@@ -89,16 +89,16 @@ class LogInViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "logInToSignUp"{
             //transition customization
-            transition.edge = .top
-            transition.sticky = false
+            transition.edge     = .top
+            transition.sticky   = false
         }
         else{
             //transition customization
-            transition.edge = .right
-            transition.sticky = false
+            transition.edge     = .right
+            transition.sticky   = false
         }
-        segue.destination.transitioningDelegate = transition
-        segue.destination.modalPresentationStyle = .custom
+        segue.destination.transitioningDelegate     = transition
+        segue.destination.modalPresentationStyle    = .custom
     }
     
 }
