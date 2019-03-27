@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import Lottie
 
 class StreamClassViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
    
     @IBOutlet weak var classTableView: UITableView!
     
+    var errorAnimation: LOTAnimationView!
     var major: [String:Any]!
     var classes = [[String:Any]]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,6 +48,14 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 self.classes = dataDictionary["value"] as! [[String:Any]]
                 self.classTableView.reloadData()
+                if self.classes.isEmpty{
+                    self.errorAnimation                 = LOTAnimationView(name: "error")
+                    self.errorAnimation.animationSpeed  = 1.5
+                    self.errorAnimation.loopAnimation   = true
+                    self.errorAnimation.frame           = CGRect(x: self.view.bounds.size.width / 4.1, y: self.view.bounds.size.height / 3, width: 200, height: 200)
+                    self.view.addSubview(self.errorAnimation)
+                    self.errorAnimation.play()
+                }
             }
         }
         task.resume()
