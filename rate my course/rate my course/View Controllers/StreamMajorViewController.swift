@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -38,6 +39,22 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         task.resume()
+    }
+    
+    
+    @IBAction func logOut(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController: InitialViewController = mainStoryboard.instantiateViewController(withIdentifier: "initialViewController") as! InitialViewController
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = initialViewController
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

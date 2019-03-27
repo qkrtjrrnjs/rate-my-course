@@ -54,7 +54,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Pvt-nI-J7D"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Gln-Er-ic9"/>
+                    <navigationItem key="navigationItem" id="Gln-Er-ic9">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="8Yd-gT-2P2">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logOut:" destination="Tkt-E3-ITb" id="vrQ-2D-V55"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="majorTableView" destination="fn2-8Z-13g" id="QxR-1g-2zV"/>
                     </connections>
