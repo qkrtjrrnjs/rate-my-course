@@ -10,21 +10,25 @@ import UIKit
 import FirebaseAuth
 import ElasticTransition
 
-class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var majorTableView: UITableView!
     @IBOutlet weak var majorSearchBar: UISearchBar!
     
     
-    let transition  = ElasticTransition()
-    
-    var majors      = [[String: Any]]()
+    let transition      = ElasticTransition()
+    var majors          = [[String: Any]]()
+    var majorNames      = [String]()
+    var filteredMajors  = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
+        
         majorTableView.dataSource   = self
         majorTableView.delegate     = self
+        majorSearchBar.delegate     = self
         
         //JSON parsing
         let url = URL(string: "https://api.purdue.io/odata/Subjects")!
@@ -35,14 +39,18 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                let dataDictionary  = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
-                self.majors = dataDictionary["value"] as! [[String:Any]]
+                self.majors         = dataDictionary["value"] as! [[String:Any]]
+                
+                for major in self.majors{
+                    self.majorNames.append(major["Name"] as! String)
+                }
+                self.filteredMajors = self.majorNames
                 
                 self.majorTableView.reloadData()
             }
         }
-        
         task.resume()
     }
     
@@ -64,7 +72,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return majors.count
+        return filteredMajors.count
     }
     
     //tableview
@@ -73,12 +81,26 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
 
         let major               = majors[indexPath.row]
         let majorAbbreviation   = major["Abbreviation"] as! String
-        let majorName           = major["Name"] as! String
         
-        cell.majorLabel.text        = "  \(majorName) (\(majorAbbreviation))"
+        cell.majorLabel.text        = "  \(filteredMajors[indexPath.row]) (\(majorAbbreviation))"
         cell.majorLabel.textColor   = .white
         
         return cell
+    }
+    
+    // This method updates filteredData based on the text in the Search Box
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        // When user has entered text into the search box
+        // Use the filter method to iterate over all items in the data array
+        // For each item, return true if the item should be included and false if the
+        // item should NOT be included
+        filteredMajors = searchText.isEmpty ? majorNames: majorNames.filter { (item: String) -> Bool in
+            // If dataItem matches the searchText, return true to include it
+            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        
+        majorTableView.reloadData()
     }
     
     //segue
@@ -100,5 +122,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         
         majorTableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
 
 }

@@ -12,6 +12,7 @@ import Lottie
 class StreamClassViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
    
     @IBOutlet weak var classTableView: UITableView!
+    @IBOutlet weak var classSearchBar: UISearchBar!
     
     var major: [String:Any]!
     var classes = [[String:Any]]()
@@ -19,11 +20,13 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        classTableView.estimatedRowHeight = 60
-        classTableView.rowHeight = UITableView.automaticDimension
+        self.hideKeyboardWhenTappedAround()
         
-        classTableView.delegate = self
-        classTableView.dataSource = self
+        classTableView.estimatedRowHeight   = 60
+        classTableView.rowHeight            = UITableView.automaticDimension
+        
+        classTableView.delegate             = self
+        classTableView.dataSource           = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +55,7 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
                 for i in 0..<self.classes.count - 1{
                     let currClass = self.classes[i - removeCount]
                     let nextClass = self.classes[i + 1 - removeCount]
-                    print(i)
+
                     if currClass["Number"] as! String == nextClass["Number"] as! String{
                         self.classes.remove(at: i - removeCount)
                         removeCount += 1

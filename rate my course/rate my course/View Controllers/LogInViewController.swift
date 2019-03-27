@@ -55,8 +55,8 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func logIn(_ sender: Any) {
-        emailField.errorMessage = ""
-        passwordField.errorMessage = ""
+        emailField.errorMessage     = ""
+        passwordField.errorMessage  = ""
         
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { [weak self] user, error in
             if error == nil && user != nil{

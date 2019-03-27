@@ -58,9 +58,9 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUp(_ sender: Any) {
-        emailField.errorMessage = ""
-        passwordField.errorMessage = ""
-        verifyPasswordField.errorMessage = ""
+        emailField.errorMessage             = ""
+        passwordField.errorMessage          = ""
+        verifyPasswordField.errorMessage    = ""
         
         if passwordField.text! == verifyPasswordField.text!{
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
@@ -84,8 +84,8 @@ class SignUpViewController: UIViewController {
             }
         }
         else{
-            passwordField.errorMessage = "Passwords do not match!"
-            verifyPasswordField.errorMessage = "Passwords do not match!"
+            passwordField.errorMessage          = "Passwords do not match!"
+            verifyPasswordField.errorMessage    = "Passwords do not match!"
         }
     }
     
