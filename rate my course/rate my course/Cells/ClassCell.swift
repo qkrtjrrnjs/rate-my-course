@@ -8,13 +8,17 @@
 
 import UIKit
 
+
 class ClassCell: UITableViewCell {
     
     @IBOutlet weak var classLabel: UILabel!
+    @IBOutlet weak var className: UILabel!
+    @IBOutlet weak var classDescription: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -22,5 +26,6 @@ class ClassCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 
 }

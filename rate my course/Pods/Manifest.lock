@@ -62,6 +62,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - SkyFloatingLabelTextField (3.6.0)
+  - StatefulViewController (3.0)
 
 DEPENDENCIES:
   - ElasticTransition
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - Firebase/Core
   - MotionAnimation
   - SkyFloatingLabelTextField (~> 3.0)
+  - StatefulViewController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -85,6 +87,7 @@ SPEC REPOS:
     - MotionAnimation
     - nanopb
     - SkyFloatingLabelTextField
+    - StatefulViewController
 
 SPEC CHECKSUMS:
   ElasticTransition: 6c4e4739e32480c864217db912100f3657f6447a
@@ -100,7 +103,8 @@ SPEC CHECKSUMS:
   MotionAnimation: ff5c8fc2e429d7e10d46ae86819ba9759846c343
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
+  StatefulViewController: 4803bf900d44de26074344998e10e041113b5931
 
-PODFILE CHECKSUM: 6b10978e99ab7b0c5188c77cb27cff255125243b
+PODFILE CHECKSUM: 42ce7c706da207e9d9e46ac8cd9659cb4cc43a8f
 
 COCOAPODS: 1.5.3

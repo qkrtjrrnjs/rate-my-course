@@ -10,7 +10,9 @@ target 'rate my course' do
   pod 'Firebase/Auth'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod "ElasticTransition"
-  pod "MotionAnimation"
+  pod "MotionAnimation" 
+  pod "StatefulViewController"
+
 
   target 'rate my courseTests' do
     inherit! :search_paths

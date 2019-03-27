@@ -72,7 +72,8 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         let majorAbbreviation   = major["Abbreviation"] as! String
         let majorName           = major["Name"] as! String
         
-        cell.majorLabel.text    = "\(majorName) (\(majorAbbreviation))"
+        cell.majorLabel.text        = "  \(majorName) (\(majorAbbreviation))"
+        cell.majorLabel.textColor   = .white
         
         return cell
     }
@@ -81,18 +82,18 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         //custom transition
-        transition.edge = .right
-        transition.sticky = false
+        transition.edge     = .right
+        transition.sticky   = false
         
-        segue.destination.transitioningDelegate = transition
-        segue.destination.modalPresentationStyle = .custom
+        segue.destination.transitioningDelegate     = transition
+        segue.destination.modalPresentationStyle    = .custom
         
-        let cell = sender as! UITableViewCell
-        let indexPath = majorTableView.indexPath(for: cell)!
-        let major = majors[indexPath.row]
+        let cell        = sender as! UITableViewCell
+        let indexPath   = majorTableView.indexPath(for: cell)!
+        let major       = majors[indexPath.row]
         
-        let streamClassViewController = segue.destination as! StreamClassViewController
-        streamClassViewController.major = major
+        let streamClassViewController      = segue.destination as! StreamClassViewController
+        streamClassViewController.major    = major
         
         majorTableView.deselectRow(at: indexPath, animated: true)
     }
