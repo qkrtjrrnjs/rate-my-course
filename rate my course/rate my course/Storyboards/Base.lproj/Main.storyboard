@@ -95,7 +95,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="jMh-WL-7t5"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="signUpToInitial" id="jMh-WL-7t5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4VO-Ti-FTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125.5999999999999" y="-272.11394302848578"/>
+            <point key="canvasLocation" x="1126" y="-304"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="Vw7-LY-ril">
@@ -148,7 +148,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1VL-Jb-Mf1" kind="presentation" id="TCU-Sf-Gnu"/>
+                                    <segue destination="1VL-Jb-Mf1" kind="presentation" identifier="logInToSignUp" id="TCU-Sf-Gnu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -173,7 +173,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wBK-v7-crG"/>
+        <segue reference="sEe-Gg-XhR"/>
         <segue reference="TCU-Sf-Gnu"/>
     </inferredMetricsTieBreakers>
 </document>

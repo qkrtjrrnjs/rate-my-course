@@ -22,10 +22,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //transition customization
-        transition.edge = .left
-        transition.sticky = false
-        
         //custom textfields
         emailField = SkyFloatingLabelTextField(frame: CGRect(x: self.view.bounds.size.width / 4.2, y: self.view.bounds.size.height / 4, width: self.view.bounds.size.width / 1.8, height: self.view.bounds.size.height / 15))
         emailField.placeholder          = "Email"
@@ -105,6 +101,16 @@ class SignUpViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "signUpToInitial"{
+            //transition customization
+            transition.edge = .left
+            transition.sticky = false
+        }
+        else{
+            //transition customization
+            transition.edge = .right
+            transition.sticky = false
+        }
         segue.destination.transitioningDelegate = transition
         segue.destination.modalPresentationStyle = .custom
     }
