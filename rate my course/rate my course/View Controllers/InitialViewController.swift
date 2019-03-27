@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import ElasticTransition
 
 class InitialViewController: UIViewController {
     
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var logInButton: UIButton!
     
+    var transition = ElasticTransition()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //transition customization
+        transition.edge = .right
+        transition.sticky = false
 
         //button customization
         signUpButton.layer.cornerRadius     = 10
@@ -29,5 +36,9 @@ class InitialViewController: UIViewController {
         self.view.backgroundColor           = UIColor.white
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.transitioningDelegate = transition
+        segue.destination.modalPresentationStyle = .custom
+    }
     
 }

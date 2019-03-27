@@ -9,15 +9,21 @@
 import UIKit
 import FirebaseAuth
 import SkyFloatingLabelTextField
+import ElasticTransition
 
 class LogInViewController: UIViewController {
-    
     
     var emailField: SkyFloatingLabelTextField!
     var passwordField: SkyFloatingLabelTextField!
     
+    var transition = ElasticTransition()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //transition customization
+        transition.edge = .top
+        transition.sticky = false
         
         //custom textfields
         emailField = SkyFloatingLabelTextField(frame: CGRect(x: self.view.bounds.size.width / 4.2, y: self.view.bounds.size.height / 4, width: self.view.bounds.size.width / 1.8, height: self.view.bounds.size.height / 15))
@@ -39,7 +45,8 @@ class LogInViewController: UIViewController {
         passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), for: .editingChanged)
         self.view.addSubview(passwordField)
         
-        
+        self.view.backgroundColor = .white
+
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -57,6 +64,7 @@ class LogInViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { [weak self] user, error in
             if error == nil && user != nil{
+                //this needs change
                 self?.performSegue(withIdentifier: "LogInToStream", sender: self)
             }else{
                 if error!.localizedDescription == "The email address is badly formatted."{
@@ -81,6 +89,10 @@ class LogInViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.transitioningDelegate = transition
+        segue.destination.modalPresentationStyle = .custom
+    }
     
 }
 

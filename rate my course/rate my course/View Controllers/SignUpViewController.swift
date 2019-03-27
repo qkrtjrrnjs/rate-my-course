@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import SkyFloatingLabelTextField
+import ElasticTransition
 
 class SignUpViewController: UIViewController {
     
@@ -16,9 +17,14 @@ class SignUpViewController: UIViewController {
     var passwordField: SkyFloatingLabelTextField!
     var verifyPasswordField: SkyFloatingLabelTextField!
 
+    var transition = ElasticTransition()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //transition customization
+        transition.edge = .left
+        transition.sticky = false
         
         //custom textfields
         emailField = SkyFloatingLabelTextField(frame: CGRect(x: self.view.bounds.size.width / 4.2, y: self.view.bounds.size.height / 4, width: self.view.bounds.size.width / 1.8, height: self.view.bounds.size.height / 15))
@@ -50,6 +56,8 @@ class SignUpViewController: UIViewController {
         verifyPasswordField.addTarget(self, action: #selector(verifyPasswordFieldDidChange(_:)), for: .editingChanged)
         self.view.addSubview(verifyPasswordField)
         
+        self.view.backgroundColor = .white
+        
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -63,6 +71,7 @@ class SignUpViewController: UIViewController {
                 if error == nil && authResult != nil{
                     Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!) { [weak self] user, error in
                         if error == nil && user != nil{
+                            //this needs change
                             self!.performSegue(withIdentifier: "SignUpToStream", sender: self)
                         }
                     }
@@ -93,6 +102,11 @@ class SignUpViewController: UIViewController {
     
     @objc func verifyPasswordFieldDidChange(_ textfield: UITextField) {
         verifyPasswordField.errorMessage = ""
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.transitioningDelegate = transition
+        segue.destination.modalPresentationStyle = .custom
     }
 
 }

@@ -29,7 +29,7 @@
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="20"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="1VL-Jb-Mf1" kind="show" id="gLN-xw-dCH"/>
+                                    <segue destination="1VL-Jb-Mf1" kind="presentation" identifier="" id="gLN-xw-dCH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxy-Ih-Ze0">
@@ -38,7 +38,7 @@
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="20"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
-                                    <segue destination="K0C-U7-4Ut" kind="show" id="deh-eR-zwf"/>
+                                    <segue destination="K0C-U7-4Ut" kind="presentation" identifier="" id="deh-eR-zwf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate My Course" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTT-Fr-hZY">
@@ -95,13 +95,17 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="jMh-WL-7t5"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="jMh-WL-7t5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="d4D-Gw-eXW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="37c-qr-uzu"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="Hop-L8-IGe" kind="presentation" identifier="SignUpToStream" id="sEe-Gg-XhR"/>
                     </connections>
@@ -144,7 +148,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1VL-Jb-Mf1" kind="show" id="TCU-Sf-Gnu"/>
+                                    <segue destination="1VL-Jb-Mf1" kind="presentation" id="TCU-Sf-Gnu"/>
                                 </connections>
                             </button>
                         </subviews>
