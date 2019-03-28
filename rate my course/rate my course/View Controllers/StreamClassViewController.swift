@@ -9,12 +9,15 @@
 import UIKit
 import Lottie
 
-class StreamClassViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class StreamClassViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
    
     @IBOutlet weak var classTableView: UITableView!
     @IBOutlet weak var classSearchBar: UISearchBar!
     
-    var classes = [[String:Any]]()
+    var classes                 = [[String:Any]]()
+    var classNumbers            = [String]()
+    var filteredClassNumbers    = [String]()
+    
     var majorAbbreviation: String!
 
     override func viewDidLoad() {
@@ -27,6 +30,7 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         
         classTableView.delegate             = self
         classTableView.dataSource           = self
+        classSearchBar.delegate             = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +65,12 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
                     }
                 }
                 
+                for cls in self.classes{
+                    self.classNumbers.append("\(self.majorAbbreviation!) \(cls["Number"] as! String)")
+                }
+                
+                self.filteredClassNumbers = self.classNumbers
+                
                 self.classTableView.reloadData()
             }
         }
@@ -69,23 +79,47 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classes.count
+        return filteredClassNumbers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClassCell") as! ClassCell
         
-        let classInfo               = classes[indexPath.row]
-        let number                  = classInfo["Number"] as! String
-        let name                    = classInfo["Title"] as! String
+        var name = String()
         
-        cell.classLabel.text        = "\(majorAbbreviation!) \(number)"
+        for cls in self.classes{
+            if cls["Number"] as! String == filteredClassNumbers[indexPath.row].components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: ""){
+                name = cls["Title"] as! String
+                break
+            }
+        }
+        
+        cell.classLabel.text        = "\(filteredClassNumbers[indexPath.row])"
         cell.className.text         = name
         
         cell.classLabel.textColor   = .white
         cell.className.textColor    = .white
         
         return cell
+    }
+    
+    // This method updates filteredData based on the text in the Search Box
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        // When user has entered text into the search box
+        // Use the filter method to iterate over all items in the data array
+        // For each item, return true if the item should be included and false if the
+        // item should NOT be included
+        filteredClassNumbers = searchText.isEmpty ? classNumbers: classNumbers.filter { (item: String) -> Bool in
+            // If dataItem matches the searchText, return true to include it
+            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        
+        classTableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
 }
