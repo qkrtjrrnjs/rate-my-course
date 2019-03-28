@@ -25,13 +25,13 @@ We are making a service to allow students to rate classes, similar to RateMyProf
 
  * [x] User can login
  * [x] User can search for classes
- * [] User can create ratings/posts
- * [] User can see ratings/posts
+ * [ ] User can create ratings/posts
+ * [ ] User can see ratings/posts
 
 **Optional Nice-to-have Stories**
 
  * [x] User can Logout 
- * [] User can manage account
+ * [ ] User can manage account
 
 ### 2. Screen Archetypes
 
