@@ -16,11 +16,11 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var majorSearchBar: UISearchBar!
     
     
-    let transition      = ElasticTransition()
-    var majors          = [[String: Any]]()
-    var majorNames      = [String]()
-    var filteredMajors  = [String]()
-    
+    let transition                  = ElasticTransition()
+    var majors                      = [[String: Any]]()
+    var majorNames                  = [String]()
+    var filteredMajors              = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +41,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
             } else if let data = data {
                 let dataDictionary  = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
-                self.majors         = dataDictionary["value"] as! [[String:Any]]
+                self.majors = dataDictionary["value"] as! [[String:Any]]
                 
                 for major in self.majors{
                     self.majorNames.append(major["Name"] as! String)
@@ -79,10 +79,16 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MajorCell") as! MajorCell
 
-        let major               = majors[indexPath.row]
-        let majorAbbreviation   = major["Abbreviation"] as! String
+        var abbreviation: String!
         
-        cell.majorLabel.text        = "  \(filteredMajors[indexPath.row]) (\(majorAbbreviation))"
+        for major in self.majors{
+            if major["Name"] as! String == filteredMajors[indexPath.row]{
+                abbreviation = major["Abbreviation"] as? String
+                break
+            }
+        }
+        
+        cell.majorLabel.text        = "  \(filteredMajors[indexPath.row]) (\(abbreviation!))"
         cell.majorLabel.textColor   = .white
         
         return cell
@@ -99,7 +105,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
             // If dataItem matches the searchText, return true to include it
             return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
-        
+
         majorTableView.reloadData()
     }
     
