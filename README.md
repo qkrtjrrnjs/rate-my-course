@@ -23,15 +23,15 @@ We are making a service to allow students to rate classes, similar to RateMyProf
 
 **Required Must-have Stories**
 
- * User can login
- * User can search for classes
- * User can create ratings/posts
- * User can see ratings/posts
+ * [x] User can login
+ * [x] User can search for classes
+ * [] User can create ratings/posts
+ * [] User can see ratings/posts
 
 **Optional Nice-to-have Stories**
 
- * User can Logout 
- * User can manage account
+ * [x] User can Logout 
+ * [] User can manage account
 
 ### 2. Screen Archetypes
 
