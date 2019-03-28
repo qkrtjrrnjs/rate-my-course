@@ -69,13 +69,13 @@ class LogInViewController: UIViewController {
                 }
                 
                 if error!.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted."{
-                    self!.emailField.errorMessage = "Non-existent account"
-                    self!.passwordField.errorMessage = "Password"
+                    self!.emailField.errorMessage       = "Non-existent account"
+                    self!.passwordField.errorMessage    = "Password"
                 }
                 
                 if error!.localizedDescription == "The password is invalid or the user does not have a password."{
-                    self!.passwordField.errorMessage = "Password"
-                    self!.emailField.errorMessage = "Email"
+                    self!.passwordField.errorMessage    = "Password"
+                    self!.emailField.errorMessage       = "Email"
                 }
                 
                 if error!.localizedDescription == "Too many unsuccessful login attempts.  Please include reCaptcha verification or try again later"{

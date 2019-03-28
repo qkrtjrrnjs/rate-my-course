@@ -85,8 +85,8 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClassCell") as! ClassCell
         
+        //find name w/ cs #
         var name = String()
-        
         for cls in self.classes{
             if cls["Number"] as! String == filteredClassNumbers[indexPath.row].components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: ""){
                 name = cls["Title"] as! String
