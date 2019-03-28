@@ -15,8 +15,6 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var majorTableView: UITableView!
     @IBOutlet weak var majorSearchBar: UISearchBar!
     
-    
-    let transition                  = ElasticTransition()
     var majors                      = [[String: Any]]()
     var majorNames                  = [String]()
     var filteredMajors              = [String]()
@@ -43,9 +41,13 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 self.majors = dataDictionary["value"] as! [[String:Any]]
                 
+                //remove repeating majors and add only the names to array
                 for major in self.majors{
-                    self.majorNames.append(major["Name"] as! String)
+                    if !self.majorNames.contains(major["Name"] as! String){
+                        self.majorNames.append(major["Name"] as! String)
+                    }
                 }
+                
                 self.filteredMajors = self.majorNames
                 
                 self.majorTableView.reloadData()
@@ -79,8 +81,8 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MajorCell") as! MajorCell
 
+        //getting the abbreviation of the major
         var abbreviation: String!
-        
         for major in self.majors{
             if major["Name"] as! String == filteredMajors[indexPath.row]{
                 abbreviation = major["Abbreviation"] as? String
@@ -109,22 +111,25 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         majorTableView.reloadData()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
     //segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        //custom transition
-        transition.edge     = .right
-        transition.sticky   = false
-        
-        segue.destination.transitioningDelegate     = transition
-        segue.destination.modalPresentationStyle    = .custom
-        
         let cell        = sender as! UITableViewCell
         let indexPath   = majorTableView.indexPath(for: cell)!
-        let major       = majors[indexPath.row]
+        var majorAbbreviation: String!
         
-        let streamClassViewController      = segue.destination as! StreamClassViewController
-        streamClassViewController.major    = major
+        for major in self.majors{
+            if major["Name"] as! String == filteredMajors[indexPath.row]{
+                majorAbbreviation = major["Abbreviation"] as? String
+                break
+            }
+        }
+        
+        let streamClassViewController                 = segue.destination as! StreamClassViewController
+        streamClassViewController.majorAbbreviation   = majorAbbreviation
         
         majorTableView.deselectRow(at: indexPath, animated: true)
     }
