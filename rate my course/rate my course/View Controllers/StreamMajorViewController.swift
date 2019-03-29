@@ -54,25 +54,10 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 //remove majors wihout classes
                 for name in self.majorNames{
-                    
-                    var classes = [[String:Any]]()
-                    //JSON parsing
-                    let url     = URL(string: "http://api.purdue.io/odata/Courses?$filter=Subject/Abbreviation%20eq%20%27\(self.findAbbreviation(name: name))%27&$orderby=Number%20asc")!
-                    let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 20)
-                    let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-                    let task2   = session.dataTask(with: request) { (data, response, error) in
-                        // This will run when the network request returns
-                        if let error = error {
-                            print(error.localizedDescription)
-                        } else if let data = data {
-                            let dataDictionary  = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                            
-                            classes = dataDictionary["value"] as! [[String:Any]]
-                        }
-                    }
-                    task2.resume()
-                    if classes.isEmpty{
+                    if !self.hasClasses(abbreviation: self.findAbbreviation(name: name)){
                         self.majorNames.remove(at: self.majorNames.index(of: name)!)
+                        self.filteredMajors = self.majorNames
+                        self.majorTableView.reloadData()
                     }
                 }
                 
@@ -83,7 +68,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         task.resume()
     }
     
-    /*func hasClasses(abbreviation: String) -> Bool{
+    func hasClasses(abbreviation: String) -> Bool{
         var classExists = true
         var classes = [[String:Any]]()
         //JSON parsing
@@ -105,9 +90,8 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
         task.resume()
-        
         return classExists
-    }*/
+    }
     
     func findAbbreviation(name: String) -> String{
         var majorAbbreviation: String!
