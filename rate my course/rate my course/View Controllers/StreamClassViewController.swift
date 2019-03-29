@@ -40,10 +40,10 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
     
     func loadData() {
         //JSON parsing
-        let url = URL(string: "http://api.purdue.io/odata/Courses?$filter=Subject/Abbreviation%20eq%20%27\(majorAbbreviation!)%27&$orderby=Number%20asc")!
+        let url     = URL(string: "http://api.purdue.io/odata/Courses?$filter=Subject/Abbreviation%20eq%20%27\(majorAbbreviation!)%27&$orderby=Number%20asc")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 20)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task    = session.dataTask(with: request) { (data, response, error) in
             
             // This will run when the network request returns
             if let error = error {

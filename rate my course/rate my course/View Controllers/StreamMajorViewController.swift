@@ -28,11 +28,15 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         majorTableView.delegate     = self
         majorSearchBar.delegate     = self
         
+        loadData()
+    }
+    
+    func loadData(){
         //JSON parsing
-        let url = URL(string: "https://api.purdue.io/odata/Subjects")!
+        let url     = URL(string: "https://api.purdue.io/odata/Subjects")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 20)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task    = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
             if let error = error {
                 print(error.localizedDescription)
@@ -48,12 +52,73 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
                 
-                self.filteredMajors = self.majorNames
+                //remove majors wihout classes
+                for name in self.majorNames{
+                    
+                    var classes = [[String:Any]]()
+                    //JSON parsing
+                    let url     = URL(string: "http://api.purdue.io/odata/Courses?$filter=Subject/Abbreviation%20eq%20%27\(self.findAbbreviation(name: name))%27&$orderby=Number%20asc")!
+                    let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 20)
+                    let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+                    let task2   = session.dataTask(with: request) { (data, response, error) in
+                        // This will run when the network request returns
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else if let data = data {
+                            let dataDictionary  = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                            
+                            classes = dataDictionary["value"] as! [[String:Any]]
+                        }
+                    }
+                    task2.resume()
+                    if classes.isEmpty{
+                        self.majorNames.remove(at: self.majorNames.index(of: name)!)
+                    }
+                }
                 
+                self.filteredMajors = self.majorNames
                 self.majorTableView.reloadData()
             }
         }
         task.resume()
+    }
+    
+    /*func hasClasses(abbreviation: String) -> Bool{
+        var classExists = true
+        var classes = [[String:Any]]()
+        //JSON parsing
+        let url     = URL(string: "http://api.purdue.io/odata/Courses?$filter=Subject/Abbreviation%20eq%20%27\(abbreviation)%27&$orderby=Number%20asc")!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 20)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task    = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                let dataDictionary  = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                
+                classes = dataDictionary["value"] as! [[String:Any]]
+                print(classes.isEmpty)
+                if classes.isEmpty{
+                    classExists = false
+                }
+            }
+        }
+        task.resume()
+        
+        return classExists
+    }*/
+    
+    func findAbbreviation(name: String) -> String{
+        var majorAbbreviation: String!
+        
+        for major in self.majors{
+            if major["Name"] as! String == name{
+                majorAbbreviation = major["Abbreviation"] as? String
+                break
+            }
+        }
+        return majorAbbreviation
     }
     
     //logout
@@ -121,12 +186,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         let indexPath   = majorTableView.indexPath(for: cell)!
         var majorAbbreviation: String!
         
-        for major in self.majors{
-            if major["Name"] as! String == filteredMajors[indexPath.row]{
-                majorAbbreviation = major["Abbreviation"] as? String
-                break
-            }
-        }
+        majorAbbreviation = findAbbreviation(name: filteredMajors[indexPath.row])
         
         let streamClassViewController                 = segue.destination as! StreamClassViewController
         streamClassViewController.majorAbbreviation   = majorAbbreviation
