@@ -24,16 +24,17 @@ class InitialViewController: UIViewController {
         transition.sticky   = false
 
         //button customization
-        signUpButton.layer.cornerRadius     = 10
-        signUpButton.backgroundColor        = UIColor(red:0.10, green:0.10, blue:0.10, alpha:1.0)
-        signUpButton.tintColor              = UIColor.white
-        
-        logInButton.layer.cornerRadius      = 10
-        logInButton.backgroundColor         = UIColor(red:0.10, green:0.10, blue:0.10, alpha:1.0)
-        logInButton.tintColor               = UIColor.white
-        
+        customizeButton(button: signUpButton, cornerRadius: 10, color: UIColor(hexString: "#30323d"))
+        customizeButton(button: logInButton, cornerRadius: 10, color: UIColor(hexString: "#30323d"))
+    
         //background color
-        self.view.backgroundColor           = UIColor.white
+        self.view.backgroundColor           = .white
+    }
+    
+    func customizeButton(button: UIButton, cornerRadius: Int, color: UIColor){
+        button.layer.cornerRadius      = CGFloat(cornerRadius)
+        button.backgroundColor         = color
+        button.tintColor               = .white
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
