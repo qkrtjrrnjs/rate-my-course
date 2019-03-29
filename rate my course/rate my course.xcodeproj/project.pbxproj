@@ -19,6 +19,7 @@
 		832B14FD2249DB0000F25C7B /* KEL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14FC2249DB0000F25C7B /* KEL.ttf */; };
 		83BA4D3F224C22F000D75174 /* SpashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA4D3E224C22F000D75174 /* SpashViewController.swift */; };
 		83BA4D42224C239200D75174 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BA4D41224C239200D75174 /* splash.json */; };
+		83D0461C224E85B4002B8701 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0461B224E85B4002B8701 /* DetailViewController.swift */; };
 		83E1479B2242FDDC00C40066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E1479A2242FDDC00C40066 /* AppDelegate.swift */; };
 		83E1479D2242FDDC00C40066 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E1479C2242FDDC00C40066 /* LogInViewController.swift */; };
 		83E147A02242FDDC00C40066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83E1479E2242FDDC00C40066 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		832B14FC2249DB0000F25C7B /* KEL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KEL.ttf; sourceTree = "<group>"; };
 		83BA4D3E224C22F000D75174 /* SpashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpashViewController.swift; sourceTree = "<group>"; };
 		83BA4D41224C239200D75174 /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
+		83D0461B224E85B4002B8701 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		83E147972242FDDC00C40066 /* rate my course.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rate my course.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83E1479A2242FDDC00C40066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83E1479C2242FDDC00C40066 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				83E1479C2242FDDC00C40066 /* LogInViewController.swift */,
 				830E512722498F0F00450171 /* StreamMajorViewController.swift */,
 				830577D8224BA91A00741697 /* StreamClassViewController.swift */,
+				83D0461B224E85B4002B8701 /* DetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D0461C224E85B4002B8701 /* DetailViewController.swift in Sources */,
 				830577DD224BAE2500741697 /* ClassCell.swift in Sources */,
 				830E512822498F0F00450171 /* StreamMajorViewController.swift in Sources */,
 				830577D5224B144300741697 /* MajorCell.swift in Sources */,
