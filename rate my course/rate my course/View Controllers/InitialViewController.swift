@@ -11,6 +11,7 @@ import ElasticTransition
 
 class InitialViewController: UIViewController {
     
+    @IBOutlet weak var rateMyCourseLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var logInButton: UIButton!
     
@@ -26,7 +27,17 @@ class InitialViewController: UIViewController {
         //button customization
         customizeButton(button: signUpButton, cornerRadius: 10, color: UIColor(hexString: "#30323d"))
         customizeButton(button: logInButton, cornerRadius: 10, color: UIColor(hexString: "#30323d"))
-    
+        
+        //layouts
+        /*rateMyCourseLabel.center.x  = self.view.center.x
+        signUpButton.center.x       = self.view.center.x
+        logInButton.center.x        = self.view.center.x
+        
+        rateMyCourseLabel.center.y  = self.view.center.y / 3
+        signUpButton.center.y       = self.view.center.y / 2.5
+        logInButton.center.y        = self.view.center.y / 2
+    */
+        
         //background color
         self.view.backgroundColor           = .white
     }

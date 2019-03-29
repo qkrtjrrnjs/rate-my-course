@@ -41,37 +41,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkf-xz-l1D">
-                                <rect key="frame" x="102" y="359" width="170" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkf-xz-l1D">
+                                <rect key="frame" x="102.5" y="387" width="170" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="bT4-kR-qDO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="20"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <segue destination="1VL-Jb-Mf1" kind="presentation" identifier="" id="gLN-xw-dCH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxy-Ih-Ze0">
-                                <rect key="frame" x="102" y="430" width="170" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxy-Ih-Ze0">
+                                <rect key="frame" x="102.5" y="444" width="170" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="wUE-cm-Efu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="20"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <segue destination="K0C-U7-4Ut" kind="presentation" identifier="" id="deh-eR-zwf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate My Course" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTT-Fr-hZY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate My Course" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTT-Fr-hZY">
                                 <rect key="frame" x="46" y="139" width="282" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gTT-Fr-hZY" secondAttribute="height" multiplier="94:49" id="ZTj-DD-dn9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gTT-Fr-hZY" secondAttribute="trailing" constant="47" id="0AF-Vr-QIg"/>
+                            <constraint firstItem="nxy-Ih-Ze0" firstAttribute="top" secondItem="qkf-xz-l1D" secondAttribute="bottom" constant="21" id="HTZ-9J-sz3"/>
+                            <constraint firstItem="nxy-Ih-Ze0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pmi-Fj-nSY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nxy-Ih-Ze0" secondAttribute="bottom" constant="187" id="Qy2-u5-vAc"/>
+                            <constraint firstItem="gTT-Fr-hZY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="119" id="U72-KC-oFS"/>
+                            <constraint firstItem="nxy-Ih-Ze0" firstAttribute="top" secondItem="qkf-xz-l1D" secondAttribute="bottom" constant="21" id="Zeq-rj-FSi"/>
+                            <constraint firstItem="gTT-Fr-hZY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="46" id="gwV-Zb-UuC"/>
+                            <constraint firstItem="qkf-xz-l1D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pUk-8s-yJ6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="logInButton" destination="nxy-Ih-Ze0" id="Gwb-az-YoB"/>
+                        <outlet property="rateMyCourseLabel" destination="gTT-Fr-hZY" id="G1K-Pe-e7n"/>
                         <outlet property="signUpButton" destination="qkf-xz-l1D" id="k6c-OD-qmM"/>
                     </connections>
                 </viewController>
@@ -193,6 +210,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="sEe-Gg-XhR"/>
         <segue reference="gLN-xw-dCH"/>
-        <segue reference="C5c-hU-omO"/>
+        <segue reference="jMh-WL-7t5"/>
     </inferredMetricsTieBreakers>
 </document>

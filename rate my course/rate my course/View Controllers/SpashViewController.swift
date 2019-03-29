@@ -23,9 +23,12 @@ class SplashViewController: UIViewController {
         transition.edge     = .right
         transition.sticky   = false
         
-        splashAnimation                 = LOTAnimationView(name: "splash")
-        splashAnimation.animationSpeed  = 1.5
-        splashAnimation.frame           = CGRect(x: self.view.bounds.size.width / 6, y: self.view.bounds.size.height / 5, width: 250, height: 350)
+        splashAnimation                     = LOTAnimationView(name: "splash")
+        splashAnimation.animationSpeed      = 1.5
+        splashAnimation.frame.size.height   = 350
+        splashAnimation.frame.size.width    = 250
+        splashAnimation.center.x            = self.view.center.x
+        splashAnimation.center.y            = self.view.center.y
         
         self.view.addSubview(splashAnimation)
         
