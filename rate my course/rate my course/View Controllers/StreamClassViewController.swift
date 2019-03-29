@@ -8,6 +8,7 @@
 
 import UIKit
 import Lottie
+import ElasticTransition
 
 class StreamClassViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
    
@@ -17,11 +18,16 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
     var classes                 = [[String:Any]]()
     var classNumbers            = [String]()
     var filteredClassNumbers    = [String]()
+    let transition              = ElasticTransition()
     
     var majorAbbreviation: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //transition customization
+        transition.edge     = .right
+        transition.sticky   = false
         
         self.hideKeyboardWhenTappedAround()
         
@@ -124,5 +130,9 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         searchBar.resignFirstResponder()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.transitioningDelegate     = transition
+        segue.destination.modalPresentationStyle    = .custom
+    }
 }
 
