@@ -110,6 +110,6 @@ N/A
 - (Create/POST) Create a new post object
 
 ## Video Walkthrough
-<img src='https://i.imgur.com/s4V0Jf2.gif' title='Video Walkthrough' width='200' height='450' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/s4V0Jf2.gif' title='Video Walkthrough' width='200' height='350' alt='Video Walkthrough' />
 
 
