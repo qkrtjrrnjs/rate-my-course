@@ -37,10 +37,6 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         classTableView.delegate             = self
         classTableView.dataSource           = self
         classSearchBar.delegate             = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         loadData()
     }
     
@@ -133,6 +129,14 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.transitioningDelegate     = transition
         segue.destination.modalPresentationStyle    = .custom
+        
+        let cell        = sender as! UITableViewCell
+        let indexPath   = classTableView.indexPath(for: cell)!
+        
+        let detailViewController                 = segue.destination as! DetailViewController
+        detailViewController.classNumber         = filteredClassNumbers[indexPath.row]
+        
+        classTableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
