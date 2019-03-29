@@ -104,37 +104,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgx-TJ-fhP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgx-TJ-fhP">
                                 <rect key="frame" x="132" y="79" width="111" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xgx-TJ-fhP" secondAttribute="height" multiplier="37:12" id="zQj-fF-rhl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uw4-HC-vPZ">
-                                <rect key="frame" x="94" y="436" width="63" height="33"/>
+                                <rect key="frame" x="156" y="420" width="63" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUp:" destination="1VL-Jb-Mf1" eventType="touchUpInside" id="wWX-O6-D54"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3N-wG-BvI">
-                                <rect key="frame" x="221" y="436" width="63" height="33"/>
+                                <rect key="frame" x="156" y="470" width="63" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="signUpToInitial" id="jMh-WL-7t5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xgx-TJ-fhP" firstAttribute="leading" secondItem="d4D-Gw-eXW" secondAttribute="leading" constant="132" id="DHc-vH-ae3"/>
+                            <constraint firstItem="Xgx-TJ-fhP" firstAttribute="top" secondItem="d4D-Gw-eXW" secondAttribute="top" constant="59" id="Hpm-t5-4SC"/>
+                            <constraint firstItem="d4D-Gw-eXW" firstAttribute="trailing" secondItem="Xgx-TJ-fhP" secondAttribute="trailing" constant="132" id="XnO-d4-IhT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="d4D-Gw-eXW"/>
                     </view>
                     <navigationItem key="navigationItem" id="37c-qr-uzu"/>
@@ -142,6 +145,8 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="cancelButton" destination="t3N-wG-BvI" id="Bxa-3j-cvk"/>
+                        <outlet property="signUpButton" destination="uw4-HC-vPZ" id="z13-xV-MgX"/>
                         <segue destination="Hop-L8-IGe" kind="presentation" identifier="SignUpToStream" id="sEe-Gg-XhR"/>
                     </connections>
                 </viewController>
@@ -161,9 +166,7 @@
                                 <rect key="frame" x="87" y="371" width="56" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="logIn:" destination="K0C-U7-4Ut" eventType="touchUpInside" id="fBP-U3-b4J"/>
                                 </connections>
@@ -179,9 +182,7 @@
                                 <rect key="frame" x="231" y="371" width="60" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
-                                <state key="normal" title="Create">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="Create"/>
                                 <connections>
                                     <segue destination="1VL-Jb-Mf1" kind="presentation" identifier="logInToSignUp" id="TCU-Sf-Gnu"/>
                                 </connections>
@@ -191,6 +192,8 @@
                         <viewLayoutGuide key="safeArea" id="4sI-Xr-i33"/>
                     </view>
                     <connections>
+                        <outlet property="createButton" destination="EGL-uh-YAg" id="kxx-Vs-uG7"/>
+                        <outlet property="logInButton" destination="qdE-eH-wVm" id="DnC-NJ-zFN"/>
                         <segue destination="Hop-L8-IGe" kind="presentation" identifier="LogInToStream" id="wBK-v7-crG"/>
                     </connections>
                 </viewController>
@@ -208,8 +211,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sEe-Gg-XhR"/>
-        <segue reference="gLN-xw-dCH"/>
+        <segue reference="wBK-v7-crG"/>
+        <segue reference="TCU-Sf-Gnu"/>
         <segue reference="jMh-WL-7t5"/>
     </inferredMetricsTieBreakers>
 </document>

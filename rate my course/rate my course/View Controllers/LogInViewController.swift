@@ -13,6 +13,10 @@ import ElasticTransition
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var createButton: UIButton!
+    
+    
     var emailField: SkyFloatingLabelTextField!
     var passwordField: SkyFloatingLabelTextField!
     

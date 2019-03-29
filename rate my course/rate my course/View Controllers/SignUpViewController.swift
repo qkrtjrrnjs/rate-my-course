@@ -13,6 +13,10 @@ import ElasticTransition
 
 class SignUpViewController: UIViewController, UITextFieldDelegate{
     
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    
     var emailField:             SkyFloatingLabelTextField!
     var passwordField:          SkyFloatingLabelTextField!
     var verifyPasswordField:    SkyFloatingLabelTextField!
@@ -21,6 +25,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //customize button
+        customizeButton(button: signUpButton, cornerRadius: 5, color: UIColor(hexString: "#30323d"), yValue: 1.3)
+        customizeButton(button: cancelButton, cornerRadius: 5, color: UIColor(hexString: "#30323d"), yValue: 1.5)
         
         //custom textfields
         emailField = SkyFloatingLabelTextField(frame: CGRect.zero)
@@ -91,6 +99,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         textField.isSecureTextEntry     = isSecureTextEntry
         textField.addTarget(self, action: Selector(functionName), for: .editingChanged)
         self.view.addSubview(textField)
+    }
+    
+    func customizeButton(button: UIButton, cornerRadius: Int, color: UIColor, yValue: CGFloat){
+        button.layer.cornerRadius       = CGFloat(cornerRadius)
+        button.backgroundColor          = color
+        button.tintColor                = .white
+        button.frame.size.width         = self.view.frame.size.width / 1.6
+        button.frame.size.height        = 50
+        button.center.x                 = self.view.center.x
+        button.center.y                 = self.view.center.y * yValue
     }
     
     func signUpVerification(){
