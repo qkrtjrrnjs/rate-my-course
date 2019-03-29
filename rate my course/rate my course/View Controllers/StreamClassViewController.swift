@@ -54,14 +54,16 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
                 self.classes = dataDictionary["value"] as! [[String:Any]]
                 
                 //remove repeating courses
-                var removeCount = 0
-                for i in 0..<self.classes.count - 1{
-                    let currClass = self.classes[i - removeCount]
-                    let nextClass = self.classes[i + 1 - removeCount]
+                if self.classes.count != 0{
+                    var removeCount = 0
+                    for i in 0..<self.classes.count - 1{
+                        let currClass = self.classes[i - removeCount]
+                        let nextClass = self.classes[i + 1 - removeCount]
 
-                    if currClass["Number"] as! String == nextClass["Number"] as! String{
-                        self.classes.remove(at: i - removeCount)
-                        removeCount += 1
+                        if currClass["Number"] as! String == nextClass["Number"] as! String{
+                            self.classes.remove(at: i - removeCount)
+                            removeCount += 1
+                        }
                     }
                 }
                 
