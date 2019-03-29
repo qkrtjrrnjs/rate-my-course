@@ -11,7 +11,7 @@ import FirebaseAuth
 import SkyFloatingLabelTextField
 import ElasticTransition
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
     
     var emailField: SkyFloatingLabelTextField!
     var passwordField: SkyFloatingLabelTextField!
@@ -22,28 +22,58 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         
         //custom textfields
-        emailField = SkyFloatingLabelTextField(frame: CGRect(x: self.view.bounds.size.width / 4.2, y: self.view.bounds.size.height / 4, width: self.view.bounds.size.width / 1.8, height: self.view.bounds.size.height / 15))
-        emailField.placeholder          = "Email"
-        emailField.title                = "Email"
-        emailField.titleColor           = UIColor.black
-        emailField.selectedTitleColor   = UIColor.black
-        emailField.errorColor           = UIColor.red
-        emailField.addTarget(self, action: #selector(emailFieldDidChange(_:)), for: .editingChanged)
-        self.view.addSubview(emailField)
+        emailField = SkyFloatingLabelTextField(frame: CGRect.zero)
+        customizeTextField(
+            textField           : emailField,
+            x                   : self.view.center.x,
+            y                   : self.view.center.y / 1.8,
+            width               : self.view.frame.size.width / 1.7,
+            height              : 50,
+            placeholder         : "Email",
+            title               : "Email",
+            titleColor          : .black,
+            selectedTitleColor  : .black,
+            errorColor          : .red,
+            isSecureTextEntry   : false,
+            functionName        : "emailFieldDidChange:"
+        )
         
-        passwordField = SkyFloatingLabelTextField(frame: CGRect(x: self.view.bounds.size.width / 4.2, y: self.view.bounds.size.height / 2.8, width: self.view.bounds.size.width / 1.8, height: self.view.bounds.size.height / 15))
-        passwordField.placeholder           = "Password"
-        passwordField.title                 = "Password"
-        passwordField.titleColor            = UIColor.black
-        passwordField.selectedTitleColor    = UIColor.black
-        passwordField.errorColor            = UIColor.red
-        passwordField.isSecureTextEntry     = true
-        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), for: .editingChanged)
-        self.view.addSubview(passwordField)
+        passwordField = SkyFloatingLabelTextField(frame: CGRect.zero)
+        customizeTextField(
+            textField           : passwordField,
+            x                   : self.view.center.x,
+            y                   : self.view.center.y / 1.3,
+            width               : self.view.frame.size.width / 1.7,
+            height              : 50,
+            placeholder         : "Password",
+            title               : "Password",
+            titleColor          : .black,
+            selectedTitleColor  : .black,
+            errorColor          : .red,
+            isSecureTextEntry   : true,
+            functionName        : "passwordFieldDidChange:"
+        )
         
         self.view.backgroundColor = .white
 
         self.hideKeyboardWhenTappedAround()
+    }
+
+    func customizeTextField(textField: SkyFloatingLabelTextField, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, placeholder: String, title: String, titleColor: UIColor, selectedTitleColor: UIColor, errorColor: UIColor, isSecureTextEntry: Bool, functionName: String){
+        
+        textField.delegate              = self
+        textField.frame.size.height     = height
+        textField.frame.size.width      = width
+        textField.center.x              = x
+        textField.center.y              = y
+        textField.placeholder           = placeholder
+        textField.title                 = title
+        textField.titleColor            = titleColor
+        textField.selectedTitleColor    = selectedTitleColor
+        textField.errorColor            = errorColor
+        textField.isSecureTextEntry     = isSecureTextEntry
+        textField.addTarget(self, action: Selector(functionName), for: .editingChanged)
+        self.view.addSubview(textField)
     }
     
     @objc func emailFieldDidChange(_ textfield: UITextField) {
@@ -81,22 +111,18 @@ class LogInViewController: UIViewController {
                 if error!.localizedDescription == "Too many unsuccessful login attempts.  Please include reCaptcha verification or try again later"{
                     self!.passwordField.errorMessage = "Wrong Password"
                 }
-                print(error!.localizedDescription)
             }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "logInToSignUp"{
-            //transition customization
             transition.edge     = .top
-            transition.sticky   = false
         }
         else{
-            //transition customization
             transition.edge     = .right
-            transition.sticky   = false
         }
+        transition.sticky                           = false
         segue.destination.transitioningDelegate     = transition
         segue.destination.modalPresentationStyle    = .custom
     }
