@@ -163,7 +163,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdE-eH-wVm">
-                                <rect key="frame" x="87" y="371" width="56" height="33"/>
+                                <rect key="frame" x="159" y="371" width="56" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
                                 <state key="normal" title="Log In"/>
@@ -171,15 +171,17 @@
                                     <action selector="logIn:" destination="K0C-U7-4Ut" eventType="touchUpInside" id="fBP-U3-b4J"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgE-cU-oX9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgE-cU-oX9">
                                 <rect key="frame" x="139" y="93" width="98" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qgE-cU-oX9" secondAttribute="height" multiplier="49:18" id="V2O-Ml-lSg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-uh-YAg">
-                                <rect key="frame" x="231" y="371" width="60" height="33"/>
+                                <rect key="frame" x="158" y="427" width="60" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
                                 <state key="normal" title="Create"/>
@@ -189,6 +191,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qgE-cU-oX9" firstAttribute="leading" secondItem="4sI-Xr-i33" secondAttribute="leading" constant="139" id="M7G-LF-FIg"/>
+                            <constraint firstItem="4sI-Xr-i33" firstAttribute="trailing" secondItem="qgE-cU-oX9" secondAttribute="trailing" constant="138" id="gLS-Kg-EVa"/>
+                            <constraint firstItem="qgE-cU-oX9" firstAttribute="top" secondItem="4sI-Xr-i33" secondAttribute="top" constant="73" id="unf-Ib-ikI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4sI-Xr-i33"/>
                     </view>
                     <connections>
@@ -211,7 +218,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wBK-v7-crG"/>
+        <segue reference="sEe-Gg-XhR"/>
         <segue reference="TCU-Sf-Gnu"/>
         <segue reference="jMh-WL-7t5"/>
     </inferredMetricsTieBreakers>

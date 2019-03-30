@@ -16,7 +16,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
     
-    
     var emailField: SkyFloatingLabelTextField!
     var passwordField: SkyFloatingLabelTextField!
     
@@ -25,12 +24,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //customize button
+        customizeButton(button: logInButton, cornerRadius: 5, color: UIColor(hexString: "#30323d"), yValue: 1.3)
+        customizeButton(button: createButton, cornerRadius: 5, color: UIColor(hexString: "#30323d"), yValue: 1.5)
+        
         //custom textfields
         emailField = SkyFloatingLabelTextField(frame: CGRect.zero)
         customizeTextField(
             textField           : emailField,
             x                   : self.view.center.x,
-            y                   : self.view.center.y / 1.8,
+            y                   : self.view.center.y / 1.5,
             width               : self.view.frame.size.width / 1.7,
             height              : 50,
             placeholder         : "Email",
@@ -46,7 +49,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         customizeTextField(
             textField           : passwordField,
             x                   : self.view.center.x,
-            y                   : self.view.center.y / 1.3,
+            y                   : self.view.center.y / 1.1,
             width               : self.view.frame.size.width / 1.7,
             height              : 50,
             placeholder         : "Password",
@@ -80,6 +83,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(textField)
     }
     
+    func customizeButton(button: UIButton, cornerRadius: Int, color: UIColor, yValue: CGFloat){
+        button.layer.cornerRadius       = CGFloat(cornerRadius)
+        button.backgroundColor          = color
+        button.tintColor                = .white
+        button.frame.size.width         = self.view.frame.size.width / 1.6
+        button.frame.size.height        = 50
+        button.center.x                 = self.view.center.x
+        button.center.y                 = self.view.center.y * yValue
+    }
+    
     @objc func emailFieldDidChange(_ textfield: UITextField) {
         emailField.errorMessage = ""
     }
@@ -89,6 +102,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func logIn(_ sender: Any) {
+        logInValidation()
+    }
+    
+    func logInValidation(){
         emailField.errorMessage     = ""
         passwordField.errorMessage  = ""
         
@@ -117,6 +134,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        logInValidation()
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
