@@ -39,7 +39,7 @@
                                                     <rect key="frame" x="5" y="0.0" width="365" height="64"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNa-Ss-jKn">
-                                                            <rect key="frame" x="8" y="22" width="103.5" height="20.5"/>
+                                                            <rect key="frame" x="8" y="22" width="349" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -47,10 +47,10 @@
                                                     </subviews>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="aNa-Ss-jKn" secondAttribute="trailing" constant="253.5" id="03R-Rh-tGM"/>
                                                         <constraint firstItem="aNa-Ss-jKn" firstAttribute="top" secondItem="zbk-Of-oJS" secondAttribute="top" constant="22" id="5Nq-UT-oL1"/>
                                                         <constraint firstAttribute="bottom" secondItem="aNa-Ss-jKn" secondAttribute="bottom" constant="21.5" id="6Sq-Es-4nn"/>
                                                         <constraint firstItem="aNa-Ss-jKn" firstAttribute="leading" secondItem="zbk-Of-oJS" secondAttribute="leading" constant="8" id="TkB-3L-hY1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="aNa-Ss-jKn" secondAttribute="trailing" constant="8" id="VSx-Wn-nO8"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

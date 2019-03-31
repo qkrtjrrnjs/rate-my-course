@@ -9,6 +9,7 @@
 import UIKit
 import Lottie
 import ElasticTransition
+import MBProgressHUD
 
 class StreamClassViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
    
@@ -45,7 +46,13 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         let url     = URL(string: "http://api.purdue.io/odata/Courses?$filter=Subject/Abbreviation%20eq%20%27\(majorAbbreviation!)%27&$orderby=Number%20asc")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 20)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        
+        // Display HUD right before the request is made
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
         let task    = session.dataTask(with: request) { (data, response, error) in
+            // Hide HUD once the network request comes back (must be done on main UI thread)
+            MBProgressHUD.hide(for: self.view, animated: true)
             
             // This will run when the network request returns
             if let error = error {

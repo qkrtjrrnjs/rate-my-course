@@ -12,6 +12,8 @@ target 'rate my course' do
   pod "ElasticTransition"
   pod "MotionAnimation" 
   pod 'lottie-ios'
+  pod 'MBProgressHUD'
+
 
   target 'rate my courseTests' do
     inherit! :search_paths

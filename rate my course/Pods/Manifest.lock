@@ -56,6 +56,7 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
   - lottie-ios (2.5.2)
+  - MBProgressHUD (1.1.0)
   - MotionAnimation (0.1.2)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - lottie-ios
+  - MBProgressHUD
   - MotionAnimation
   - SkyFloatingLabelTextField (~> 3.0)
 
@@ -85,6 +87,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - lottie-ios
+    - MBProgressHUD
     - MotionAnimation
     - nanopb
     - SkyFloatingLabelTextField
@@ -101,10 +104,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MotionAnimation: ff5c8fc2e429d7e10d46ae86819ba9759846c343
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
 
-PODFILE CHECKSUM: 0dc047b16829349f515940403f79cc636efd9776
+PODFILE CHECKSUM: ea34261c0f87fee53bef03d5dd1a78a901503738
 
 COCOAPODS: 1.5.3

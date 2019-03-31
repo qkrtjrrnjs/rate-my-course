@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import ElasticTransition
+import MBProgressHUD
 
 class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -37,8 +38,14 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         let url     = URL(string: "https://api.purdue.io/odata/Subjects")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 20)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        
+        // Display HUD right before the request is made
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
         let task    = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
             if let error = error {
                 print(error.localizedDescription)
             } else if let data = data {
