@@ -17,6 +17,7 @@
 		832B14DA2249D40600F25C7B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832B14D92249D40500F25C7B /* InitialViewController.swift */; };
 		832B14FB2249DAF300F25C7B /* Bavro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */; };
 		832B14FD2249DB0000F25C7B /* KEL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14FC2249DB0000F25C7B /* KEL.ttf */; };
+		8366124922512F08003D3C0F /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366124822512F08003D3C0F /* CommentViewController.swift */; };
 		83BA4D3F224C22F000D75174 /* SpashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA4D3E224C22F000D75174 /* SpashViewController.swift */; };
 		83BA4D42224C239200D75174 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BA4D41224C239200D75174 /* splash.json */; };
 		83D0461C224E85B4002B8701 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0461B224E85B4002B8701 /* DetailViewController.swift */; };
@@ -65,6 +66,7 @@
 		832B14D92249D40500F25C7B /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bavro-Regular.otf"; sourceTree = "<group>"; };
 		832B14FC2249DB0000F25C7B /* KEL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KEL.ttf; sourceTree = "<group>"; };
+		8366124822512F08003D3C0F /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		83BA4D3E224C22F000D75174 /* SpashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpashViewController.swift; sourceTree = "<group>"; };
 		83BA4D41224C239200D75174 /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		83D0461B224E85B4002B8701 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				830E512722498F0F00450171 /* StreamMajorViewController.swift */,
 				830577D8224BA91A00741697 /* StreamClassViewController.swift */,
 				83D0461B224E85B4002B8701 /* DetailViewController.swift */,
+				8366124822512F08003D3C0F /* CommentViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8366124922512F08003D3C0F /* CommentViewController.swift in Sources */,
 				83D04624224E873E002B8701 /* CommentCell.swift in Sources */,
 				83D0461C224E85B4002B8701 /* DetailViewController.swift in Sources */,
 				830577DD224BAE2500741697 /* ClassCell.swift in Sources */,
