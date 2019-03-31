@@ -15,6 +15,14 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(classNumber)")
+        
+        //add compose bar button
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
+        
+    }
+    
+    @objc func comment(){
+        
     }
     
 

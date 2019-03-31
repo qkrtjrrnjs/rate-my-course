@@ -92,6 +92,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="3sd-1t-tC2">
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="e3y-TN-uWe">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="logOut:" destination="Tkt-E3-ITb" id="kDt-It-dBk"/>
                             </connections>
@@ -204,6 +205,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gx8-yl-UHB">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
