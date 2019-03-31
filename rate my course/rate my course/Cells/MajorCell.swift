@@ -10,7 +10,6 @@ import UIKit
 
 class MajorCell: UITableViewCell {
     
-    @IBOutlet weak var majorView: UIView!
     @IBOutlet weak var majorLabel: UILabel!
     
     override func awakeFromNib() {

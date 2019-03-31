@@ -114,14 +114,16 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         cell.majorLabel.text        = "  \(filteredMajors[indexPath.row]) (\(abbreviation!))"
-        cell.majorLabel.textColor   = .black
+        cell.majorLabel.textColor   = .white
         
+        /*
         cell.majorView.layer.shadowColor    = UIColor.black.cgColor
         cell.majorView.layer.shadowOpacity  = 0.5
         cell.majorView.layer.shadowOffset   = CGSize.zero
         cell.majorView.layer.shadowRadius   = 5
         cell.majorView.layer.shadowPath     = UIBezierPath(rect: cell.majorView.bounds).cgPath
-
+        */
+        
         return cell
     }
     

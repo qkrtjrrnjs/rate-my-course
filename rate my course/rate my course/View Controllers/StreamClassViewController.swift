@@ -108,15 +108,9 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         cell.classLabel.text        = "\(filteredClassNumbers[indexPath.row])"
         cell.className.text         = name
         
-        cell.classLabel.textColor   = .black
-        cell.className.textColor    = .black
-        
-        cell.classView.layer.shadowColor    = UIColor.black.cgColor
-        cell.classView.layer.shadowOpacity  = 0.5
-        cell.classView.layer.shadowOffset   = CGSize.zero
-        cell.classView.layer.shadowRadius   = 5
-        cell.classView.layer.shadowPath     = UIBezierPath(rect: cell.classView.bounds).cgPath
-        
+        cell.classLabel.textColor   = .white
+        cell.className.textColor    = .white
+ 
         return cell
     }
     
