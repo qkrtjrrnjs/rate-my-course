@@ -11,6 +11,7 @@ import UIKit
 
 class ClassCell: UITableViewCell {
     
+    @IBOutlet weak var classView: UIView!
     @IBOutlet weak var classLabel: UILabel!
     @IBOutlet weak var className: UILabel!
     

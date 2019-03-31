@@ -224,8 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				83BA4D40224C237600D75174 /* Lottie Animations */,
-				830577D3224B142600741697 /* Cells */,
 				832B14FE2249DB0600F25C7B /* Fonts */,
+				830577D3224B142600741697 /* Cells */,
 				830E512A22498F4200450171 /* Storyboards */,
 				830E512222498AFA00450171 /* Extensions */,
 				83E147CC224924DE00C40066 /* View Controllers */,
