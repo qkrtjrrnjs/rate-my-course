@@ -53,7 +53,7 @@
         <!--Comment View Controller-->
         <scene sceneID="Auj-oJ-xDU">
             <objects>
-                <viewController id="mDr-Dn-loa" customClass="CommentViewController" customModule="rate_my_course" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="commentViewController" id="mDr-Dn-loa" customClass="CommentViewController" customModule="rate_my_course" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fYm-eL-qcy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

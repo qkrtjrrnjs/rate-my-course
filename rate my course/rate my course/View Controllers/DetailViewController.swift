@@ -22,7 +22,13 @@ class DetailViewController: UIViewController {
     }
     
     @objc func comment(){
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
+        let commentViewController: CommentViewController = mainStoryboard.instantiateViewController(withIdentifier: "commentViewController") as! CommentViewController
         
+        commentViewController.classNumber = classNumber
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = commentViewController
     }
     
 
