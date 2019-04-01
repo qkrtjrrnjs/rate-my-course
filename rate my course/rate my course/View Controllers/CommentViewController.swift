@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GrowingTextView
 
-class CommentViewController: UIViewController, UIScrollViewDelegate {
+class CommentViewController: UIViewController, UIScrollViewDelegate, GrowingTextViewDelegate {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var pagingScrollView: UIScrollView!
@@ -54,7 +55,19 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         
         slide2.addSubview(submitButton)
         
-        
+        let textView = GrowingTextView()
+        textView.delegate = self
+        textView.center.x = slide2.center.x
+        textView.center.y = slide2.center.y
+        textView.maxLength = 140
+        textView.trimWhiteSpaceWhenEndEditing = false
+        textView.placeholder = "Say something..."
+        textView.placeholderColor = UIColor(white: 0.8, alpha: 1.0)
+        textView.minHeight = 25.0
+        textView.maxHeight = 70.0
+        textView.backgroundColor = .green
+        textView.layer.cornerRadius = 4.0
+        slide2.addSubview(textView)
 
         return [slide1, slide2]
     }
