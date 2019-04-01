@@ -10,6 +10,7 @@ import UIKit
 
 class CommentViewController: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var pagingScrollView: UIScrollView!
     
     var classNumber = String()
@@ -23,22 +24,18 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         slides = createSlides()
         setupSlideScrollView(slides: slides)
         
-        print(classNumber)
+        pageControl.numberOfPages = slides.count
+        pageControl.currentPage = 0
+        view.bringSubviewToFront(pageControl)
     }
     
     func createSlides() -> [Slide] {
         
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.testImage.backgroundColor = .red
         
         let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide2.testImage.backgroundColor = .orange
 
-        let slide3:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide3.testImage.backgroundColor = .yellow
-
-        
-        return [slide1, slide2, slide3]
+        return [slide1, slide2]
     }
     
     func setupSlideScrollView(slides : [Slide]) {
@@ -52,6 +49,10 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+    }
 
     /*
     // MARK: - Navigation

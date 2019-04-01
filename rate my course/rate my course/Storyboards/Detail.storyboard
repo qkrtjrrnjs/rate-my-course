@@ -58,15 +58,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4f0-Bl-6mL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f0-Bl-6mL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fmH-lb-VpJ">
+                                <rect key="frame" x="168" y="40" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fmH-lb-VpJ" firstAttribute="top" secondItem="hZ7-Aj-Io4" secondAttribute="top" constant="20" id="95l-KE-Qek"/>
+                            <constraint firstItem="4f0-Bl-6mL" firstAttribute="top" secondItem="fYm-eL-qcy" secondAttribute="top" id="Cl3-OZ-T0e"/>
+                            <constraint firstItem="4f0-Bl-6mL" firstAttribute="bottom" secondItem="hZ7-Aj-Io4" secondAttribute="bottom" id="DhR-bq-Rv8"/>
+                            <constraint firstItem="hZ7-Aj-Io4" firstAttribute="bottom" secondItem="fmH-lb-VpJ" secondAttribute="bottom" constant="590" id="GJQ-VA-wCA"/>
+                            <constraint firstItem="4f0-Bl-6mL" firstAttribute="leading" secondItem="fYm-eL-qcy" secondAttribute="leading" id="PHj-Wa-kXb"/>
+                            <constraint firstItem="hZ7-Aj-Io4" firstAttribute="trailing" secondItem="fmH-lb-VpJ" secondAttribute="trailing" constant="168" id="idL-3B-Pc6"/>
+                            <constraint firstItem="fmH-lb-VpJ" firstAttribute="leading" secondItem="hZ7-Aj-Io4" secondAttribute="leading" constant="168" id="pdw-Cx-sPs"/>
+                            <constraint firstAttribute="trailing" secondItem="4f0-Bl-6mL" secondAttribute="trailing" id="rWH-HQ-ctd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hZ7-Aj-Io4"/>
                     </view>
                     <connections>
+                        <outlet property="pageControl" destination="fmH-lb-VpJ" id="PR0-yq-dyz"/>
                         <outlet property="pagingScrollView" destination="4f0-Bl-6mL" id="WH7-Hv-jXj"/>
                     </connections>
                 </viewController>

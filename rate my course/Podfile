@@ -13,6 +13,7 @@ target 'rate my course' do
   pod "MotionAnimation" 
   pod 'lottie-ios'
   pod 'MBProgressHUD'
+  pod 'fluid-slider'
 
 
   target 'rate my courseTests' do
