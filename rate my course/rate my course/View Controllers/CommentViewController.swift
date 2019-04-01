@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import fluid_slider
 
 class CommentViewController: UIViewController, UIScrollViewDelegate {
     
@@ -40,6 +39,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         
         let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         
+        //adding submit button to slide 1
         let submitButton = UIButton(frame: CGRect.zero)
         submitButton.frame.size.height  = 50
         submitButton.frame.size.width   = 150
@@ -53,6 +53,8 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
         
         slide2.addSubview(submitButton)
+        
+        
 
         return [slide1, slide2]
     }

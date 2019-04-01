@@ -30,8 +30,6 @@ PODS:
     - FirebaseCore (~> 5.1)
     - GoogleUtilities/Environment (~> 5.3)
     - GoogleUtilities/UserDefaults (~> 5.3)
-  - fluid-slider (1.0.0):
-    - pop
   - GoogleAppMeasurement (5.4.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -56,6 +54,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.6):
     - GoogleUtilities/Logger
+  - GrowingTextView (0.6.1)
   - GTMSessionFetcher/Core (1.2.1)
   - lottie-ios (2.5.2)
   - MBProgressHUD (1.1.0)
@@ -65,14 +64,13 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - pop (1.0.12)
   - SkyFloatingLabelTextField (3.6.0)
 
 DEPENDENCIES:
   - ElasticTransition
   - Firebase/Auth
   - Firebase/Core
-  - fluid-slider
+  - GrowingTextView
   - lottie-ios
   - MBProgressHUD
   - MotionAnimation
@@ -87,15 +85,14 @@ SPEC REPOS:
     - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseInstanceID
-    - fluid-slider
     - GoogleAppMeasurement
     - GoogleUtilities
+    - GrowingTextView
     - GTMSessionFetcher
     - lottie-ios
     - MBProgressHUD
     - MotionAnimation
     - nanopb
-    - pop
     - SkyFloatingLabelTextField
 
 SPEC CHECKSUMS:
@@ -106,17 +103,16 @@ SPEC CHECKSUMS:
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: 35747502d9e8c6ee217385ad04446c7c2aaf9c5c
   FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
-  fluid-slider: a19a991606a34a545cba9341e7422073b4ec3a66
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
+  GrowingTextView: 335aefa45df7df06b01edede1363414d6ee5d6bc
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MotionAnimation: ff5c8fc2e429d7e10d46ae86819ba9759846c343
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
 
-PODFILE CHECKSUM: a4d6d643a75b83e1685d3f04417c9e97bcc5be1b
+PODFILE CHECKSUM: daa52fe6c8b381e7c7aa29af88d6af82c22f87a6
 
 COCOAPODS: 1.5.3

@@ -8,31 +8,41 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var classNumberLabel: UILabel!
-
-
+    @IBOutlet weak var commentTableView: UITableView!
+    
     var classNumber = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        classNumberLabel.text = classNumber
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
+        //tableview
+        commentTableView.delegate           = self
+        commentTableView.dataSource         = self
+        commentTableView.separatorColor     = .clear
+
+        //adding comment bar button
+        self.navigationItem.rightBarButtonItem      = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
         
-        self.view.backgroundColor = UIColor(hexString: "#d5d5d5")
+        classNumberLabel.text                       = classNumber
+        
+        self.view.backgroundColor                   = UIColor(hexString: "#d5d5d5")
     }
 
-    
     @objc func comment(){
         self.performSegue(withIdentifier: "detailToComment", sender: nil)
     }
     
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
+        
+        return cell
     }
 
 }

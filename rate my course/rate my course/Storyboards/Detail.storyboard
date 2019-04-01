@@ -70,6 +70,7 @@
                     </view>
                     <connections>
                         <outlet property="classNumberLabel" destination="K9C-G0-DXA" id="JDh-mE-0dL"/>
+                        <outlet property="commentTableView" destination="JHy-CG-fC6" id="FGd-70-aiV"/>
                         <segue destination="mDr-Dn-loa" kind="show" identifier="detailToComment" id="Ytk-Mh-IoF"/>
                     </connections>
                 </viewController>
