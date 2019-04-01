@@ -29,6 +29,10 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         majorTableView.delegate     = self
         majorSearchBar.delegate     = self
         
+        //customize tableview
+        majorTableView.backgroundColor = UIColor(hexString: "#d5d5d5")
+        majorTableView.separatorColor = .clear
+        
         loadData()
         
     }
@@ -114,17 +118,13 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         cell.majorLabel.text        = "  \(filteredMajors[indexPath.row]) (\(abbreviation!))"
-        cell.majorLabel.textColor   = .white
-        
-        /*
-        cell.majorView.layer.shadowColor    = UIColor.black.cgColor
-        cell.majorView.layer.shadowOpacity  = 0.5
-        cell.majorView.layer.shadowOffset   = CGSize.zero
-        cell.majorView.layer.shadowRadius   = 5
-        cell.majorView.layer.shadowPath     = UIBezierPath(rect: cell.majorView.bounds).cgPath
-        */
+        cell.majorLabel.textColor   = .black
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
     }
     
     // This method updates filteredData based on the text in the Search Box

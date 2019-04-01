@@ -38,6 +38,11 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         classTableView.delegate             = self
         classTableView.dataSource           = self
         classSearchBar.delegate             = self
+        
+        //customize tableview
+        classTableView.backgroundColor = UIColor(hexString: "#d5d5d5")
+        classTableView.separatorColor = .clear
+        
         loadData()
     }
     
@@ -108,10 +113,14 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         cell.classLabel.text        = "\(filteredClassNumbers[indexPath.row])"
         cell.className.text         = name
         
-        cell.classLabel.textColor   = .white
-        cell.className.textColor    = .white
+        cell.classLabel.textColor   = .black
+        cell.className.textColor    = .black
  
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
     }
     
     // This method updates filteredData based on the text in the Search Box

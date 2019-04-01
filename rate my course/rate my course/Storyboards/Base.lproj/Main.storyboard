@@ -63,7 +63,7 @@
                                     <segue destination="K0C-U7-4Ut" kind="presentation" identifier="" id="deh-eR-zwf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate My Course" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTT-Fr-hZY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATE MY COURSE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTT-Fr-hZY">
                                 <rect key="frame" x="46" y="139" width="282" height="147"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gTT-Fr-hZY" secondAttribute="height" multiplier="94:49" id="ZTj-DD-dn9"/>
@@ -219,7 +219,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="sEe-Gg-XhR"/>
-        <segue reference="TCU-Sf-Gnu"/>
+        <segue reference="gLN-xw-dCH"/>
         <segue reference="jMh-WL-7t5"/>
     </inferredMetricsTieBreakers>
 </document>

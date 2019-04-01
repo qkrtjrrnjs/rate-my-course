@@ -29,6 +29,14 @@
 	<array>
 		<string>Bavro-Regular.otf</string>
 		<string>KEL.ttf</string>
+		<string>pt-sans-regular.ttf</string>
+		<string>pt-sans-bold.ttf</string>
+		<string>pt-sans-medium.ttf</string>
+		<string>Noway-Regular.otf</string>
+		<string>Kirvy-Regular.otf</string>
+		<string>Kirvy-Thin.otf</string>
+		<string>Kirvy-Light.otf</string>
+		<string>Kirvy-Bold.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

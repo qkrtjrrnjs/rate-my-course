@@ -17,6 +17,14 @@
 		832B14DA2249D40600F25C7B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832B14D92249D40500F25C7B /* InitialViewController.swift */; };
 		832B14FB2249DAF300F25C7B /* Bavro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */; };
 		832B14FD2249DB0000F25C7B /* KEL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14FC2249DB0000F25C7B /* KEL.ttf */; };
+		8353D92D2252865E006E7AA4 /* pt-sans-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D9242252865D006E7AA4 /* pt-sans-regular.ttf */; };
+		8353D92F2252865E006E7AA4 /* pt-sans-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D9262252865D006E7AA4 /* pt-sans-bold.ttf */; };
+		8353D9322252865E006E7AA4 /* pt-sans-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D9292252865D006E7AA4 /* pt-sans-medium.ttf */; };
+		8353D93822528767006E7AA4 /* Noway-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D93722528767006E7AA4 /* Noway-Regular.otf */; };
+		8353D93E22528875006E7AA4 /* Kirvy-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D93A22528875006E7AA4 /* Kirvy-Regular.otf */; };
+		8353D93F22528875006E7AA4 /* Kirvy-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D93B22528875006E7AA4 /* Kirvy-Thin.otf */; };
+		8353D94022528875006E7AA4 /* Kirvy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D93C22528875006E7AA4 /* Kirvy-Light.otf */; };
+		8353D94122528875006E7AA4 /* Kirvy-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D93D22528875006E7AA4 /* Kirvy-Bold.otf */; };
 		8366124922512F08003D3C0F /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366124822512F08003D3C0F /* CommentViewController.swift */; };
 		8366124C2251CF7B003D3C0F /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366124B2251CF7B003D3C0F /* Slide.swift */; };
 		8366124E2251CF8F003D3C0F /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8366124D2251CF8F003D3C0F /* Slide.xib */; };
@@ -68,6 +76,14 @@
 		832B14D92249D40500F25C7B /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bavro-Regular.otf"; sourceTree = "<group>"; };
 		832B14FC2249DB0000F25C7B /* KEL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KEL.ttf; sourceTree = "<group>"; };
+		8353D9242252865D006E7AA4 /* pt-sans-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-regular.ttf"; sourceTree = "<group>"; };
+		8353D9262252865D006E7AA4 /* pt-sans-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-bold.ttf"; sourceTree = "<group>"; };
+		8353D9292252865D006E7AA4 /* pt-sans-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-medium.ttf"; sourceTree = "<group>"; };
+		8353D93722528767006E7AA4 /* Noway-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Noway-Regular.otf"; sourceTree = "<group>"; };
+		8353D93A22528875006E7AA4 /* Kirvy-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kirvy-Regular.otf"; sourceTree = "<group>"; };
+		8353D93B22528875006E7AA4 /* Kirvy-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kirvy-Thin.otf"; sourceTree = "<group>"; };
+		8353D93C22528875006E7AA4 /* Kirvy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kirvy-Light.otf"; sourceTree = "<group>"; };
+		8353D93D22528875006E7AA4 /* Kirvy-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kirvy-Bold.otf"; sourceTree = "<group>"; };
 		8366124822512F08003D3C0F /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		8366124B2251CF7B003D3C0F /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		8366124D2251CF8F003D3C0F /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
@@ -182,6 +198,9 @@
 		832B14FE2249DB0600F25C7B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				8353D93922528875006E7AA4 /* kirvy */,
+				8353D93722528767006E7AA4 /* Noway-Regular.otf */,
+				8353D9232252865D006E7AA4 /* pt-sans */,
 				832B14FF2249DB5B00F25C7B /* KEL */,
 				832B14DB2249DAF300F25C7B /* BAVRO */,
 			);
@@ -194,6 +213,27 @@
 				832B14FC2249DB0000F25C7B /* KEL.ttf */,
 			);
 			path = KEL;
+			sourceTree = "<group>";
+		};
+		8353D9232252865D006E7AA4 /* pt-sans */ = {
+			isa = PBXGroup;
+			children = (
+				8353D9242252865D006E7AA4 /* pt-sans-regular.ttf */,
+				8353D9262252865D006E7AA4 /* pt-sans-bold.ttf */,
+				8353D9292252865D006E7AA4 /* pt-sans-medium.ttf */,
+			);
+			path = "pt-sans";
+			sourceTree = "<group>";
+		};
+		8353D93922528875006E7AA4 /* kirvy */ = {
+			isa = PBXGroup;
+			children = (
+				8353D93A22528875006E7AA4 /* Kirvy-Regular.otf */,
+				8353D93B22528875006E7AA4 /* Kirvy-Thin.otf */,
+				8353D93C22528875006E7AA4 /* Kirvy-Light.otf */,
+				8353D93D22528875006E7AA4 /* Kirvy-Bold.otf */,
+			);
+			path = kirvy;
 			sourceTree = "<group>";
 		};
 		8366124A2251CF48003D3C0F /* Views */ = {
@@ -405,16 +445,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8353D94022528875006E7AA4 /* Kirvy-Light.otf in Resources */,
 				832B14FB2249DAF300F25C7B /* Bavro-Regular.otf in Resources */,
 				83E147A52242FDDE00C40066 /* LaunchScreen.storyboard in Resources */,
+				8353D93822528767006E7AA4 /* Noway-Regular.otf in Resources */,
+				8353D92D2252865E006E7AA4 /* pt-sans-regular.ttf in Resources */,
+				8353D93E22528875006E7AA4 /* Kirvy-Regular.otf in Resources */,
 				83D0461E224E862D002B8701 /* Detail.storyboard in Resources */,
 				83E147A22242FDDE00C40066 /* Assets.xcassets in Resources */,
+				8353D92F2252865E006E7AA4 /* pt-sans-bold.ttf in Resources */,
 				832B14D72249918D00F25C7B /* Stream.storyboard in Resources */,
+				8353D94122528875006E7AA4 /* Kirvy-Bold.otf in Resources */,
 				8366124E2251CF8F003D3C0F /* Slide.xib in Resources */,
+				8353D93F22528875006E7AA4 /* Kirvy-Thin.otf in Resources */,
 				83E147C922491EBB00C40066 /* GoogleService-Info.plist in Resources */,
 				832B14FD2249DB0000F25C7B /* KEL.ttf in Resources */,
 				83BA4D42224C239200D75174 /* splash.json in Resources */,
 				83E147A02242FDDC00C40066 /* Main.storyboard in Resources */,
+				8353D9322252865E006E7AA4 /* pt-sans-medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,8 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Bavro-Regular.otf">
-            <string>Bavro-Regular</string>
+        <array key="Noway-Regular.otf">
+            <string>Noway</string>
         </array>
     </customFonts>
     <scenes>
@@ -23,34 +23,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fn2-8Z-13g">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fn2-8Z-13g">
                                 <rect key="frame" x="0.0" y="119" width="375" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MajorCell" rowHeight="69" id="kNQ-sX-w3E" customClass="MajorCell" customModule="rate_my_course" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="69"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MajorCell" rowHeight="86" id="kNQ-sX-w3E" customClass="MajorCell" customModule="rate_my_course" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kNQ-sX-w3E" id="gDT-iV-5i8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbk-Of-oJS">
-                                                    <rect key="frame" x="5" y="0.0" width="365" height="64"/>
+                                                    <rect key="frame" x="5" y="5" width="365" height="75"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNa-Ss-jKn">
-                                                            <rect key="frame" x="8" y="22" width="349" height="20.5"/>
-                                                            <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <rect key="frame" x="8" y="27" width="349" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="aNa-Ss-jKn" firstAttribute="top" secondItem="zbk-Of-oJS" secondAttribute="top" constant="22" id="5Nq-UT-oL1"/>
-                                                        <constraint firstAttribute="bottom" secondItem="aNa-Ss-jKn" secondAttribute="bottom" constant="21.5" id="6Sq-Es-4nn"/>
+                                                        <constraint firstAttribute="bottom" secondItem="aNa-Ss-jKn" secondAttribute="bottom" constant="27.5" id="Mhx-41-w30"/>
                                                         <constraint firstItem="aNa-Ss-jKn" firstAttribute="leading" secondItem="zbk-Of-oJS" secondAttribute="leading" constant="8" id="TkB-3L-hY1"/>
                                                         <constraint firstAttribute="trailing" secondItem="aNa-Ss-jKn" secondAttribute="trailing" constant="8" id="VSx-Wn-nO8"/>
+                                                        <constraint firstItem="aNa-Ss-jKn" firstAttribute="top" secondItem="zbk-Of-oJS" secondAttribute="top" constant="27" id="nIo-18-LIu"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -60,10 +59,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="zbk-Of-oJS" firstAttribute="top" secondItem="gDT-iV-5i8" secondAttribute="top" constant="5" id="66p-e9-vdC"/>
                                                 <constraint firstAttribute="trailing" secondItem="zbk-Of-oJS" secondAttribute="trailing" constant="5" id="Dh9-1j-RAb"/>
-                                                <constraint firstItem="zbk-Of-oJS" firstAttribute="top" secondItem="gDT-iV-5i8" secondAttribute="top" id="Mvx-8W-lUr"/>
                                                 <constraint firstItem="zbk-Of-oJS" firstAttribute="leading" secondItem="gDT-iV-5i8" secondAttribute="leading" constant="5" id="WIF-FJ-bfA"/>
-                                                <constraint firstAttribute="bottom" secondItem="zbk-Of-oJS" secondAttribute="bottom" constant="4.5" id="uKP-sN-4lJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="zbk-Of-oJS" secondAttribute="bottom" constant="5.5" id="WhB-K4-h79"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -129,38 +128,42 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="St8-YU-erC">
                                                     <rect key="frame" x="7" y="5" width="362" height="75"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8S-GS-dej">
+                                                            <rect key="frame" x="8" y="44" width="345" height="15"/>
+                                                            <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="15"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="n8S-GS-dej" secondAttribute="trailing" constant="9" id="3aK-wC-yhL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="n8S-GS-dej" secondAttribute="bottom" constant="16" id="U8w-eZ-YqL"/>
+                                                        <constraint firstItem="n8S-GS-dej" firstAttribute="leading" secondItem="St8-YU-erC" secondAttribute="leading" constant="8" id="yVV-Vl-7ms"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="15"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8S-GS-dej">
-                                                    <rect key="frame" x="15" y="52" width="345" height="16"/>
-                                                    <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="13"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="409-Ye-ZFG">
-                                                    <rect key="frame" x="15" y="16" width="330" height="20.5"/>
-                                                    <fontDescription key="fontDescription" name="Bavro-Regular" family="Bavro" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="15" y="23.5" width="330" height="20"/>
+                                                    <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="St8-YU-erC" firstAttribute="leading" secondItem="gtU-U2-dAt" secondAttribute="leading" constant="7" id="M2h-vn-jwz"/>
                                                 <constraint firstAttribute="bottom" secondItem="St8-YU-erC" secondAttribute="bottom" constant="5.5" id="Rbt-oO-Uw9"/>
-                                                <constraint firstItem="409-Ye-ZFG" firstAttribute="top" secondItem="gtU-U2-dAt" secondAttribute="top" constant="16" id="RdH-Kv-utj"/>
+                                                <constraint firstItem="n8S-GS-dej" firstAttribute="top" secondItem="409-Ye-ZFG" secondAttribute="bottom" constant="5.5" id="VoS-sl-J3h"/>
                                                 <constraint firstAttribute="trailing" secondItem="409-Ye-ZFG" secondAttribute="trailing" constant="30" id="hvc-a9-7VN"/>
                                                 <constraint firstAttribute="trailing" secondItem="St8-YU-erC" secondAttribute="trailing" constant="6" id="iXT-d3-oNX"/>
-                                                <constraint firstAttribute="bottom" secondItem="n8S-GS-dej" secondAttribute="bottom" constant="17.5" id="kg6-gP-WP9"/>
-                                                <constraint firstItem="n8S-GS-dej" firstAttribute="top" secondItem="409-Ye-ZFG" secondAttribute="bottom" constant="15.5" id="mbQ-vh-ncY"/>
                                                 <constraint firstItem="St8-YU-erC" firstAttribute="top" secondItem="gtU-U2-dAt" secondAttribute="top" constant="5" id="np1-AG-xJQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="n8S-GS-dej" secondAttribute="trailing" constant="15" id="oje-6x-7hI"/>
                                                 <constraint firstItem="409-Ye-ZFG" firstAttribute="leading" secondItem="gtU-U2-dAt" secondAttribute="leading" constant="15" id="tRy-Kw-9ah"/>
-                                                <constraint firstItem="n8S-GS-dej" firstAttribute="leading" secondItem="gtU-U2-dAt" secondAttribute="leading" constant="15" id="wqG-5z-5RW"/>
+                                                <constraint firstItem="409-Ye-ZFG" firstAttribute="top" secondItem="gtU-U2-dAt" secondAttribute="top" constant="23.5" id="zJ4-rg-Zie"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

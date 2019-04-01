@@ -24,6 +24,9 @@ class InitialViewController: UIViewController {
         transition.edge     = .right
         transition.sticky   = false
 
+        //Label Customization
+        rateMyCourseLabel.textColor = UIColor(hexString: "#30323d")
+        
         //button customization
         customizeButton(button: signUpButton, cornerRadius: 10, color: UIColor(hexString: "#30323d"))
         customizeButton(button: logInButton, cornerRadius: 10, color: UIColor(hexString: "#30323d"))
