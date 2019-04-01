@@ -31,14 +31,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func submit(){
-        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-        let detailViewController: DetailViewController = mainStoryboard.instantiateViewController(withIdentifier: "detailViewController") as! DetailViewController
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = detailViewController*/
-        
-        //self.performSegue(withIdentifier: "commentToDetail", sender: nil)
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func createSlides() -> [Slide] {
@@ -51,7 +44,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         submitButton.frame.size.height  = 50
         submitButton.frame.size.width   = 150
         submitButton.center.x           = slide2.center.x
-        submitButton.center.y           = slide2.center.y * 1.8
+        submitButton.center.y           = slide2.center.y * 1.5
         submitButton.backgroundColor    = UIColor(hexString: "#30323d")
         submitButton.layer.cornerRadius = 10
         submitButton.setTitle("Submit", for: .normal)
@@ -65,12 +58,12 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupSlideScrollView(slides : [Slide]) {
-        pagingScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        pagingScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
+        pagingScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 100)
+        pagingScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height - 100)
         pagingScrollView.isPagingEnabled = true
         
         for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
+            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height - 100)
             pagingScrollView.addSubview(slides[i])
         }
     }
