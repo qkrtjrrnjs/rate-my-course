@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import fluid_slider
 
 class CommentViewController: UIViewController, UIScrollViewDelegate {
     
@@ -24,16 +25,34 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         slides = createSlides()
         setupSlideScrollView(slides: slides)
         
-        pageControl.numberOfPages = slides.count
-        pageControl.currentPage = 0
+        pageControl.numberOfPages   = slides.count
+        pageControl.currentPage     = 0
         view.bringSubviewToFront(pageControl)
+    }
+    
+    @objc func submit(){
+        
     }
     
     func createSlides() -> [Slide] {
         
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         
+        let submitButton = UIButton(frame: CGRect.zero)
+        submitButton.frame.size.height  = 100
+        submitButton.frame.size.width   = 100
+        submitButton.center.x           = slide1.center.x
+        submitButton.center.y           = slide1.center.y
+        submitButton.backgroundColor    = .black
+        submitButton.setTitle("Submit", for: .normal)
+        submitButton.setTitleColor(.white, for: .normal)
+        submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
+        
+        slide1.addSubview(submitButton)
+        
         let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        
+        
 
         return [slide1, slide2]
     }
