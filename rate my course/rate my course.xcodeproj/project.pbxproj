@@ -198,8 +198,8 @@
 		832B14FE2249DB0600F25C7B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				83AA2C152252912F0040FCF9 /* Noway */,
 				8353D93922528875006E7AA4 /* kirvy */,
-				8353D93722528767006E7AA4 /* Noway-Regular.otf */,
 				8353D9232252865D006E7AA4 /* pt-sans */,
 				832B14FF2249DB5B00F25C7B /* KEL */,
 				832B14DB2249DAF300F25C7B /* BAVRO */,
@@ -243,6 +243,14 @@
 				8366124B2251CF7B003D3C0F /* Slide.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		83AA2C152252912F0040FCF9 /* Noway */ = {
+			isa = PBXGroup;
+			children = (
+				8353D93722528767006E7AA4 /* Noway-Regular.otf */,
+			);
+			path = Noway;
 			sourceTree = "<group>";
 		};
 		83BA4D40224C237600D75174 /* Lottie Animations */ = {
