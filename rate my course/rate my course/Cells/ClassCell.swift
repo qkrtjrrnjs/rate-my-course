@@ -14,6 +14,7 @@ class ClassCell: UITableViewCell {
     @IBOutlet weak var classLabel: UILabel!
     @IBOutlet weak var className: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
