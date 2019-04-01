@@ -122,19 +122,7 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
     }
-  /*
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-        let detailViewController: DetailViewController = mainStoryboard.instantiateViewController(withIdentifier: "detailViewController") as! DetailViewController
-        
-        detailViewController.classNumber = filteredClassNumbers[indexPath.row]
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = detailViewController
-        
-        classTableView.deselectRow(at: indexPath, animated: true)
-    }
-    */
+
     // This method updates filteredData based on the text in the Search Box
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // When there is no text, filteredData is the same as the original data

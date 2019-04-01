@@ -10,14 +10,18 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var classNumberLabel: UILabel!
+
+
     var classNumber = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(classNumber)")
+        classNumberLabel.text = classNumber
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
-
+        
+        self.view.backgroundColor = UIColor(hexString: "#d5d5d5")
     }
 
     
