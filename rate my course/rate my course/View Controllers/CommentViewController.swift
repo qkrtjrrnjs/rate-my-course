@@ -31,28 +31,35 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func submit(){
+        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
+        let detailViewController: DetailViewController = mainStoryboard.instantiateViewController(withIdentifier: "detailViewController") as! DetailViewController
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = detailViewController*/
+        
+        //self.performSegue(withIdentifier: "commentToDetail", sender: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func createSlides() -> [Slide] {
         
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         
-        let submitButton = UIButton(frame: CGRect.zero)
-        submitButton.frame.size.height  = 100
-        submitButton.frame.size.width   = 100
-        submitButton.center.x           = slide1.center.x
-        submitButton.center.y           = slide1.center.y
-        submitButton.backgroundColor    = .black
-        submitButton.setTitle("Submit", for: .normal)
-        submitButton.setTitleColor(.white, for: .normal)
-        submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
-        
-        slide1.addSubview(submitButton)
-        
         let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         
+        let submitButton = UIButton(frame: CGRect.zero)
+        submitButton.frame.size.height  = 50
+        submitButton.frame.size.width   = 150
+        submitButton.center.x           = slide2.center.x
+        submitButton.center.y           = slide2.center.y * 1.8
+        submitButton.backgroundColor    = UIColor(hexString: "#30323d")
+        submitButton.layer.cornerRadius = 10
+        submitButton.setTitle("Submit", for: .normal)
+        submitButton.setTitleColor(.white, for: .normal)
+        submitButton.titleLabel?.font = UIFont(name: "Bavro", size: 20)
+        submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
         
+        slide2.addSubview(submitButton)
 
         return [slide1, slide2]
     }

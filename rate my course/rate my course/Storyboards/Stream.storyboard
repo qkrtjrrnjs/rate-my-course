@@ -109,7 +109,7 @@
         <!--Stream Class View Controller-->
         <scene sceneID="KJy-LJ-beR">
             <objects>
-                <viewController id="BD7-oZ-A4I" customClass="StreamClassViewController" customModule="rate_my_course" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="streamClassViewController" id="BD7-oZ-A4I" customClass="StreamClassViewController" customModule="rate_my_course" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="51j-1s-eSh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,7 @@
                                         <connections>
                                             <outlet property="classLabel" destination="409-Ye-ZFG" id="7Jy-Nx-MP6"/>
                                             <outlet property="className" destination="n8S-GS-dej" id="YeS-fP-tHP"/>
-                                            <segue destination="rbS-ds-IJH" kind="show" id="oNR-pp-AHw"/>
+                                            <segue destination="rbS-ds-IJH" kind="show" id="oqU-rF-JlG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

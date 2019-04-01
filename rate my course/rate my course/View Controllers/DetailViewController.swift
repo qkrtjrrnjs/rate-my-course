@@ -16,19 +16,29 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         print("\(classNumber)")
         
-        //add compose bar button
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
+        /*let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100))
+        view.addSubview(navBar)
+        //add bar buttons
+        let navItem = UINavigationItem(title: "SomeTitle")
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(comment))
+        let play = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(comment))
         
+        navItem.rightBarButtonItems = [add, play]
+        
+        navBar.setItems([navItem], animated: false)*/
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
+
     }
+
     
     @objc func comment(){
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-        let commentViewController: CommentViewController = mainStoryboard.instantiateViewController(withIdentifier: "commentViewController") as! CommentViewController
-        
-        commentViewController.classNumber = classNumber
+        //self.performSegue(withIdentifier: "detailToComment", sender: nil)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Stream", bundle: nil)
+        let streamClassViewController: StreamClassViewController = mainStoryboard.instantiateViewController(withIdentifier: "streamClassViewController") as! StreamClassViewController
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = commentViewController
+        appDelegate.window?.rootViewController = streamClassViewController
     }
     
 

@@ -13,7 +13,7 @@
         <!--Detail View Controller-->
         <scene sceneID="MDR-7S-OfO">
             <objects>
-                <viewController id="cav-9k-Lem" customClass="DetailViewController" customModule="rate_my_course" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailViewController" id="cav-9k-Lem" customClass="DetailViewController" customModule="rate_my_course" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6T5-iU-kDj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,6 +45,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cT0-6f-keu"/>
                     </view>
+                    <connections>
+                        <segue destination="mDr-Dn-loa" kind="show" identifier="detailToComment" id="Ytk-Mh-IoF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pT-Ov-2Qs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,6 +86,7 @@
                     <connections>
                         <outlet property="pageControl" destination="fmH-lb-VpJ" id="PR0-yq-dyz"/>
                         <outlet property="pagingScrollView" destination="4f0-Bl-6mL" id="WH7-Hv-jXj"/>
+                        <segue destination="cav-9k-Lem" kind="show" identifier="commentToDetail" id="pp7-xs-xtq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9PV-Kh-TCn" userLabel="First Responder" sceneMemberID="firstResponder"/>
