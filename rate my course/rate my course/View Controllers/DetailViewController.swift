@@ -29,6 +29,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         classNumberLabel.text                       = classNumber
         
         self.view.backgroundColor                   = UIColor(hexString: "#d5d5d5")
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     @objc func comment(){

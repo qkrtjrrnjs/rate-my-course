@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import GrowingTextView
 
-class CommentViewController: UIViewController, UIScrollViewDelegate, GrowingTextViewDelegate {
+class CommentViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var pagingScrollView: UIScrollView!
-    
+
     var classNumber = String()
     var slides:[Slide] = []
 
@@ -28,6 +27,8 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, GrowingText
         pageControl.numberOfPages   = slides.count
         pageControl.currentPage     = 0
         view.bringSubviewToFront(pageControl)
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     @objc func submit(){
@@ -45,30 +46,27 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, GrowingText
         submitButton.frame.size.height  = 50
         submitButton.frame.size.width   = 150
         submitButton.center.x           = slide2.center.x
-        submitButton.center.y           = slide2.center.y * 1.5
+        submitButton.center.y           = slide2.center.y * 1.7
         submitButton.backgroundColor    = UIColor(hexString: "#30323d")
         submitButton.layer.cornerRadius = 10
         submitButton.setTitle("Submit", for: .normal)
         submitButton.setTitleColor(.white, for: .normal)
         submitButton.titleLabel?.font = UIFont(name: "Bavro", size: 20)
         submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
-        
         slide2.addSubview(submitButton)
         
-        let textView = GrowingTextView()
-        textView.delegate = self
-        textView.center.x = slide2.center.x
-        textView.center.y = slide2.center.y
-        textView.maxLength = 140
-        textView.trimWhiteSpaceWhenEndEditing = false
-        textView.placeholder = "Say something..."
-        textView.placeholderColor = UIColor(white: 0.8, alpha: 1.0)
-        textView.minHeight = 25.0
-        textView.maxHeight = 70.0
-        textView.backgroundColor = .green
-        textView.layer.cornerRadius = 4.0
+        let textView = UITextView(frame: CGRect.zero)
+        textView.frame.size.height      = slide2.frame.size.height / 1.5
+        textView.frame.size.width       = slide2.frame.size.width / 1.1
+        textView.center.x               = slide2.center.x
+        textView.center.y               = slide2.center.y / 1.2
+        textView.textContainerInset     = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textView.layer.cornerRadius     = 10
+        textView.textAlignment          = NSTextAlignment.justified
+        textView.textColor              = .black
+        textView.backgroundColor        = UIColor.lightGray
         slide2.addSubview(textView)
-
+        
         return [slide1, slide2]
     }
     

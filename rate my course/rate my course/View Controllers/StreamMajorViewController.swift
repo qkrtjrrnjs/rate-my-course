@@ -32,9 +32,9 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         //customize tableview
         majorTableView.backgroundColor = UIColor(hexString: "#d5d5d5")
         majorTableView.separatorColor = .clear
-        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
         loadData()
-        
     }
     
     func loadData(){

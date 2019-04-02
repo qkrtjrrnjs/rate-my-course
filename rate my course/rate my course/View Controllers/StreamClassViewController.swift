@@ -43,6 +43,7 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         classTableView.backgroundColor = UIColor(hexString: "#d5d5d5")
         classTableView.separatorColor = .clear
         
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         loadData()
     }
     
