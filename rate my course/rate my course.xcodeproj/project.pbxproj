@@ -28,6 +28,7 @@
 		8366124922512F08003D3C0F /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366124822512F08003D3C0F /* CommentViewController.swift */; };
 		8366124C2251CF7B003D3C0F /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366124B2251CF7B003D3C0F /* Slide.swift */; };
 		8366124E2251CF8F003D3C0F /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8366124D2251CF8F003D3C0F /* Slide.xib */; };
+		838B368A22580CE8008C330D /* databaseRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838B368922580CE8008C330D /* databaseRef.swift */; };
 		83BA4D3F224C22F000D75174 /* SpashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA4D3E224C22F000D75174 /* SpashViewController.swift */; };
 		83BA4D42224C239200D75174 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 83BA4D41224C239200D75174 /* splash.json */; };
 		83D0461C224E85B4002B8701 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0461B224E85B4002B8701 /* DetailViewController.swift */; };
@@ -87,6 +88,7 @@
 		8366124822512F08003D3C0F /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		8366124B2251CF7B003D3C0F /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		8366124D2251CF8F003D3C0F /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
+		838B368922580CE8008C330D /* databaseRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = databaseRef.swift; sourceTree = "<group>"; };
 		83BA4D3E224C22F000D75174 /* SpashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpashViewController.swift; sourceTree = "<group>"; };
 		83BA4D41224C239200D75174 /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		83D0461B224E85B4002B8701 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +247,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		838B368822580CAD008C330D /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				838B368922580CE8008C330D /* databaseRef.swift */,
+			);
+			path = Struct;
+			sourceTree = "<group>";
+		};
 		83AA2C152252912F0040FCF9 /* Noway */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +296,7 @@
 		83E147992242FDDC00C40066 /* rate my course */ = {
 			isa = PBXGroup;
 			children = (
+				838B368822580CAD008C330D /* Struct */,
 				8366124A2251CF48003D3C0F /* Views */,
 				83BA4D40224C237600D75174 /* Lottie Animations */,
 				832B14FE2249DB0600F25C7B /* Fonts */,
@@ -551,6 +562,7 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionAnimation/MotionAnimation.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -565,6 +577,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -616,6 +629,7 @@
 				832B14DA2249D40600F25C7B /* InitialViewController.swift in Sources */,
 				83E1479D2242FDDC00C40066 /* LogInViewController.swift in Sources */,
 				83D04620224E8715002B8701 /* StatisticCell.swift in Sources */,
+				838B368A22580CE8008C330D /* databaseRef.swift in Sources */,
 				83E1479B2242FDDC00C40066 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

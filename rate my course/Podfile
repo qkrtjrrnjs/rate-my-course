@@ -8,6 +8,7 @@ target 'rate my course' do
   # Pods for rate my course
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod "ElasticTransition"
   pod "MotionAnimation" 
