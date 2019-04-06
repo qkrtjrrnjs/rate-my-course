@@ -15,9 +15,13 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
 
     var classNumber = String()
     var slides:[Slide] = []
+    
+    let textView = UITextView(frame: CGRect.zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideKeyboardWhenTappedAround()
         
         pagingScrollView.delegate = self
         
@@ -33,6 +37,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func submit(){
         self.navigationController?.popViewController(animated: true)
+        print(textView.text)
     }
     
     func createSlides() -> [Slide] {
@@ -55,7 +60,6 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
         slide2.addSubview(submitButton)
         
-        let textView = UITextView(frame: CGRect.zero)
         textView.frame.size.height      = slide2.frame.size.height / 1.5
         textView.frame.size.width       = slide2.frame.size.width / 1.1
         textView.center.x               = slide2.center.x
@@ -66,7 +70,6 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         textView.textColor              = .black
         textView.backgroundColor        = UIColor.lightGray
         slide2.addSubview(textView)
-        
         return [slide1, slide2]
     }
     

@@ -59,9 +59,6 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 //remove repeating majors and add only the names to array
                 for major in self.majors{
-                    let ref = refs.databaseMajors.child("Classes")
-                    let majorData = ["Major": major["Name"]]
-                    ref.setValue(majorData)
                     if !self.majorNames.contains(major["Name"] as! String){
                         self.majorNames.append(major["Name"] as! String)
                     }
