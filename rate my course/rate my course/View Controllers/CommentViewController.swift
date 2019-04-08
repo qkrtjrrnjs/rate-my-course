@@ -54,15 +54,17 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
     func createSlides() -> [Slide] {
         
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        
         let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        
+        slide1.backgroundColor = UIColor(hexString: "#d5d5d5")
+        slide2.backgroundColor = UIColor(hexString: "#d5d5d5")
         
         //adding submit button to slide 1
         let submitButton = UIButton(frame: CGRect.zero)
         submitButton.frame.size.height  = 50
         submitButton.frame.size.width   = 150
         submitButton.center.x           = slide2.center.x
-        submitButton.center.y           = slide2.center.y * 1.7
+        submitButton.center.y           = slide2.center.y * 1.65
         submitButton.backgroundColor    = UIColor(hexString: "#30323d")
         submitButton.layer.cornerRadius = 10
         submitButton.setTitle("Submit", for: .normal)
@@ -75,11 +77,13 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         textView.frame.size.width       = slide2.frame.size.width / 1.1
         textView.center.x               = slide2.center.x
         textView.center.y               = slide2.center.y / 1.2
-        textView.textContainerInset     = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textView.textContainerInset     = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         textView.layer.cornerRadius     = 10
         textView.textAlignment          = NSTextAlignment.justified
         textView.textColor              = .black
-        textView.backgroundColor        = UIColor.lightGray
+        textView.backgroundColor        = .white
+        textView.isScrollEnabled        = true
+        textView.font = UIFont(name: "Noway", size: 20)
         slide2.addSubview(textView)
         return [slide1, slide2]
     }

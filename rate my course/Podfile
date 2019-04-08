@@ -14,7 +14,7 @@ target 'rate my course' do
   pod "MotionAnimation" 
   pod 'lottie-ios'
   pod 'MBProgressHUD'
-  pod 'GrowingTextView'
+  pod 'IQKeyboardManager'
 
   target 'rate my courseTests' do
     inherit! :search_paths

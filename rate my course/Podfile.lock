@@ -61,8 +61,8 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.6):
     - GoogleUtilities/Logger
-  - GrowingTextView (0.6.1)
   - GTMSessionFetcher/Core (1.2.1)
+  - IQKeyboardManager (6.2.0)
   - leveldb-library (1.20)
   - lottie-ios (2.5.2)
   - MBProgressHUD (1.1.0)
@@ -79,7 +79,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
-  - GrowingTextView
+  - IQKeyboardManager
   - lottie-ios
   - MBProgressHUD
   - MotionAnimation
@@ -97,8 +97,8 @@ SPEC REPOS:
     - FirebaseInstanceID
     - GoogleAppMeasurement
     - GoogleUtilities
-    - GrowingTextView
     - GTMSessionFetcher
+    - IQKeyboardManager
     - leveldb-library
     - lottie-ios
     - MBProgressHUD
@@ -117,8 +117,8 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
-  GrowingTextView: 335aefa45df7df06b01edede1363414d6ee5d6bc
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -126,6 +126,6 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
 
-PODFILE CHECKSUM: c84ecf89a0a439ebca21778388fef2205bc590d5
+PODFILE CHECKSUM: 720ae86f7c83ce3c843295be25cabde4f830ff97
 
 COCOAPODS: 1.5.3
