@@ -17,6 +17,7 @@
 		832B14DA2249D40600F25C7B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832B14D92249D40500F25C7B /* InitialViewController.swift */; };
 		832B14FB2249DAF300F25C7B /* Bavro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */; };
 		832B14FD2249DB0000F25C7B /* KEL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14FC2249DB0000F25C7B /* KEL.ttf */; };
+		834EF7A8225BC6610040C841 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834EF7A7225BC6610040C841 /* global.swift */; };
 		8353D92D2252865E006E7AA4 /* pt-sans-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D9242252865D006E7AA4 /* pt-sans-regular.ttf */; };
 		8353D92F2252865E006E7AA4 /* pt-sans-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D9262252865D006E7AA4 /* pt-sans-bold.ttf */; };
 		8353D9322252865E006E7AA4 /* pt-sans-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D9292252865D006E7AA4 /* pt-sans-medium.ttf */; };
@@ -77,6 +78,7 @@
 		832B14D92249D40500F25C7B /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bavro-Regular.otf"; sourceTree = "<group>"; };
 		832B14FC2249DB0000F25C7B /* KEL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KEL.ttf; sourceTree = "<group>"; };
+		834EF7A7225BC6610040C841 /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		8353D9242252865D006E7AA4 /* pt-sans-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-regular.ttf"; sourceTree = "<group>"; };
 		8353D9262252865D006E7AA4 /* pt-sans-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-bold.ttf"; sourceTree = "<group>"; };
 		8353D9292252865D006E7AA4 /* pt-sans-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-medium.ttf"; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				838B368922580CE8008C330D /* databaseRef.swift */,
+				834EF7A7225BC6610040C841 /* global.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				832B14DA2249D40600F25C7B /* InitialViewController.swift in Sources */,
 				83E1479D2242FDDC00C40066 /* LogInViewController.swift in Sources */,
 				83D04620224E8715002B8701 /* StatisticCell.swift in Sources */,
+				834EF7A8225BC6610040C841 /* global.swift in Sources */,
 				838B368A22580CE8008C330D /* databaseRef.swift in Sources */,
 				83E1479B2242FDDC00C40066 /* AppDelegate.swift in Sources */,
 			);

@@ -13,8 +13,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var classNumberLabel: UILabel!
     @IBOutlet weak var commentTableView: UITableView!
     
-    var classNumber = String()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +24,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //adding comment bar button
         self.navigationItem.rightBarButtonItem      = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
         
-        classNumberLabel.text                       = classNumber
+        classNumberLabel.text                       = global.classNumber
         
         self.view.backgroundColor                   = UIColor(hexString: "#d5d5d5")
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false

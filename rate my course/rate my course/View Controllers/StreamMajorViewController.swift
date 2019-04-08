@@ -63,7 +63,6 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
                         self.majorNames.append(major["Name"] as! String)
                     }
                 }
-                
                 self.filteredMajors = self.majorNames
                 self.majorTableView.reloadData()
             }

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class CommentViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var pagingScrollView: UIScrollView!
 
-    var classNumber = String()
     var slides:[Slide] = []
     
     let textView = UITextView(frame: CGRect.zero)
@@ -37,7 +38,10 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func submit(){
         self.navigationController?.popViewController(animated: true)
-        print(textView.text)
+        
+        let comment_data = ["class number": global.classNumber, "Comment": textView.text] as [String : Any]
+
+        refs.databaseComments.childByAutoId().setValue(comment_data)
     }
     
     func createSlides() -> [Slide] {

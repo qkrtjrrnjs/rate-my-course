@@ -150,8 +150,9 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         let cell        = sender as! UITableViewCell
         let indexPath   = classTableView.indexPath(for: cell)!
         
-        let detailViewController                 = segue.destination as! DetailViewController
-        detailViewController.classNumber         = filteredClassNumbers[indexPath.row]
+        //let detailViewController                 = segue.destination as! DetailViewController
+        global.classNumber = filteredClassNumbers[indexPath.row]
+        //detailViewController.classNumber         = filteredClassNumbers[indexPath.row]
         
         classTableView.deselectRow(at: indexPath, animated: true)
     }
