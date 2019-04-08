@@ -46,10 +46,12 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             username.removeSubrange(atRange.lowerBound..<username.endIndex)
         }
         
-        //writing data to database
-        let comment_data = ["user": username, "comment": textView.text] as [String : Any]
-
-        refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
+        if !textView.text.isEmpty{
+            //writing data to database
+            let comment_data = ["user": username, "comment": textView.text, "id": UUID().uuidString] as [String : Any]
+            
+            refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
+        }
     }
     
     func createSlides() -> [Slide] {
