@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class CommentViewController: UIViewController, UIScrollViewDelegate {
+class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewDelegate{
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var pagingScrollView: UIScrollView!
@@ -25,6 +25,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         self.hideKeyboardWhenTappedAround()
         
         pagingScrollView.delegate = self
+        textView.delegate = self
         
         slides = createSlides()
         setupSlideScrollView(slides: slides)
@@ -83,7 +84,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         textView.textColor              = .black
         textView.backgroundColor        = .white
         textView.isScrollEnabled        = true
-        textView.font = UIFont(name: "Noway", size: 20)
+        textView.font = UIFont(name: "Noway", size: 18)
         slide2.addSubview(textView)
         return [slide1, slide2]
     }
@@ -103,6 +104,16 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         pageControl.currentPage = Int(pageIndex)
     }
+    
+    //dismiss keyboard upon return
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
 
     /*
     // MARK: - Navigation
