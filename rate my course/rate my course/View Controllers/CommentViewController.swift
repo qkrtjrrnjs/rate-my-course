@@ -39,9 +39,16 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
     @objc func submit(){
         self.navigationController?.popViewController(animated: true)
         
-        let comment_data = ["class number": global.classNumber, "Comment": textView.text] as [String : Any]
+        //extracting username from email address
+        var username = Auth.auth().currentUser!.email! as String
+        if let atRange = username.range(of: "@") {
+            username.removeSubrange(atRange.lowerBound..<username.endIndex)
+        }
+        
+        //writing data to database
+        let comment_data = ["user": username, "Comment": textView.text] as [String : Any]
 
-        refs.databaseComments.childByAutoId().setValue(comment_data)
+        refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
     }
     
     func createSlides() -> [Slide] {
