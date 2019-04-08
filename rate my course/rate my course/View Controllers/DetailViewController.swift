@@ -35,16 +35,15 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //empty dictionary and repopulate it with most recent data
         self.comments.removeAll()
-        
         refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
             if let data = snapshot.value as? [String: String]{
                 self.comments.append(data)
                 self.commentTableView.reloadData()
             }
-            
         })
-
+        
     }
 
     @objc func comment(){
