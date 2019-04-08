@@ -46,7 +46,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate {
         }
         
         //writing data to database
-        let comment_data = ["user": username, "Comment": textView.text] as [String : Any]
+        let comment_data = ["user": username, "comment": textView.text] as [String : Any]
 
         refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
     }

@@ -28,13 +28,57 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="104" id="azv-S7-eme" customClass="CommentCell" customModule="rate_my_course" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="104"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="98" id="azv-S7-eme" customClass="CommentCell" customModule="rate_my_course" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="azv-S7-eme" id="2xi-kN-1Fe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="97.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uso-jC-1kU">
+                                                    <rect key="frame" x="8" y="11" width="360" height="82"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOy-gL-Lf3">
+                                                            <rect key="frame" x="12" y="7" width="177" height="17"/>
+                                                            <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nre-ic-C0z">
+                                                            <rect key="frame" x="12" y="40" width="340" height="17"/>
+                                                            <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="nre-ic-C0z" secondAttribute="bottom" constant="25" id="Qxr-Vl-2x1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="nre-ic-C0z" secondAttribute="trailing" constant="8" id="dPs-7A-4F4"/>
+                                                        <constraint firstItem="eOy-gL-Lf3" firstAttribute="top" secondItem="uso-jC-1kU" secondAttribute="top" constant="7" id="jaE-gr-PgM"/>
+                                                        <constraint firstItem="nre-ic-C0z" firstAttribute="top" secondItem="eOy-gL-Lf3" secondAttribute="bottom" constant="16" id="qbU-te-zyi"/>
+                                                        <constraint firstItem="eOy-gL-Lf3" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="sqe-Ds-00T"/>
+                                                        <constraint firstAttribute="trailing" secondItem="eOy-gL-Lf3" secondAttribute="trailing" constant="171" id="tgj-8C-BNe"/>
+                                                        <constraint firstItem="nre-ic-C0z" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="yUH-Lo-SVg"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uso-jC-1kU" firstAttribute="leading" secondItem="2xi-kN-1Fe" secondAttribute="leading" constant="8" id="Wn0-6f-U3m"/>
+                                                <constraint firstItem="uso-jC-1kU" firstAttribute="top" secondItem="2xi-kN-1Fe" secondAttribute="top" constant="11" id="dGZ-MB-BVd"/>
+                                                <constraint firstAttribute="trailing" secondItem="uso-jC-1kU" secondAttribute="trailing" constant="7" id="iF2-Z0-R13"/>
+                                                <constraint firstAttribute="bottom" secondItem="uso-jC-1kU" secondAttribute="bottom" constant="4.5" id="iKf-yl-Akw"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="nre-ic-C0z" id="fH7-Z4-mvb"/>
+                                            <outlet property="usernameLabel" destination="eOy-gL-Lf3" id="Fsn-Wa-yFw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
