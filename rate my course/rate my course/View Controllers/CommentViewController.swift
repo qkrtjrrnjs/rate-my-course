@@ -46,9 +46,16 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             username.removeSubrange(atRange.lowerBound..<username.endIndex)
         }
         
+        //get post date
+        
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "M/d/yyyy"
+        let formattedDate = format.string(from: date)
+        
         if !textView.text.isEmpty{
             //writing data to database
-            let comment_data = ["user": username, "comment": textView.text, "like": 0, "dislike": 0, "id": UUID().uuidString] as [String : Any]
+            let comment_data = ["user": username, "comment": textView.text, "like": 0, "dislike": 0, "date": formattedDate, "id": UUID().uuidString] as [String : Any]
             
             refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
         }

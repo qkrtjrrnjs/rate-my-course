@@ -30,7 +30,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //animation customization
         emptyAnimation                     = LOTAnimationView(name: "empty")
-        emptyAnimation.animationSpeed      = 0.7
+        emptyAnimation.animationSpeed      = 0.5
         emptyAnimation.loopAnimation       = true
         emptyAnimation.frame.size.height   = 250
         emptyAnimation.frame.size.width    = 250
@@ -85,16 +85,40 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
         
-        let comment_data     = comments[indexPath.row]
-        let text        = comment_data["comment"] as! String
-        let username    = comment_data["user"] as! String
+        let comment_data        = comments[indexPath.row]
+        let text                = comment_data["comment"] as! String
+        let username            = comment_data["user"] as! String
+        let dislikeCount        = comment_data["dislike"] as! Int
+        let likeCount           = comment_data["like"] as! Int
+        let date                = comment_data["date"] as! String
 
         cell.commentLabel.text      = text
         cell.usernameLabel.text     = username
-        cell.commentLabel.textColor = .black
-        cell.backgroundColor = .clear
+        cell.timeLabel.text         = date
+        cell.dislikeLabel.text      = "\(dislikeCount)"
+        cell.likeLabel.text         = "\(likeCount)"
+        cell.backgroundColor        = .clear
+        
+        cell.dislikeButton.layer.cornerRadius   = cell.dislikeButton.frame.size.width / 2
+        cell.likeButton.layer.cornerRadius      = cell.likeButton.frame.size.width / 2
+        cell.dislikeButton.clipsToBounds           = true
+        cell.likeButton.clipsToBounds           = true
+        
+        cell.dislikeButton.tag = indexPath.row
+        cell.dislikeButton.addTarget(self, action: #selector(like), for: .touchUpInside)
+        
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(dislike), for: .touchUpInside)
         
         return cell
+    }
+    
+    @objc func like(sender: UIButton){
+        print(sender.tag)
+    }
+    
+    @objc func dislike(sender: UIButton){
+        print(sender.tag)
     }
 
 }

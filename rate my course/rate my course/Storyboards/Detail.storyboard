@@ -28,15 +28,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="98" id="azv-S7-eme" customClass="CommentCell" customModule="rate_my_course" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="98"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="113" id="azv-S7-eme" customClass="CommentCell" customModule="rate_my_course" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="azv-S7-eme" id="2xi-kN-1Fe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="97.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uso-jC-1kU">
-                                                    <rect key="frame" x="8" y="11" width="360" height="82"/>
+                                                    <rect key="frame" x="8" y="11" width="360" height="97"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOy-gL-Lf3">
                                                             <rect key="frame" x="12" y="7" width="177" height="17"/>
@@ -45,21 +45,74 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nre-ic-C0z">
-                                                            <rect key="frame" x="12" y="40" width="340" height="17"/>
+                                                            <rect key="frame" x="12" y="44" width="340" height="17"/>
                                                             <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yU4-J9-EZc">
+                                                            <rect key="frame" x="12" y="27" width="104" height="13"/>
+                                                            <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azj-HJ-8HH">
+                                                            <rect key="frame" x="227" y="67" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="Azj-HJ-8HH" secondAttribute="height" multiplier="1:1" id="rVt-tq-3XK"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="like"/>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cD9-pV-2zR">
+                                                            <rect key="frame" x="256" y="73" width="33" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="cD9-pV-2zR" secondAttribute="height" multiplier="11:4" id="UQ3-oZ-sUU"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbZ-LK-fXU">
+                                                            <rect key="frame" x="297" y="67" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="nbZ-LK-fXU" secondAttribute="height" multiplier="1:1" id="HeZ-o5-SgK"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="dislike"/>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVj-uL-19F">
+                                                            <rect key="frame" x="327" y="73" width="33" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="rVj-uL-19F" secondAttribute="height" multiplier="11:4" id="2rO-hb-yoB"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="nre-ic-C0z" secondAttribute="bottom" constant="25" id="Qxr-Vl-2x1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="nre-ic-C0z" secondAttribute="trailing" constant="8" id="dPs-7A-4F4"/>
-                                                        <constraint firstItem="eOy-gL-Lf3" firstAttribute="top" secondItem="uso-jC-1kU" secondAttribute="top" constant="7" id="jaE-gr-PgM"/>
-                                                        <constraint firstItem="nre-ic-C0z" firstAttribute="top" secondItem="eOy-gL-Lf3" secondAttribute="bottom" constant="16" id="qbU-te-zyi"/>
-                                                        <constraint firstItem="eOy-gL-Lf3" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="sqe-Ds-00T"/>
-                                                        <constraint firstAttribute="trailing" secondItem="eOy-gL-Lf3" secondAttribute="trailing" constant="171" id="tgj-8C-BNe"/>
-                                                        <constraint firstItem="nre-ic-C0z" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="yUH-Lo-SVg"/>
+                                                        <constraint firstItem="nre-ic-C0z" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="1qm-ix-uab"/>
+                                                        <constraint firstItem="nre-ic-C0z" firstAttribute="top" secondItem="yU4-J9-EZc" secondAttribute="bottom" constant="4" id="3rv-vO-o85"/>
+                                                        <constraint firstItem="eOy-gL-Lf3" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="5sS-L4-MQ1"/>
+                                                        <constraint firstItem="nbZ-LK-fXU" firstAttribute="leading" secondItem="cD9-pV-2zR" secondAttribute="trailing" constant="8" id="609-g7-OkW"/>
+                                                        <constraint firstItem="yU4-J9-EZc" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="8ll-ZV-CUR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Azj-HJ-8HH" secondAttribute="bottom" constant="5" id="AN4-dS-8mD"/>
+                                                        <constraint firstAttribute="bottom" secondItem="cD9-pV-2zR" secondAttribute="bottom" constant="12" id="DVt-3J-Ycq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="nre-ic-C0z" secondAttribute="trailing" constant="8" id="HC4-1M-34i"/>
+                                                        <constraint firstAttribute="trailing" secondItem="yU4-J9-EZc" secondAttribute="trailing" constant="244" id="He8-eN-c6f"/>
+                                                        <constraint firstItem="rVj-uL-19F" firstAttribute="top" secondItem="nre-ic-C0z" secondAttribute="bottom" constant="12" id="Hv4-If-AiR"/>
+                                                        <constraint firstItem="cD9-pV-2zR" firstAttribute="leading" secondItem="Azj-HJ-8HH" secondAttribute="trailing" constant="4" id="I10-7o-okB"/>
+                                                        <constraint firstItem="rVj-uL-19F" firstAttribute="leading" secondItem="nbZ-LK-fXU" secondAttribute="trailing" constant="5" id="UaK-Aa-P0O"/>
+                                                        <constraint firstAttribute="bottom" secondItem="nre-ic-C0z" secondAttribute="bottom" constant="36" id="V9I-Ca-Pnf"/>
+                                                        <constraint firstItem="Azj-HJ-8HH" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="227" id="ZNf-0N-64m"/>
+                                                        <constraint firstItem="yU4-J9-EZc" firstAttribute="top" secondItem="eOy-gL-Lf3" secondAttribute="bottom" constant="3" id="bcM-gN-ttK"/>
+                                                        <constraint firstItem="Azj-HJ-8HH" firstAttribute="top" secondItem="nre-ic-C0z" secondAttribute="bottom" constant="6" id="bmi-Jo-WsD"/>
+                                                        <constraint firstAttribute="bottom" secondItem="rVj-uL-19F" secondAttribute="bottom" constant="12" id="fue-4y-M5V"/>
+                                                        <constraint firstItem="eOy-gL-Lf3" firstAttribute="top" secondItem="uso-jC-1kU" secondAttribute="top" constant="7" id="ge4-G5-jnj"/>
+                                                        <constraint firstAttribute="trailing" secondItem="eOy-gL-Lf3" secondAttribute="trailing" constant="171" id="rSa-z5-rgh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="nbZ-LK-fXU" secondAttribute="bottom" constant="5" id="tCk-kE-qgV"/>
+                                                        <constraint firstItem="cD9-pV-2zR" firstAttribute="top" secondItem="nre-ic-C0z" secondAttribute="bottom" constant="12" id="zVM-Lg-Exd"/>
+                                                        <constraint firstItem="nbZ-LK-fXU" firstAttribute="top" secondItem="nre-ic-C0z" secondAttribute="bottom" constant="6" id="zqt-T7-nRs"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -77,6 +130,11 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentLabel" destination="nre-ic-C0z" id="fH7-Z4-mvb"/>
+                                            <outlet property="dislikeButton" destination="nbZ-LK-fXU" id="vuA-Xq-5hI"/>
+                                            <outlet property="dislikeLabel" destination="rVj-uL-19F" id="V8M-hd-Dki"/>
+                                            <outlet property="likeButton" destination="Azj-HJ-8HH" id="O7T-yX-nab"/>
+                                            <outlet property="likeLabel" destination="cD9-pV-2zR" id="RvU-uC-tJ6"/>
+                                            <outlet property="timeLabel" destination="yU4-J9-EZc" id="z69-By-HkA"/>
                                             <outlet property="usernameLabel" destination="eOy-gL-Lf3" id="Fsn-Wa-yFw"/>
                                         </connections>
                                     </tableViewCell>
@@ -163,4 +221,8 @@
             <point key="canvasLocation" x="5749.6000000000004" y="-281.10944527736132"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dislike" width="465" height="465"/>
+        <image name="like" width="465" height="465"/>
+    </resources>
 </document>

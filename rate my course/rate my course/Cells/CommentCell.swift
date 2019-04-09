@@ -10,8 +10,13 @@ import UIKit
 
 class CommentCell: UITableViewCell {
 
-    @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var commentLabel     :   UILabel!
+    @IBOutlet weak var usernameLabel    :   UILabel!
+    @IBOutlet weak var timeLabel        :   UILabel!
+    @IBOutlet weak var dislikeLabel     :   UILabel!
+    @IBOutlet weak var likeLabel        :   UILabel!
+    @IBOutlet weak var likeButton       :   UIButton!
+    @IBOutlet weak var dislikeButton    :   UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +28,5 @@ class CommentCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
