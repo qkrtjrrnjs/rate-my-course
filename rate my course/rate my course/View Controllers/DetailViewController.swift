@@ -17,6 +17,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var commentTableView: UITableView!
     
     var comments = [[String: Any]]()
+    var commentIds = [String]()
     
     var emptyAnimation: LOTAnimationView!
 
@@ -50,7 +51,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
             if let data = snapshot.value as? [String: Any]{
-                //print(snapshot.key)
+                self.commentIds.append(snapshot.key)
                 //don't add existing data
                 var exists = false
                 for comment in self.comments{
@@ -58,19 +59,17 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         exists = true
                     }
                 }
-                
                 if(!exists){
                     self.comments.append(data)
                 }
                 self.commentTableView.reloadData()
             }
         })
-        
         self.view.addSubview(emptyAnimation)
         emptyAnimation.play()
         
     }
-
+    
     @objc func comment(){
         self.performSegue(withIdentifier: "detailToComment", sender: nil)
     }
@@ -105,20 +104,37 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.likeButton.clipsToBounds           = true
         
         cell.dislikeButton.tag = indexPath.row
-        cell.dislikeButton.addTarget(self, action: #selector(like), for: .touchUpInside)
+        cell.dislikeButton.addTarget(self, action: #selector(dislike), for: .touchUpInside)
         
         cell.likeButton.tag = indexPath.row
-        cell.likeButton.addTarget(self, action: #selector(dislike), for: .touchUpInside)
+        cell.likeButton.addTarget(self, action: #selector(like), for: .touchUpInside)
         
         return cell
     }
     
     @objc func like(sender: UIButton){
-        print(sender.tag)
+        refs.databaseComments.child("\(global.classNumber as String)").child(commentIds[sender.tag]).child("like").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
+            var currentCount = currentData.value as? Int ?? 0
+            currentCount += 1
+            currentData.value = currentCount
+            
+            return TransactionResult.success(withValue: currentData)
+        }
+        comments[sender.tag]["like"] = comments[sender.tag]["like"] as! Int + 1
+        self.commentTableView.reloadData()
     }
     
     @objc func dislike(sender: UIButton){
-        print(sender.tag)
+        refs.databaseComments.child("\(global.classNumber as String)").child(commentIds[sender.tag]).child("dislike").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
+            var currentCount = currentData.value as? Int ?? 0
+            currentCount += 1
+            currentData.value = currentCount
+            
+            return TransactionResult.success(withValue: currentData)
+        }
+        
+        comments[sender.tag]["dislike"] = comments[sender.tag]["dislike"] as! Int + 1
+        self.commentTableView.reloadData()
     }
 
 }
