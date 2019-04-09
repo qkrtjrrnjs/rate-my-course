@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import Firebase
+import Lottie
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,6 +17,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var commentTableView: UITableView!
     
     var comments = [[String: Any]]()
+    
+    var emptyAnimation: LOTAnimationView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,15 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         commentTableView.delegate           = self
         commentTableView.dataSource         = self
         commentTableView.separatorColor     = .clear
+        
+        //animation customization
+        emptyAnimation                     = LOTAnimationView(name: "empty")
+        emptyAnimation.animationSpeed      = 0.7
+        emptyAnimation.loopAnimation       = true
+        emptyAnimation.frame.size.height   = 250
+        emptyAnimation.frame.size.width    = 250
+        emptyAnimation.center.x            = self.view.center.x
+        emptyAnimation.center.y            = self.view.center.y * 1.37
 
         //adding comment bar button
         self.navigationItem.rightBarButtonItem      = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
@@ -54,6 +66,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         })
         
+        self.view.addSubview(emptyAnimation)
+        emptyAnimation.play()
+        
     }
 
     @objc func comment(){
@@ -61,6 +76,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if comments.count != 0{
+            self.emptyAnimation.removeFromSuperview()
+        }
         return comments.count
     }
     

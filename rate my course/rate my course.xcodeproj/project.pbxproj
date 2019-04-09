@@ -18,6 +18,7 @@
 		832B14FB2249DAF300F25C7B /* Bavro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */; };
 		832B14FD2249DB0000F25C7B /* KEL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 832B14FC2249DB0000F25C7B /* KEL.ttf */; };
 		834EF7A8225BC6610040C841 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834EF7A7225BC6610040C841 /* global.swift */; };
+		834EF7AC225D0BCE0040C841 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 834EF7AB225D0BCE0040C841 /* empty.json */; };
 		8353D92D2252865E006E7AA4 /* pt-sans-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D9242252865D006E7AA4 /* pt-sans-regular.ttf */; };
 		8353D92F2252865E006E7AA4 /* pt-sans-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D9262252865D006E7AA4 /* pt-sans-bold.ttf */; };
 		8353D9322252865E006E7AA4 /* pt-sans-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8353D9292252865D006E7AA4 /* pt-sans-medium.ttf */; };
@@ -79,6 +80,7 @@
 		832B14ED2249DAF300F25C7B /* Bavro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bavro-Regular.otf"; sourceTree = "<group>"; };
 		832B14FC2249DB0000F25C7B /* KEL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KEL.ttf; sourceTree = "<group>"; };
 		834EF7A7225BC6610040C841 /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
+		834EF7AB225D0BCE0040C841 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		8353D9242252865D006E7AA4 /* pt-sans-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-regular.ttf"; sourceTree = "<group>"; };
 		8353D9262252865D006E7AA4 /* pt-sans-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-bold.ttf"; sourceTree = "<group>"; };
 		8353D9292252865D006E7AA4 /* pt-sans-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pt-sans-medium.ttf"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				83BA4D41224C239200D75174 /* splash.json */,
+				834EF7AB225D0BCE0040C841 /* empty.json */,
 			);
 			path = "Lottie Animations";
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				8353D92D2252865E006E7AA4 /* pt-sans-regular.ttf in Resources */,
 				8353D93E22528875006E7AA4 /* Kirvy-Regular.otf in Resources */,
 				83D0461E224E862D002B8701 /* Detail.storyboard in Resources */,
+				834EF7AC225D0BCE0040C841 /* empty.json in Resources */,
 				83E147A22242FDDE00C40066 /* Assets.xcassets in Resources */,
 				8353D92F2252865E006E7AA4 /* pt-sans-bold.ttf in Resources */,
 				832B14D72249918D00F25C7B /* Stream.storyboard in Resources */,
