@@ -37,8 +37,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidAppear(_ animated: Bool) {
         
         refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
-            if let data = snapshot.value as? [String: String]{
-                
+            if let data = snapshot.value as? [String: Any]{
+                //print(snapshot.key)
                 //don't add existing data
                 var exists = false
                 for comment in self.comments{
@@ -46,6 +46,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         exists = true
                     }
                 }
+                
                 if(!exists){
                     self.comments.append(data)
                 }
