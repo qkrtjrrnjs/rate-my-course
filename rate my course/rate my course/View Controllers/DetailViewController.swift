@@ -48,6 +48,19 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //display empty animation if there are no comments
+        refs.databaseComments.observeSingleEvent(of: .value, with: { (snapshot) in
+            if !snapshot.hasChild(global.classNumber as String){
+                self.view.addSubview(self.emptyAnimation)
+                self.emptyAnimation.play()
+            }
+            else{
+                self.emptyAnimation.removeFromSuperview()
+            }
+        })
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         
         refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
@@ -67,14 +80,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         })
         
-        
-        //display empty animation if there are no comments
-        refs.databaseComments.observeSingleEvent(of: .value, with: { (snapshot) in
-            if !snapshot.hasChild(global.classNumber as String){
-                self.view.addSubview(self.emptyAnimation)
-                self.emptyAnimation.play()
-            }
-        })
     }
     
     @objc func comment(){
