@@ -10,6 +10,8 @@ import UIKit
 import FirebaseAuth
 import ElasticTransition
 import MBProgressHUD
+import FirebaseDatabase
+import Firebase
 
 class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -33,7 +35,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         majorTableView.backgroundColor = UIColor(hexString: "#d5d5d5")
         majorTableView.separatorColor = .clear
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-
+   
         loadData()
     }
     

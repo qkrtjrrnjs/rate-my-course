@@ -11,7 +11,8 @@ import FirebaseDatabase
 
 struct refs
 {
-    static let databaseRoot = Database.database().reference()
-    static let databaseComments = databaseRoot.child("Comments")
-    static let databaseStatistics = databaseComments.child("Statistics")
+    static let databaseRoot         = Database.database().reference()
+    static let databaseComments     = databaseRoot.child("Comments")
+    static let databaseStatistics   = databaseRoot.child("Statistics")
+    static let databaseUsers        = databaseRoot.child("Users")
 }
