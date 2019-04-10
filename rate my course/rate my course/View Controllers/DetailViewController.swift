@@ -66,9 +66,15 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.commentTableView.reloadData()
             }
         })
-        self.view.addSubview(emptyAnimation)
-        emptyAnimation.play()
         
+        
+        //display empty animation if there are no comments
+        refs.databaseComments.observeSingleEvent(of: .value, with: { (snapshot) in
+            if !snapshot.hasChild(global.classNumber as String){
+                self.view.addSubview(self.emptyAnimation)
+                self.emptyAnimation.play()
+            }
+        })
     }
     
     @objc func comment(){
@@ -76,9 +82,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if comments.count != 0{
-            self.emptyAnimation.removeFromSuperview()
-        }
         return comments.count
     }
     
