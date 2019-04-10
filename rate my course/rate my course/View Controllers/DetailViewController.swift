@@ -128,59 +128,23 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     if !snapshot.hasChild(self.comments[sender.tag]["id"] as! String){
                         refs.databaseUsers.child("\(newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
                         
-                        //increment dislike count
-                        refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).child("like").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
-                            var currentCount = currentData.value as? Int ?? 0
-                            currentCount += 1
-                            currentData.value = currentCount
-                            
-                            return TransactionResult.success(withValue: currentData)
-                        }
-                        self.comments[sender.tag]["like"] = self.comments[sender.tag]["like"] as! Int + 1
-                        self.commentTableView.reloadData()
+                        self.incrementLike(senderTag: sender.tag)
                     }
                     else{
                         refs.databaseUsers.child("\(newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
                         
-                        //decrement dislike count
-                        refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).child("like").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
-                            var currentCount = currentData.value as? Int ?? 0
-                            currentCount -= 1
-                            currentData.value = currentCount
-                            
-                            return TransactionResult.success(withValue: currentData)
-                        }
-                        self.comments[sender.tag]["like"] = self.comments[sender.tag]["like"] as! Int - 1
-                        self.commentTableView.reloadData()
+                        self.decrementLike(senderTag: sender.tag)
                     }
                 })
             }
             else{
                 refs.databaseUsers.child("\(newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
                 
-                //decrement dislike count
-                refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).child("dislike").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
-                    var currentCount = currentData.value as? Int ?? 0
-                    currentCount -= 1
-                    currentData.value = currentCount
-                    
-                    return TransactionResult.success(withValue: currentData)
-                }
-                
-                self.comments[sender.tag]["dislike"] = self.comments[sender.tag]["dislike"] as! Int - 1
+                self.decrementDislike(senderTag: sender.tag)
                 
                 refs.databaseUsers.child("\(newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
                 
-                //increment dislike count
-                refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).child("like").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
-                    var currentCount = currentData.value as? Int ?? 0
-                    currentCount += 1
-                    currentData.value = currentCount
-                    
-                    return TransactionResult.success(withValue: currentData)
-                }
-                self.comments[sender.tag]["like"] = self.comments[sender.tag]["like"] as! Int + 1
-                self.commentTableView.reloadData()
+                self.incrementLike(senderTag: sender.tag)
             }
         })
     }
@@ -199,64 +163,78 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     if !snapshot.hasChild(self.comments[sender.tag]["id"] as! String){
                         refs.databaseUsers.child("\(newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
                         
-                        //increment dislike count
-                        refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).child("dislike").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
-                            var currentCount = currentData.value as? Int ?? 0
-                            currentCount += 1
-                            currentData.value = currentCount
-                            
-                            return TransactionResult.success(withValue: currentData)
-                        }
-                        
-                        self.comments[sender.tag]["dislike"] = self.comments[sender.tag]["dislike"] as! Int + 1
-                        self.commentTableView.reloadData()
+                        self.incrementDislike(senderTag: sender.tag)
                     }
                     else{
                         refs.databaseUsers.child("\(newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
                         
-                        //decrement dislike count
-                        refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).child("dislike").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
-                            var currentCount = currentData.value as? Int ?? 0
-                            currentCount -= 1
-                            currentData.value = currentCount
-                            
-                            return TransactionResult.success(withValue: currentData)
-                        }
-                        
-                        self.comments[sender.tag]["dislike"] = self.comments[sender.tag]["dislike"] as! Int - 1
-                        self.commentTableView.reloadData()
+                        self.decrementDislike(senderTag: sender.tag)
                     }
                 })
             }
             else{
                 refs.databaseUsers.child("\(newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
                 
-                //decrement like count
-                refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).child("like").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
-                    var currentCount = currentData.value as? Int ?? 0
-                    currentCount -= 1
-                    currentData.value = currentCount
-                    
-                    return TransactionResult.success(withValue: currentData)
-                }
-                self.comments[sender.tag]["like"] = self.comments[sender.tag]["like"] as! Int - 1
-                
+                self.decrementLike(senderTag: sender.tag)
                 
                 refs.databaseUsers.child("\(newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
                 
-                //increment dislike count
-                refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).child("dislike").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
-                    var currentCount = currentData.value as? Int ?? 0
-                    currentCount += 1
-                    currentData.value = currentCount
-                    
-                    return TransactionResult.success(withValue: currentData)
-                }
-                
-                self.comments[sender.tag]["dislike"] = self.comments[sender.tag]["dislike"] as! Int + 1
-                self.commentTableView.reloadData()
+                self.incrementDislike(senderTag: sender.tag)
             }
         })
+    }
+    
+    func incrementDislike(senderTag: Int){
+        //increment dislike count
+        refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[senderTag]).child("dislike").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
+            var currentCount = currentData.value as? Int ?? 0
+            currentCount += 1
+            currentData.value = currentCount
+            
+            return TransactionResult.success(withValue: currentData)
+        }
+        self.comments[senderTag]["dislike"] = self.comments[senderTag]["dislike"] as! Int + 1
+        self.commentTableView.reloadData()
+    }
+    
+    func decrementDislike(senderTag: Int){
+        //decrement dislike count
+        refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[senderTag]).child("dislike").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
+            var currentCount = currentData.value as? Int ?? 0
+            currentCount -= 1
+            currentData.value = currentCount
+            
+            return TransactionResult.success(withValue: currentData)
+        }
+        
+        self.comments[senderTag]["dislike"] = self.comments[senderTag]["dislike"] as! Int - 1
+        self.commentTableView.reloadData()
+    }
+    
+    func incrementLike(senderTag: Int){
+        //increment like count
+        refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[senderTag]).child("like").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
+            var currentCount = currentData.value as? Int ?? 0
+            currentCount += 1
+            currentData.value = currentCount
+            
+            return TransactionResult.success(withValue: currentData)
+        }
+        self.comments[senderTag]["like"] = self.comments[senderTag]["like"] as! Int + 1
+        self.commentTableView.reloadData()
+    }
+    
+    func decrementLike(senderTag: Int){
+        //decrement like count
+        refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[senderTag]).child("like").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
+            var currentCount = currentData.value as? Int ?? 0
+            currentCount -= 1
+            currentData.value = currentCount
+            
+            return TransactionResult.success(withValue: currentData)
+        }
+        self.comments[senderTag]["like"] = self.comments[senderTag]["like"] as! Int - 1
+        self.commentTableView.reloadData()
     }
 
 }
