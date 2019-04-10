@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewDelegate{
+class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewDelegate, SnappingSliderDelegate{
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var pagingScrollView: UIScrollView!
@@ -72,7 +72,37 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         slide1.backgroundColor = UIColor(hexString: "#d5d5d5")
         slide2.backgroundColor = UIColor(hexString: "#d5d5d5")
         
-        //adding submit button to slide 1
+        //add backdrop view
+        let slide1View = UIView(frame: CGRect.zero)
+        slide1View.backgroundColor        = .white
+        slide1View.frame.size.height      = slide2.frame.size.height / 1.5
+        slide1View.frame.size.width       = slide2.frame.size.width / 1.1
+        slide1View.center.x               = slide2.center.x
+        slide1View.center.y               = slide2.center.y / 1.2
+        slide1View.layer.cornerRadius     = 10
+        slide1.addSubview(slide1View)
+        
+        //quality slider
+        let qualitySlider = SnappingSlider(frame: CGRect.zero, title: "quality")
+        qualitySlider.frame.size.height     = 55
+        qualitySlider.frame.size.width      = 200
+        qualitySlider.center.x              = slide1.center.x
+        qualitySlider.center.y              = slide1.center.y / 1.5
+        qualitySlider.delegate              = self
+        
+        slide1.addSubview(qualitySlider)
+        
+        //difficulty slider
+        let difficultySlider = SnappingSlider(frame: CGRect.zero, title: "difficulty")
+        difficultySlider.frame.size.height      = 55
+        difficultySlider.frame.size.width       = 200
+        difficultySlider.center.x               = slide1.center.x
+        difficultySlider.center.y               = slide1.center.y
+        difficultySlider.delegate               = self
+        
+        slide1.addSubview(difficultySlider)
+        
+        //adding submit button to slide 2
         let submitButton = UIButton(frame: CGRect.zero)
         submitButton.frame.size.height  = 50
         submitButton.frame.size.width   = 150
@@ -86,6 +116,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
         slide2.addSubview(submitButton)
         
+        //add textview to slide 2
         textView.frame.size.height      = slide2.frame.size.height / 1.5
         textView.frame.size.width       = slide2.frame.size.width / 1.1
         textView.center.x               = slide2.center.x
@@ -126,6 +157,13 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         return true
     }
     
+    func snappingSliderDidIncrementValue(_ slider: SnappingSlider) {
+        
+    }
+    
+    func snappingSliderDidDecrementValue(_ slider: SnappingSlider) {
+        
+    }
 
     /*
     // MARK: - Navigation
