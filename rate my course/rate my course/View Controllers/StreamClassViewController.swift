@@ -21,6 +21,7 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
     var filteredClassNumbers    = [String]()
     let transition              = ElasticTransition()
     
+    var emptyAnimation:LOTAnimationView!
     var majorAbbreviation: String!
 
     override func viewDidLoad() {
@@ -80,6 +81,19 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
                             removeCount += 1
                         }
                     }
+                }
+                else{
+                    //animation customization
+                    self.emptyAnimation                     = LOTAnimationView(name: "empty")
+                    self.emptyAnimation.animationSpeed      = 0.5
+                    self.emptyAnimation.loopAnimation       = true
+                    self.emptyAnimation.frame.size.height   = 250
+                    self.emptyAnimation.frame.size.width    = 250
+                    self.emptyAnimation.center.x            = self.view.center.x
+                    self.emptyAnimation.center.y            = self.view.center.y
+                    
+                    self.view.addSubview(self.emptyAnimation)
+                    self.emptyAnimation.play()
                 }
                 
                 for cls in self.classes{
