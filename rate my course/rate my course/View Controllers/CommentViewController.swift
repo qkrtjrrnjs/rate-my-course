@@ -71,7 +71,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         
         if !textView.text.isEmpty{
             //writing data to database
-            let comment_data = ["user": username, "comment": textView.text, "like": 0, "dislike": 0, "date": formattedDate, "id": uniqueId] as [String : Any]
+            let comment_data = ["user": username, "comment": textView.text!, "like": 0, "dislike": 0, "date": formattedDate, "id": uniqueId] as [String : Any]
             
             refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
         }

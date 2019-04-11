@@ -356,6 +356,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.commentTableView.reloadData()
     }
     
+    func sortAndPopulate(){
+        let combined = zip(comments, commentIds).sorted {($0.0["like"] as! Int) > ($1.0["like"] as! Int)}
+        comments = combined.map {$0.0}
+        commentIds = combined.map {$0.1}
+    }
+    
     //tableView stubs
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
@@ -364,6 +370,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
         
+        sortAndPopulate()
+
         let comment_data        = comments[indexPath.row]
         let text                = comment_data["comment"] as! String
         let username            = comment_data["user"] as! String
