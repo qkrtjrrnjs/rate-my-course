@@ -13,7 +13,6 @@ import Lottie
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var classNumberLabel: UILabel!
     @IBOutlet weak var commentTableView: UITableView!
     
     var comments = [[String: Any]]()
@@ -41,11 +40,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //adding comment bar button
         self.navigationItem.rightBarButtonItem      = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
         
-        classNumberLabel.text                       = global.classNumber
         commentTableView.backgroundColor            = UIColor(hexString: "#d5d5d5")
         self.view.backgroundColor                   = UIColor(hexString: "#d5d5d5")
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
+        self.navigationItem.title = global.classNumber as String
     }
     
     override func viewWillAppear(_ animated: Bool) {

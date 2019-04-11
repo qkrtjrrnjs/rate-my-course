@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
   - ElasticTransition (3.1.1):
     - MotionAnimation (~> 0.1.2)
   - Firebase/Auth (5.15.0):
@@ -73,8 +76,10 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - SkyFloatingLabelTextField (3.6.0)
+  - TKSwitcherCollection (1.4.2)
 
 DEPENDENCIES:
+  - Charts
   - ElasticTransition
   - Firebase/Auth
   - Firebase/Core
@@ -84,9 +89,11 @@ DEPENDENCIES:
   - MBProgressHUD
   - MotionAnimation
   - SkyFloatingLabelTextField (~> 3.0)
+  - TKSwitcherCollection
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Charts
     - ElasticTransition
     - Firebase
     - FirebaseAnalytics
@@ -105,8 +112,10 @@ SPEC REPOS:
     - MotionAnimation
     - nanopb
     - SkyFloatingLabelTextField
+    - TKSwitcherCollection
 
 SPEC CHECKSUMS:
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   ElasticTransition: 6c4e4739e32480c864217db912100f3657f6447a
   Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
   FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
@@ -125,7 +134,8 @@ SPEC CHECKSUMS:
   MotionAnimation: ff5c8fc2e429d7e10d46ae86819ba9759846c343
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
+  TKSwitcherCollection: c0a51de35317a9de292e80b85fa275299607da6b
 
-PODFILE CHECKSUM: 720ae86f7c83ce3c843295be25cabde4f830ff97
+PODFILE CHECKSUM: 51e14a5c4e58d516476adc87cefb6a87a72b1d91
 
 COCOAPODS: 1.5.3

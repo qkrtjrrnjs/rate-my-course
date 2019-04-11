@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import TKSwitcherCollection
 
 class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewDelegate, SnappingSliderDelegate{
     
@@ -17,7 +18,14 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
 
     var slides:[Slide] = []
     
-    let textView = UITextView(frame: CGRect.zero)
+    let textView            = UITextView(frame: CGRect.zero)
+    let qualitySlider       = SnappingSlider(frame: CGRect.zero, title: "3")
+    let difficultySlider    = SnappingSlider(frame: CGRect.zero, title: "3")
+    let usefulnessSwitch    = TKSmileSwitch(frame: CGRect.zero)
+    let funSwitch           = TKSmileSwitch(frame: CGRect.zero)
+
+    var usefulness          = "yes"
+    var fun                 = "yes"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +55,6 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         }
         
         //get post date
-        
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "M/d/yyyy"
@@ -60,8 +67,11 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             let comment_data = ["user": username, "comment": textView.text, "like": 0, "dislike": 0, "date": formattedDate, "id": uniqueId] as [String : Any]
             
             refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
-            
         }
+        
+        //write statistics to database
+        let statistics_data = ["quality": qualitySlider.sliderTitleText, "difficulty": difficultySlider.sliderTitleText, "usefulness": usefulness, "fun": fun] as [String : Any]
+        refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
     }
     
     func createSlides() -> [Slide] {
@@ -82,25 +92,97 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         slide1View.layer.cornerRadius     = 10
         slide1.addSubview(slide1View)
         
+        //label1
+        let question1 = UILabel(frame: CGRect.zero)
+        question1.text = "Question 1. Rate the overall quality of the course on a scale from 0 to 5 (Swipe)"
+        question1.frame.size.height     = 40
+        question1.frame.size.width      = 300
+        question1.numberOfLines         = 0
+        question1.center.x              = slide1.center.x
+        question1.center.y              = slide1.center.y / 3.5
+        question1.textColor             = UIColor(hexString: "#838383")
+        question1.font = UIFont(name: "Noway", size: 15)
+        
+        slide1.addSubview(question1)
+        
+        //label2
+        let question2 = UILabel(frame: CGRect.zero)
+        question2.text = "Question 2. Rate the overall difficulty of the course on a scale from 0 to 5 (Swipe)"
+        question2.frame.size.height     = 40
+        question2.frame.size.width      = 300
+        question2.numberOfLines         = 0
+        question2.center.x              = slide1.center.x
+        question2.center.y              = slide1.center.y / 1.6
+        question2.textColor             = UIColor(hexString: "#838383")
+        question2.font = UIFont(name: "Noway", size: 15)
+        
+        slide1.addSubview(question2)
+        
+        //label3
+        let question3 = UILabel(frame: CGRect.zero)
+        question3.text = "Question 3. Was this course useful? (tap)"
+        question3.frame.size.height     = 40
+        question3.frame.size.width      = 300
+        question3.numberOfLines         = 0
+        question3.center.x              = slide1.center.x
+        question3.center.y              = slide1.center.y / 1.05
+        question3.textColor             = UIColor(hexString: "#838383")
+        question3.font = UIFont(name: "Noway", size: 15)
+        
+        slide1.addSubview(question3)
+
+        //label4
+        let question4 = UILabel(frame: CGRect.zero)
+        question4.text = "Question 4. Was this course fun? (tap)"
+        question4.frame.size.height     = 40
+        question4.frame.size.width      = 300
+        question4.numberOfLines         = 0
+        question4.center.x              = slide1.center.x
+        question4.center.y              = slide1.center.y * 1.25
+        question4.textColor             = UIColor(hexString: "#838383")
+        question4.font = UIFont(name: "Noway", size: 15)
+        
+        slide1.addSubview(question4)
+        
         //quality slider
-        let qualitySlider = SnappingSlider(frame: CGRect.zero, title: "quality")
         qualitySlider.frame.size.height     = 55
-        qualitySlider.frame.size.width      = 200
+        qualitySlider.frame.size.width      = 150
         qualitySlider.center.x              = slide1.center.x
-        qualitySlider.center.y              = slide1.center.y / 1.5
+        qualitySlider.center.y              = slide1.center.y / 2.2
         qualitySlider.delegate              = self
+        qualitySlider.tag                   = 0
         
         slide1.addSubview(qualitySlider)
         
         //difficulty slider
-        let difficultySlider = SnappingSlider(frame: CGRect.zero, title: "difficulty")
         difficultySlider.frame.size.height      = 55
-        difficultySlider.frame.size.width       = 200
+        difficultySlider.frame.size.width       = 150
         difficultySlider.center.x               = slide1.center.x
-        difficultySlider.center.y               = slide1.center.y
+        difficultySlider.center.y               = slide1.center.y / 1.28
         difficultySlider.delegate               = self
+        qualitySlider.tag                       = 1
         
         slide1.addSubview(difficultySlider)
+        
+        //usefulness switch
+        usefulnessSwitch.frame.size.height      = 55
+        usefulnessSwitch.frame.size.width       = 150
+        usefulnessSwitch.center.x               = slide1.center.x
+        usefulnessSwitch.center.y               = slide1.center.y * 1.1
+        usefulnessSwitch.backgroundColor        = .clear
+        usefulnessSwitch.addTarget(self, action: #selector(usefulnessSwitchChanged), for: UIControl.Event.valueChanged)
+
+        slide1.addSubview(usefulnessSwitch)
+        
+        //fun switch
+        funSwitch.frame.size.height      = 55
+        funSwitch.frame.size.width       = 150
+        funSwitch.center.x               = slide1.center.x
+        funSwitch.center.y               = slide1.center.y * 1.39
+        funSwitch.backgroundColor        = .clear
+        funSwitch.addTarget(self, action: #selector(funSwitchChanged), for: UIControl.Event.valueChanged)
+
+        slide1.addSubview(funSwitch)
         
         //adding submit button to slide 2
         let submitButton = UIButton(frame: CGRect.zero)
@@ -133,7 +215,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
     }
     
     func setupSlideScrollView(slides : [Slide]) {
-        pagingScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 100)
+        pagingScrollView.frame = CGRect(x: view.center.x, y: view.center.y, width: view.frame.width, height: view.frame.height - 100)
         pagingScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height - 100)
         pagingScrollView.isPagingEnabled = true
         
@@ -157,14 +239,49 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         return true
     }
     
+    func incrementSlider(slider: SnappingSlider){
+        if slider.sliderTitleText != "5"{
+            slider.sliderTitleText = "\(Int(slider.sliderTitleText)! + 1)"
+        }
+    }
+    
+    func decrementSlider(slider: SnappingSlider){
+        if slider.sliderTitleText != "0"{
+            slider.sliderTitleText = "\(Int(slider.sliderTitleText)! - 1)"
+        }
+    }
+    
     func snappingSliderDidIncrementValue(_ slider: SnappingSlider) {
-        
+        if slider.tag == 0{
+            incrementSlider(slider: slider)
+        }else{
+            incrementSlider(slider: slider)
+        }
     }
     
     func snappingSliderDidDecrementValue(_ slider: SnappingSlider) {
-        
+        if slider.tag == 0{
+            decrementSlider(slider: slider)
+        }else{
+            decrementSlider(slider: slider)
+        }
+    }
+    
+    @objc func usefulnessSwitchChanged(){
+        if usefulness == "yes"{
+            usefulness = "no"
+        }else{
+            usefulness = "yes"
+        }
     }
 
+    @objc func funSwitchChanged(){
+        if fun == "yes"{
+            fun = "no"
+        }else{
+            fun = "yes"
+        }
+    }
     /*
     // MARK: - Navigation
 
