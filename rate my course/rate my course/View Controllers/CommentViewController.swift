@@ -88,8 +88,6 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
                 refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
             }
         })
-        
-        
     }
     
     func createSlides() -> [Slide] {
@@ -112,92 +110,34 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         
         //label1
         let question1 = UILabel(frame: CGRect.zero)
-        question1.text = "Question 1. Rate the overall quality of the course on a scale from 0 to 5 (Swipe)"
-        question1.frame.size.height     = 40
-        question1.frame.size.width      = 300
-        question1.numberOfLines         = 0
-        question1.center.x              = slide1.center.x
-        question1.center.y              = slide1.center.y / 3.5
-        question1.textColor             = UIColor(hexString: "#838383")
-        question1.font = UIFont(name: "Noway", size: 15)
-        
-        slide1.addSubview(question1)
+        labelCustomization(slide: slide1, question: question1, text: "Question 1. Rate the overall quality of the course on a scale from 0 to 5 (Swipe)", centerY: 3.5)
         
         //label2
         let question2 = UILabel(frame: CGRect.zero)
-        question2.text = "Question 2. Rate the overall difficulty of the course on a scale from 0 to 5 (Swipe)"
-        question2.frame.size.height     = 40
-        question2.frame.size.width      = 300
-        question2.numberOfLines         = 0
-        question2.center.x              = slide1.center.x
-        question2.center.y              = slide1.center.y / 1.6
-        question2.textColor             = UIColor(hexString: "#838383")
-        question2.font = UIFont(name: "Noway", size: 15)
-        
-        slide1.addSubview(question2)
+        labelCustomization(slide: slide1, question: question2, text: "Question 2. Rate the overall difficulty of the course on a scale from 0 to 5 (Swipe)", centerY: 1.6)
         
         //label3
         let question3 = UILabel(frame: CGRect.zero)
-        question3.text = "Question 3. Was this course useful? (tap)"
-        question3.frame.size.height     = 40
-        question3.frame.size.width      = 300
-        question3.numberOfLines         = 0
-        question3.center.x              = slide1.center.x
-        question3.center.y              = slide1.center.y / 1.05
-        question3.textColor             = UIColor(hexString: "#838383")
-        question3.font = UIFont(name: "Noway", size: 15)
+        labelCustomization(slide: slide1, question: question3, text: "Question 3. Was this course useful? (tap)", centerY: 1.05)
         
-        slide1.addSubview(question3)
-
         //label4
         let question4 = UILabel(frame: CGRect.zero)
-        question4.text = "Question 4. Was this course fun? (tap)"
-        question4.frame.size.height     = 40
-        question4.frame.size.width      = 300
-        question4.numberOfLines         = 0
-        question4.center.x              = slide1.center.x
-        question4.center.y              = slide1.center.y * 1.25
-        question4.textColor             = UIColor(hexString: "#838383")
-        question4.font = UIFont(name: "Noway", size: 15)
-        
-        slide1.addSubview(question4)
+        labelCustomization(slide: slide1, question: question4, text: "Question 4. Was this course fun? (tap)", centerY: 1.25)
         
         //quality slider
-        qualitySlider.frame.size.height     = 55
-        qualitySlider.frame.size.width      = 150
-        qualitySlider.center.x              = slide1.center.x
-        qualitySlider.center.y              = slide1.center.y / 2.2
-        qualitySlider.delegate              = self
-        qualitySlider.tag                   = 0
-        
-        slide1.addSubview(qualitySlider)
+        sliderCustomization(slide: slide1, slider: qualitySlider, centerY: 2.2)
         
         //difficulty slider
-        difficultySlider.frame.size.height      = 55
-        difficultySlider.frame.size.width       = 150
-        difficultySlider.center.x               = slide1.center.x
-        difficultySlider.center.y               = slide1.center.y / 1.28
-        difficultySlider.delegate               = self
-        qualitySlider.tag                       = 1
-        
-        slide1.addSubview(difficultySlider)
-        
+        sliderCustomization(slide: slide1, slider: difficultySlider, centerY: 1.28)
+
         //usefulness switch
-        usefulnessSwitch.frame.size.height      = 55
-        usefulnessSwitch.frame.size.width       = 150
-        usefulnessSwitch.center.x               = slide1.center.x
-        usefulnessSwitch.center.y               = slide1.center.y * 1.1
-        usefulnessSwitch.backgroundColor        = .clear
+        switchCustomization(slide: slide1, smileSwitch: usefulnessSwitch, centerY: 1.1)
         usefulnessSwitch.addTarget(self, action: #selector(usefulnessSwitchChanged), for: UIControl.Event.valueChanged)
 
         slide1.addSubview(usefulnessSwitch)
         
         //fun switch
-        funSwitch.frame.size.height      = 55
-        funSwitch.frame.size.width       = 150
-        funSwitch.center.x               = slide1.center.x
-        funSwitch.center.y               = slide1.center.y * 1.39
-        funSwitch.backgroundColor        = .clear
+        switchCustomization(slide: slide1, smileSwitch: funSwitch, centerY: 1.39)
         funSwitch.addTarget(self, action: #selector(funSwitchChanged), for: UIControl.Event.valueChanged)
 
         slide1.addSubview(funSwitch)
@@ -270,19 +210,11 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
     }
     
     func snappingSliderDidIncrementValue(_ slider: SnappingSlider) {
-        if slider.tag == 0{
-            incrementSlider(slider: slider)
-        }else{
-            incrementSlider(slider: slider)
-        }
+        incrementSlider(slider: slider)
     }
     
     func snappingSliderDidDecrementValue(_ slider: SnappingSlider) {
-        if slider.tag == 0{
-            decrementSlider(slider: slider)
-        }else{
-            decrementSlider(slider: slider)
-        }
+        decrementSlider(slider: slider)
     }
     
     @objc func usefulnessSwitchChanged(){
@@ -301,6 +233,41 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         }
     }
     
+    func labelCustomization(slide: Slide, question: UILabel, text: String, centerY: Double){
+        question.text = text
+        question.frame.size.height     = 40
+        question.frame.size.width      = 300
+        question.numberOfLines         = 0
+        question.center.x              = slide.center.x
+        
+        if text == "Question 4. Was this course fun? (tap)"{
+            question.center.y              = slide.center.y * CGFloat(centerY)
+        }
+        else{
+            question.center.y              = slide.center.y / CGFloat(centerY)
+        }
+        
+        question.textColor             = UIColor(hexString: "#838383")
+        question.font = UIFont(name: "Noway", size: 15)
+        slide.addSubview(question)
+    }
     
+    func sliderCustomization(slide: Slide, slider: SnappingSlider, centerY: Double){
+        slider.frame.size.height     = 55
+        slider.frame.size.width      = 150
+        slider.center.x              = slide.center.x
+        slider.center.y              = slide.center.y / CGFloat(centerY)
+        slider.delegate              = self
+        
+        slide.addSubview(slider)
+    }
+    
+    func switchCustomization(slide: Slide, smileSwitch: TKSmileSwitch, centerY: Double){
+        smileSwitch.frame.size.height      = 55
+        smileSwitch.frame.size.width       = 150
+        smileSwitch.center.x               = slide.center.x
+        smileSwitch.center.y               = slide.center.y * CGFloat(centerY)
+        smileSwitch.backgroundColor        = .clear
+    }
 
 }
