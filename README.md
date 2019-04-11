@@ -114,7 +114,7 @@ N/A
 <img src='https://i.imgur.com/s4V0Jf2.gif' title='Video Walkthrough' width='200' height='350' alt='Video Walkthrough' /><img src='https://i.imgur.com/Qzjg9rW.gif' title='Video Walkthrough' width='200' height='350' alt='Video Walkthrough' />
 
 ### updated walkthrough
-<img src='https://i.imgur.com/qHzaGxe.gif' title='Video Walkthrough' width='200' height='350' alt='Video Walkthrough' />
+<img src='/rate my course/rate my course.gif?raw=true' title='Video Walkthrough' width='200' height='350' alt='Video Walkthrough' />
 
 
 
