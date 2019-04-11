@@ -28,9 +28,9 @@
 
 @interface IQBarButtonItemConfiguration : NSObject
 
--(instancetype)initWithBarButtonSystemItem:(UIBarButtonSystemItem)barButtonSystemItem action:(nullable SEL)action;
--(instancetype)initWithImage:(nonnull UIImage*)image action:(nullable SEL)action;
--(instancetype)initWithTitle:(nonnull NSString*)title action:(nullable SEL)action;
+-(instancetype _Nonnull )initWithBarButtonSystemItem:(UIBarButtonSystemItem)barButtonSystemItem action:(nullable SEL)action;
+-(instancetype _Nonnull )initWithImage:(nonnull UIImage*)image action:(nullable SEL)action;
+-(instancetype _Nonnull )initWithTitle:(nonnull NSString*)title action:(nullable SEL)action;
 
 @property (readonly, nonatomic) UIBarButtonSystemItem barButtonSystemItem; //System Item to be used to instantiate bar button
 @property (readonly, nonatomic, nullable) UIImage *image;    //Image to show on bar button item if it's not a system item.
@@ -41,13 +41,13 @@
 
 @interface UIImage (IQKeyboardToolbarNextPreviousImage)
 
-+(UIImage*)keyboardPreviousiOS9Image;
-+(UIImage*)keyboardNextiOS9Image;
-+(UIImage*)keyboardPreviousiOS10Image;
-+(UIImage*)keyboardNextiOS10Image;
++(UIImage*_Nonnull)keyboardPreviousiOS9Image;
++(UIImage*_Nonnull)keyboardNextiOS9Image;
++(UIImage*_Nonnull)keyboardPreviousiOS10Image;
++(UIImage*_Nonnull)keyboardNextiOS10Image;
 
-+(UIImage*)keyboardPreviousImage;
-+(UIImage*)keyboardNextImage;
++(UIImage*_Nonnull)keyboardPreviousImage;
++(UIImage*_Nonnull)keyboardNextImage;
 
 @end
 
