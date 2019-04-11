@@ -77,9 +77,19 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
         }
         
-        //write statistics to database
-        let statistics_data = ["quality": Int(qualitySlider.sliderTitleText)!, "difficulty": Int(difficultySlider.sliderTitleText)!, "usefulness": usefulness, "fun": fun] as [String : Any]
-        refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
+        let tempUsername    = Auth.auth().currentUser!.email! as String
+        let newUsername     = tempUsername.replacingOccurrences(of: ".", with: "")
+        
+        refs.databaseUsers.child("\(newUsername)").child("submitted").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if !snapshot.hasChild("\(global.classNumber as String)") {
+                //write statistics to database
+                let statistics_data = ["quality": Int(self.qualitySlider.sliderTitleText)!, "difficulty": Int(self.difficultySlider.sliderTitleText)!, "usefulness": self.usefulness, "fun": self.fun] as [String : Any]
+                refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
+            }
+        })
+        
+        
     }
     
     func createSlides() -> [Slide] {
@@ -290,14 +300,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             fun = "yes"
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
 
 }

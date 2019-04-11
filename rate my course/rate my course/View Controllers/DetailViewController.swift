@@ -39,9 +39,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var emptyAnimation: LOTAnimationView!
     
+    let newUsername    = (Auth.auth().currentUser!.email! as String).replacingOccurrences(of: ".", with: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //tableview
         commentTableView.delegate           = self
@@ -65,15 +67,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationItem.title = global.classNumber as String
         
-        
-        self.funLabel.isHidden                  = false
-        self.usefulLabel.isHidden               = false
-        self.qualityLabel.isHidden              = false
-        self.overallQualityLabel.isHidden       = false
-        self.difficultyLabel.isHidden           = false
-        self.overallDifficultyLabel.isHidden    = false
-        
-        
+        //unhide statistic labels
+        self.hideOrUnhide(boolean: false)
+
         //display empty animation if there are no comments
         refs.databaseComments.observeSingleEvent(of: .value, with: { (snapshot) in
             if !snapshot.hasChild(global.classNumber as String){
@@ -85,71 +81,116 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         })
         
-        refs.databaseStatistics.observeSingleEvent(of: .value, with: { (snapshot) in
+        refs.databaseUsers.child("\(self.newUsername)").child("submitted").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if !snapshot.hasChild("\(global.classNumber as String)") {
-                self.funLabel.isHidden                  = true
-                self.usefulLabel.isHidden               = true
-                self.qualityLabel.isHidden              = true
-                self.overallQualityLabel.isHidden       = true
-                self.difficultyLabel.isHidden           = true
-                self.overallDifficultyLabel.isHidden    = true
+                
+                refs.databaseStatistics.observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    if !snapshot.hasChild("\(global.classNumber as String)") {
+                        //hide statistic labels
+                        self.hideOrUnhide(boolean: true)
+                    }
+                    else{
+                        self.displayStatistics()
+                        
+                        refs.databaseUsers.child(self.newUsername).child("submitted").child("\(global.classNumber as String)").setValue(["submitted": "submitted"])
+                    }
+                })
+                
+                self.customizePieCharts()
             }
             else{
-                refs.databaseStatistics.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
-                    if let data = snapshot.value as? [String: Any]{
-                        if data["fun"] as! String == "yes"{
-                            self.funYesDataEntry.value = self.funYesDataEntry.value + 1
-                            self.updateFunChart()
-                        }
-                        else{
-                            self.funNoDataEntry.value = self.funNoDataEntry.value + 1
-                            self.updateFunChart()
-                        }
-                        
-                        if data["usefulness"] as! String == "yes"{
-                            self.usefulYesDataEntry.value = self.usefulYesDataEntry.value + 1
-                            self.updateUsefulChart()
-                        }
-                        else{
-                            self.usefulNoDataEntry.value = self.usefulNoDataEntry.value + 1
-                            self.updateUsefulChart()
-                        }
-                    }
-                })
-                
-                //add up all the difficulty and quality level
-                refs.databaseStatistics.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
-                    
-                    if let data = snapshot.value as? [String: Any]{
-                        self.totalQuality += data["quality"] as! Double
-                        self.totalDifficulty += data["difficulty"] as! Double
-                        self.totalCount += 1.0
-                        
-                        self.qualityLabel.text = "\(Double(round(100 * self.totalQuality/self.totalCount)/100))"
-                        self.difficultyLabel.text = "\(Double(round(100 * self.totalDifficulty/self.totalCount)/100))"
-                    }
-                })
-                
+                self.displayStatistics()
+                self.customizePieCharts()
             }
         })
         
+    }
+    
+    func hideOrUnhide(boolean: Bool){
+        self.funLabel.isHidden                  = boolean
+        self.usefulLabel.isHidden               = boolean
+        self.qualityLabel.isHidden              = boolean
+        self.overallQualityLabel.isHidden       = boolean
+        self.difficultyLabel.isHidden           = boolean
+        self.overallDifficultyLabel.isHidden    = boolean
+    }
+    
+    func displayStatistics(){
+        refs.databaseStatistics.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
+            if let data = snapshot.value as? [String: Any]{
+                if data["fun"] as! String == "yes"{
+                    self.funYesDataEntry.value = self.funYesDataEntry.value + 1
+                    self.updateFunChart()
+                }
+                else{
+                    self.funNoDataEntry.value = self.funNoDataEntry.value + 1
+                    self.updateFunChart()
+                }
+                
+                if data["usefulness"] as! String == "yes"{
+                    self.usefulYesDataEntry.value = self.usefulYesDataEntry.value + 1
+                    self.updateUsefulChart()
+                }
+                else{
+                    self.usefulNoDataEntry.value = self.usefulNoDataEntry.value + 1
+                    self.updateUsefulChart()
+                }
+            }
+        })
+        
+        //add up all the difficulty and quality level
+        refs.databaseStatistics.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
+            
+            if let data = snapshot.value as? [String: Any]{
+                self.totalQuality += data["quality"] as! Double
+                self.totalDifficulty += data["difficulty"] as! Double
+                self.totalCount += 1.0
+                
+                self.qualityLabel.text = "\(Double(round(100 * self.totalQuality/self.totalCount)/100))"
+                self.difficultyLabel.text = "\(Double(round(100 * self.totalDifficulty/self.totalCount)/100))"
+            }
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
+            if let data = snapshot.value as? [String: Any]{
+                self.commentIds.append(snapshot.key)
+                //don't add existing data
+                var exists = false
+                for comment in self.comments{
+                    if comment["id"] as! String == data["id"] as! String{
+                        exists = true
+                    }
+                }
+                if(!exists){
+                    self.comments.append(data)
+                }
+                self.commentTableView.reloadData()
+            }
+        })
+    }
+    
+    func customizePieCharts(){
         //fun pie chart
-        funPieChart.legend.enabled              = false
-        funPieChart.holeRadiusPercent           = 0.2
-        funPieChart.transparentCircleColor      = .clear
-        funYesDataEntry.label                   = "Yes"
-        funNoDataEntry.label                    = "No"
-        numOfDownloadsFun                       = [funYesDataEntry, funNoDataEntry]
+        self.funPieChart.legend.enabled              = false
+        self.funPieChart.holeRadiusPercent           = 0.2
+        self.funPieChart.transparentCircleColor      = .clear
+        self.funYesDataEntry.label                   = "Yes"
+        self.funNoDataEntry.label                    = "No"
+        self.numOfDownloadsFun                       = [self.funYesDataEntry, self.funNoDataEntry]
         
         
         //useful pie chart
-        usefulPieChart.legend.enabled           = false
-        usefulPieChart.holeRadiusPercent        = 0.2
-        usefulPieChart.transparentCircleColor   = .clear
-        usefulYesDataEntry.label                = "Yes"
-        usefulNoDataEntry.label                 = "No"
-        numOfDownloadsUseful                    = [usefulYesDataEntry, usefulNoDataEntry]
+        self.usefulPieChart.legend.enabled           = false
+        self.usefulPieChart.holeRadiusPercent        = 0.2
+        self.usefulPieChart.transparentCircleColor   = .clear
+        self.usefulYesDataEntry.label                = "Yes"
+        self.usefulNoDataEntry.label                 = "No"
+        self.numOfDownloadsUseful                    = [self.usefulYesDataEntry, self.usefulNoDataEntry]
     }
     
     func updateFunChart(){
@@ -188,70 +229,16 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         usefulPieChart.data    = chartData
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
-            if let data = snapshot.value as? [String: Any]{
-                self.commentIds.append(snapshot.key)
-                //don't add existing data
-                var exists = false
-                for comment in self.comments{
-                    if comment["id"] as! String == data["id"] as! String{
-                        exists = true
-                    }
-                }
-                if(!exists){
-                    self.comments.append(data)
-                }
-                self.commentTableView.reloadData()
-            }
-        })
-    }
-    
+    //navigation to comment viewController
     @objc func comment(){
         self.performSegue(withIdentifier: "detailToComment", sender: nil)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
-        
-        let comment_data        = comments[indexPath.row]
-        let text                = comment_data["comment"] as! String
-        let username            = comment_data["user"] as! String
-        let dislikeCount        = comment_data["dislike"] as! Int
-        let likeCount           = comment_data["like"] as! Int
-        let date                = comment_data["date"] as! String
-
-        cell.commentLabel.text      = text
-        cell.usernameLabel.text     = username
-        cell.timeLabel.text         = date
-        cell.dislikeLabel.text      = "\(dislikeCount)"
-        cell.likeLabel.text         = "\(likeCount)"
-        cell.backgroundColor        = .clear
-        
-        cell.dislikeButton.layer.cornerRadius   = cell.dislikeButton.frame.size.width / 2
-        cell.likeButton.layer.cornerRadius      = cell.likeButton.frame.size.width / 2
-        cell.dislikeButton.clipsToBounds        = true
-        cell.likeButton.clipsToBounds           = true
-        
-        cell.dislikeButton.tag = indexPath.row
-        cell.dislikeButton.addTarget(self, action: #selector(dislike), for: .touchUpInside)
-        
-        cell.likeButton.tag = indexPath.row
-        cell.likeButton.addTarget(self, action: #selector(like), for: .touchUpInside)
-        
-        return cell
     }
     
     @objc func like(sender: UIButton){
         
         let tempUsername    = Auth.auth().currentUser!.email! as String
         let newUsername     = tempUsername.replacingOccurrences(of: ".", with: "")
-
+        
         refs.databaseUsers.child("\(newUsername)").child("dislike").observeSingleEvent(of: .value, with: { (snapshot) in
             
             //if user has not disliked the comment
@@ -370,5 +357,41 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.comments[senderTag]["like"] = self.comments[senderTag]["like"] as! Int - 1
         self.commentTableView.reloadData()
     }
+    
+    //tableView stubs
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
+        
+        let comment_data        = comments[indexPath.row]
+        let text                = comment_data["comment"] as! String
+        let username            = comment_data["user"] as! String
+        let dislikeCount        = comment_data["dislike"] as! Int
+        let likeCount           = comment_data["like"] as! Int
+        let date                = comment_data["date"] as! String
 
+        cell.commentLabel.text      = text
+        cell.usernameLabel.text     = username
+        cell.timeLabel.text         = date
+        cell.dislikeLabel.text      = "\(dislikeCount)"
+        cell.likeLabel.text         = "\(likeCount)"
+        cell.backgroundColor        = .clear
+        
+        cell.dislikeButton.layer.cornerRadius   = cell.dislikeButton.frame.size.width / 2
+        cell.likeButton.layer.cornerRadius      = cell.likeButton.frame.size.width / 2
+        cell.dislikeButton.clipsToBounds        = true
+        cell.likeButton.clipsToBounds           = true
+        
+        cell.dislikeButton.tag = indexPath.row
+        cell.dislikeButton.addTarget(self, action: #selector(dislike), for: .touchUpInside)
+        
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(like), for: .touchUpInside)
+        
+        return cell
+    }
+    
 }
