@@ -76,18 +76,9 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
         }
         
-        //extracting dot from email address
-        let tempUsername    = Auth.auth().currentUser!.email! as String
-        let newUsername     = tempUsername.replacingOccurrences(of: ".", with: "")
-        
-        refs.databaseUsers.child("\(newUsername)").child("submitted").observeSingleEvent(of: .value, with: { (snapshot) in
-            
             //write statistics to database if user has not already done so
-            if !snapshot.hasChild("\(global.classNumber as String)") {
-                let statistics_data = ["quality": Int(self.qualitySlider.sliderTitleText)!, "difficulty": Int(self.difficultySlider.sliderTitleText)!, "usefulness": self.usefulness, "fun": self.fun] as [String : Any]
-                refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
-            }
-        })
+        let statistics_data = ["quality": Int(self.qualitySlider.sliderTitleText)!, "difficulty": Int(self.difficultySlider.sliderTitleText)!, "usefulness": self.usefulness, "fun": self.fun] as [String : Any]
+        refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
     }
     
     func createSlides() -> [Slide] {

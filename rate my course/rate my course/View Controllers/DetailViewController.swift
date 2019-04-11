@@ -92,8 +92,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     else{
                         self.displayStatistics()
-                        
-                        refs.databaseUsers.child(self.newUsername).child("submitted").child("\(global.classNumber as String)").setValue(["submitted": "submitted"])
+                    refs.databaseUsers.child(self.newUsername).child("submitted").child("\(global.classNumber as String)").setValue(["submitted": "submitted"])
                     }
                 })
                 
