@@ -445,13 +445,16 @@
 				TargetAttributes = {
 					83E147962242FDDC00C40066 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					83E147AA2242FDDE00C40066 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 83E147962242FDDC00C40066;
 					};
 					83E147B52242FDDE00C40066 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 83E147962242FDDC00C40066;
 					};
 				};
@@ -839,7 +842,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rate-my-course";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -858,7 +861,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rate-my-course";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -879,7 +882,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rate-my-courseTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rate my course.app/rate my course";
 			};
@@ -901,7 +904,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rate-my-courseTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rate my course.app/rate my course";
 			};
@@ -922,7 +925,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rate-my-courseUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "rate my course";
 			};
@@ -943,7 +946,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rate-my-courseUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "rate my course";
 			};
