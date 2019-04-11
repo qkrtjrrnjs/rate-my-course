@@ -55,7 +55,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         emptyAnimation.frame.size.height   = 250
         emptyAnimation.frame.size.width    = 250
         emptyAnimation.center.x            = self.view.center.x
-        emptyAnimation.center.y            = self.view.center.y * 1.37
+        emptyAnimation.center.y            = self.view.center.y * 1.42
 
         //adding comment bar button
         self.navigationItem.rightBarButtonItem      = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(comment))
@@ -64,46 +64,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.view.backgroundColor                   = UIColor(hexString: "#d5d5d5")
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationItem.title = global.classNumber as String
-    }
-    
-    func updateFunChart(){
-        let chartDataSet                = PieChartDataSet(values: numOfDownloadsFun, label: nil)
-        let chartData                   = PieChartData(dataSet: chartDataSet)
         
-        let colors                      = [UIColor(hexString: "#63acd8"), UIColor(hexString: "#ff715b")]
-        chartDataSet.colors             = colors
-        
-        chartDataSet.entryLabelFont     = UIFont(name: "Noway", size: 13)
-        chartDataSet.valueFont          = UIFont(name: "Noway", size: 13)!
-        
-        let formatter                   = NumberFormatter()
-        formatter.minimumFractionDigits = 0
-        
-        chartData.setValueFormatter(DefaultValueFormatter(formatter:formatter))
-        
-        funPieChart.data    = chartData
-    }
-    
-    func updateUsefulChart(){
-        let chartDataSet                = PieChartDataSet(values: numOfDownloadsUseful, label: nil)
-        let chartData                   = PieChartData(dataSet: chartDataSet)
-        
-        let colors                      = [UIColor(hexString: "#63acd8"), UIColor(hexString: "#ff715b")]
-        chartDataSet.colors             = colors
-        
-        chartDataSet.entryLabelFont     = UIFont(name: "Noway", size: 13)
-        chartDataSet.valueFont          = UIFont(name: "Noway", size: 13)!
-        
-        let formatter                   = NumberFormatter()
-        formatter.minimumFractionDigits = 0
-
-        chartData.setValueFormatter(DefaultValueFormatter(formatter:formatter))
-        
-        usefulPieChart.data    = chartData
-    }
-
-    
-    override func viewWillAppear(_ animated: Bool) {
         
         self.funLabel.isHidden                  = false
         self.usefulLabel.isHidden               = false
@@ -111,6 +72,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.overallQualityLabel.isHidden       = false
         self.difficultyLabel.isHidden           = false
         self.overallDifficultyLabel.isHidden    = false
+        
         
         //display empty animation if there are no comments
         refs.databaseComments.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -124,7 +86,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         
         refs.databaseStatistics.observeSingleEvent(of: .value, with: { (snapshot) in
-
+            
             if !snapshot.hasChild("\(global.classNumber as String)") {
                 self.funLabel.isHidden                  = true
                 self.usefulLabel.isHidden               = true
@@ -168,7 +130,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         self.difficultyLabel.text = "\(Double(round(100 * self.totalDifficulty/self.totalCount)/100))"
                     }
                 })
-
+                
             }
         })
         
@@ -188,7 +150,42 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         usefulYesDataEntry.label                = "Yes"
         usefulNoDataEntry.label                 = "No"
         numOfDownloadsUseful                    = [usefulYesDataEntry, usefulNoDataEntry]
+    }
+    
+    func updateFunChart(){
+        let chartDataSet                = PieChartDataSet(values: numOfDownloadsFun, label: nil)
+        let chartData                   = PieChartData(dataSet: chartDataSet)
         
+        let colors                      = [UIColor(hexString: "#63acd8"), UIColor(hexString: "#ff715b")]
+        chartDataSet.colors             = colors
+        
+        chartDataSet.entryLabelFont     = UIFont(name: "Noway", size: 13)
+        chartDataSet.valueFont          = UIFont(name: "Noway", size: 13)!
+        
+        let formatter                   = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        
+        chartData.setValueFormatter(DefaultValueFormatter(formatter:formatter))
+        
+        funPieChart.data    = chartData
+    }
+    
+    func updateUsefulChart(){
+        let chartDataSet                = PieChartDataSet(values: numOfDownloadsUseful, label: nil)
+        let chartData                   = PieChartData(dataSet: chartDataSet)
+        
+        let colors                      = [UIColor(hexString: "#63acd8"), UIColor(hexString: "#ff715b")]
+        chartDataSet.colors             = colors
+        
+        chartDataSet.entryLabelFont     = UIFont(name: "Noway", size: 13)
+        chartDataSet.valueFont          = UIFont(name: "Noway", size: 13)!
+        
+        let formatter                   = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+
+        chartData.setValueFormatter(DefaultValueFormatter(formatter:formatter))
+        
+        usefulPieChart.data    = chartData
     }
     
     override func viewDidAppear(_ animated: Bool) {

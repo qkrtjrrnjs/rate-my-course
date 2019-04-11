@@ -46,7 +46,15 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
     }
     
     @objc func submit(){
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        
+        let storyboard = UIStoryboard(name: "Detail", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "detailViewController")
+        var viewcontrollers = self.navigationController!.viewControllers
+        viewcontrollers.removeLast()
+        viewcontrollers.removeLast()
+        viewcontrollers.append(vc)
+        self.navigationController?.setViewControllers(viewcontrollers, animated: true)
         
         //extracting username from email address
         var username = Auth.auth().currentUser!.email! as String
