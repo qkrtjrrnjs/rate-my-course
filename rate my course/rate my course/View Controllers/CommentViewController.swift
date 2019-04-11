@@ -32,8 +32,8 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         
         self.hideKeyboardWhenTappedAround()
         
-        pagingScrollView.delegate = self
-        textView.delegate = self
+        pagingScrollView.delegate   = self
+        textView.delegate           = self
         
         slides = createSlides()
         setupSlideScrollView(slides: slides)
@@ -46,7 +46,6 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
     }
     
     @objc func submit(){
-        //self.navigationController?.popViewController(animated: true)
         
         let storyboard = UIStoryboard(name: "Detail", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "detailViewController")
@@ -77,13 +76,14 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
         }
         
+        //extracting dot from email address
         let tempUsername    = Auth.auth().currentUser!.email! as String
         let newUsername     = tempUsername.replacingOccurrences(of: ".", with: "")
         
         refs.databaseUsers.child("\(newUsername)").child("submitted").observeSingleEvent(of: .value, with: { (snapshot) in
             
+            //write statistics to database if user has not already done so
             if !snapshot.hasChild("\(global.classNumber as String)") {
-                //write statistics to database
                 let statistics_data = ["quality": Int(self.qualitySlider.sliderTitleText)!, "difficulty": Int(self.difficultySlider.sliderTitleText)!, "usefulness": self.usefulness, "fun": self.fun] as [String : Any]
                 refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
             }
@@ -167,7 +167,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         textView.textColor              = .black
         textView.backgroundColor        = .white
         textView.isScrollEnabled        = true
-        textView.font = UIFont(name: "Noway", size: 18)
+        textView.font                   = UIFont(name: "Noway", size: 18)
         slide2.addSubview(textView)
         return [slide1, slide2]
     }
@@ -241,14 +241,14 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         question.center.x              = slide.center.x
         
         if text == "Question 4. Was this course fun? (tap)"{
-            question.center.y              = slide.center.y * CGFloat(centerY)
+            question.center.y = slide.center.y * CGFloat(centerY)
         }
         else{
-            question.center.y              = slide.center.y / CGFloat(centerY)
+            question.center.y = slide.center.y / CGFloat(centerY)
         }
         
-        question.textColor             = UIColor(hexString: "#838383")
-        question.font = UIFont(name: "Noway", size: 15)
+        question.textColor              = UIColor(hexString: "#838383")
+        question.font                   = UIFont(name: "Noway", size: 15)
         slide.addSubview(question)
     }
     

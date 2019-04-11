@@ -44,7 +44,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         //tableview
         commentTableView.delegate           = self
         commentTableView.dataSource         = self
@@ -107,6 +106,25 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        
+        refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
+            if let data = snapshot.value as? [String: Any]{
+                self.commentIds.append(snapshot.key)
+                //don't add existing data
+                var exists = false
+                for comment in self.comments{
+                    if comment["id"] as! String == data["id"] as! String{
+                        exists = true
+                    }
+                }
+                if(!exists){
+                    self.comments.append(data)
+                }
+                self.commentTableView.reloadData()
+            }
+        })
+    }
     
     func hideOrUnhide(boolean: Bool){
         self.funLabel.isHidden                  = boolean
@@ -150,26 +168,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 self.qualityLabel.text = "\(Double(round(100 * self.totalQuality/self.totalCount)/100))"
                 self.difficultyLabel.text = "\(Double(round(100 * self.totalDifficulty/self.totalCount)/100))"
-            }
-        })
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
-            if let data = snapshot.value as? [String: Any]{
-                self.commentIds.append(snapshot.key)
-                //don't add existing data
-                var exists = false
-                for comment in self.comments{
-                    if comment["id"] as! String == data["id"] as! String{
-                        exists = true
-                    }
-                }
-                if(!exists){
-                    self.comments.append(data)
-                }
-                self.commentTableView.reloadData()
             }
         })
     }

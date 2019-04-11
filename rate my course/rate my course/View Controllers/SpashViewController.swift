@@ -32,6 +32,7 @@ class SplashViewController: UIViewController {
         
         self.view.addSubview(splashAnimation)
         
+        //navigate to the intial viewController after animation finishes
         splashAnimation.play(completion: { (finished) in
             if finished{
                 self.splashAnimation.removeFromSuperview()
