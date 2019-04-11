@@ -139,40 +139,40 @@
                                 <rect key="frame" x="16" y="43" width="343" height="247"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overall Qulity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVH-dv-ovp">
-                                        <rect key="frame" x="32" y="25" width="103" height="21"/>
+                                        <rect key="frame" x="32" y="8" width="102" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overall difficulty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTJ-mz-3Zh">
-                                        <rect key="frame" x="198" y="25" width="125" height="21"/>
+                                        <rect key="frame" x="198" y="8" width="125" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzz-nY-WF7">
-                                        <rect key="frame" x="78" y="65" width="11" height="21"/>
+                                        <rect key="frame" x="78" y="36" width="11" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ow7-YS-Okw">
-                                        <rect key="frame" x="255" y="65" width="11" height="21"/>
+                                        <rect key="frame" x="255" y="37" width="10" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHE-jK-7eJ" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="21" y="99" width="130" height="130"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Srn-uU-Cl9" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="178" y="78" width="165" height="165"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Srn-uU-Cl9" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="186" y="99" width="130" height="130"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHE-jK-7eJ" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="78" width="165" height="165"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -202,6 +202,8 @@
                     </view>
                     <connections>
                         <outlet property="commentTableView" destination="JHy-CG-fC6" id="FGd-70-aiV"/>
+                        <outlet property="funPieChart" destination="Srn-uU-Cl9" id="jOG-xB-4cI"/>
+                        <outlet property="usefulPieChart" destination="MHE-jK-7eJ" id="bEb-jh-dh0"/>
                         <segue destination="mDr-Dn-loa" kind="show" identifier="detailToComment" id="Ytk-Mh-IoF"/>
                     </connections>
                 </viewController>

@@ -10,14 +10,23 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 import Lottie
+import Charts
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var commentTableView: UITableView!
+    @IBOutlet weak var usefulPieChart: PieChartView!
+    @IBOutlet weak var funPieChart: PieChartView!
     
-    var comments = [[String: Any]]()
-    var commentIds = [String]()
-    
+    var comments                = [[String: Any]]()
+    var commentIds              = [String]()
+    var funYesDataEntry         = PieChartDataEntry(value: 0)
+    var funNoDataEntry          = PieChartDataEntry(value: 0)
+    var usefulYesDataEntry      = PieChartDataEntry(value: 0)
+    var usefulNoDataEntry       = PieChartDataEntry(value: 0)
+    var numOfDownloadsFun       = [PieChartDataEntry]()
+    var numOfDownloadsUseful    = [PieChartDataEntry]()
+
     var emptyAnimation: LOTAnimationView!
 
     override func viewDidLoad() {
@@ -46,6 +55,43 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.title = global.classNumber as String
     }
     
+    func updateFunChart(){
+        let chartDataSet                = PieChartDataSet(values: numOfDownloadsFun, label: nil)
+        let chartData                   = PieChartData(dataSet: chartDataSet)
+        
+        let colors                      = [UIColor(hexString: "#63acd8"), UIColor(hexString: "#ff715b")]
+        chartDataSet.colors             = colors
+        
+        chartDataSet.entryLabelFont     = UIFont(name: "Noway", size: 13)
+        chartDataSet.valueFont          = UIFont(name: "Noway", size: 13)!
+        
+        let formatter                   = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        
+        chartData.setValueFormatter(DefaultValueFormatter(formatter:formatter))
+        
+        funPieChart.data    = chartData
+    }
+    
+    func updateUsefulChart(){
+        let chartDataSet                = PieChartDataSet(values: numOfDownloadsUseful, label: nil)
+        let chartData                   = PieChartData(dataSet: chartDataSet)
+        
+        let colors                      = [UIColor(hexString: "#63acd8"), UIColor(hexString: "#ff715b")]
+        chartDataSet.colors             = colors
+        
+        chartDataSet.entryLabelFont     = UIFont(name: "Noway", size: 13)
+        chartDataSet.valueFont          = UIFont(name: "Noway", size: 13)!
+        
+        let formatter                   = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+
+        chartData.setValueFormatter(DefaultValueFormatter(formatter:formatter))
+        
+        usefulPieChart.data    = chartData
+    }
+
+    
     override func viewWillAppear(_ animated: Bool) {
         //display empty animation if there are no comments
         refs.databaseComments.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -57,6 +103,47 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.emptyAnimation.removeFromSuperview()
             }
         })
+        
+        refs.databaseStatistics.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
+            if let data = snapshot.value as? [String: Any]{
+                print(data["fun"] as! String)
+                if data["fun"] as! String == "yes"{
+                    self.funYesDataEntry.value = self.funYesDataEntry.value + 1
+                    self.updateFunChart()
+                }
+                else{
+                    self.funNoDataEntry.value = self.funNoDataEntry.value + 1
+                    self.updateFunChart()
+                }
+                
+                if data["usefulness"] as! String == "yes"{
+                    self.usefulYesDataEntry.value = self.usefulYesDataEntry.value + 1
+                    self.updateUsefulChart()
+                }
+                else{
+                    self.usefulNoDataEntry.value = self.usefulNoDataEntry.value + 1
+                    self.updateUsefulChart()
+                }
+            }
+        })
+        
+        //fun pie chart
+        funPieChart.legend.enabled              = false
+        funPieChart.holeRadiusPercent           = 0.2
+        funPieChart.transparentCircleColor      = .clear
+        funYesDataEntry.label                   = "Yes"
+        funNoDataEntry.label                    = "No"
+        numOfDownloadsFun                       = [funYesDataEntry, funNoDataEntry]
+        
+        
+        //useful pie chart
+        usefulPieChart.legend.enabled           = false
+        usefulPieChart.holeRadiusPercent        = 0.2
+        usefulPieChart.transparentCircleColor   = .clear
+        usefulYesDataEntry.label                = "Yes"
+        usefulNoDataEntry.label                 = "No"
+        numOfDownloadsUseful                    = [usefulYesDataEntry, usefulNoDataEntry]
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,7 +164,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.commentTableView.reloadData()
             }
         })
-        
     }
     
     @objc func comment(){
