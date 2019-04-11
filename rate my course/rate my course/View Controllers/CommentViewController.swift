@@ -70,7 +70,7 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         }
         
         //write statistics to database
-        let statistics_data = ["quality": qualitySlider.sliderTitleText, "difficulty": difficultySlider.sliderTitleText, "usefulness": usefulness, "fun": fun] as [String : Any]
+        let statistics_data = ["quality": Int(qualitySlider.sliderTitleText)!, "difficulty": Int(difficultySlider.sliderTitleText)!, "usefulness": usefulness, "fun": fun] as [String : Any]
         refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
     }
     

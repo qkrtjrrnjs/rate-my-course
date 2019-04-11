@@ -14,6 +14,13 @@ import Charts
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var overallQualityLabel: UILabel!
+    @IBOutlet weak var overallDifficultyLabel: UILabel!
+    @IBOutlet weak var qualityLabel: UILabel!
+    @IBOutlet weak var difficultyLabel: UILabel!
+    @IBOutlet weak var funLabel: UILabel!
+    @IBOutlet weak var usefulLabel: UILabel!
+    
     @IBOutlet weak var commentTableView: UITableView!
     @IBOutlet weak var usefulPieChart: PieChartView!
     @IBOutlet weak var funPieChart: PieChartView!
@@ -26,8 +33,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var usefulNoDataEntry       = PieChartDataEntry(value: 0)
     var numOfDownloadsFun       = [PieChartDataEntry]()
     var numOfDownloadsUseful    = [PieChartDataEntry]()
-
+    var totalDifficulty         = 0.0
+    var totalQuality            = 0.0
+    var totalCount              = 0.0
+    
     var emptyAnimation: LOTAnimationView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +104,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        self.funLabel.isHidden                  = false
+        self.usefulLabel.isHidden               = false
+        self.qualityLabel.isHidden              = false
+        self.overallQualityLabel.isHidden       = false
+        self.difficultyLabel.isHidden           = false
+        self.overallDifficultyLabel.isHidden    = false
+        
         //display empty animation if there are no comments
         refs.databaseComments.observeSingleEvent(of: .value, with: { (snapshot) in
             if !snapshot.hasChild(global.classNumber as String){
@@ -104,26 +123,52 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         })
         
-        refs.databaseStatistics.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
-            if let data = snapshot.value as? [String: Any]{
-                print(data["fun"] as! String)
-                if data["fun"] as! String == "yes"{
-                    self.funYesDataEntry.value = self.funYesDataEntry.value + 1
-                    self.updateFunChart()
-                }
-                else{
-                    self.funNoDataEntry.value = self.funNoDataEntry.value + 1
-                    self.updateFunChart()
-                }
+        refs.databaseStatistics.observeSingleEvent(of: .value, with: { (snapshot) in
+
+            if !snapshot.hasChild("\(global.classNumber as String)") {
+                self.funLabel.isHidden                  = true
+                self.usefulLabel.isHidden               = true
+                self.qualityLabel.isHidden              = true
+                self.overallQualityLabel.isHidden       = true
+                self.difficultyLabel.isHidden           = true
+                self.overallDifficultyLabel.isHidden    = true
+            }
+            else{
+                refs.databaseStatistics.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
+                    if let data = snapshot.value as? [String: Any]{
+                        if data["fun"] as! String == "yes"{
+                            self.funYesDataEntry.value = self.funYesDataEntry.value + 1
+                            self.updateFunChart()
+                        }
+                        else{
+                            self.funNoDataEntry.value = self.funNoDataEntry.value + 1
+                            self.updateFunChart()
+                        }
+                        
+                        if data["usefulness"] as! String == "yes"{
+                            self.usefulYesDataEntry.value = self.usefulYesDataEntry.value + 1
+                            self.updateUsefulChart()
+                        }
+                        else{
+                            self.usefulNoDataEntry.value = self.usefulNoDataEntry.value + 1
+                            self.updateUsefulChart()
+                        }
+                    }
+                })
                 
-                if data["usefulness"] as! String == "yes"{
-                    self.usefulYesDataEntry.value = self.usefulYesDataEntry.value + 1
-                    self.updateUsefulChart()
-                }
-                else{
-                    self.usefulNoDataEntry.value = self.usefulNoDataEntry.value + 1
-                    self.updateUsefulChart()
-                }
+                //add up all the difficulty and quality level
+                refs.databaseStatistics.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
+                    
+                    if let data = snapshot.value as? [String: Any]{
+                        self.totalQuality += data["quality"] as! Double
+                        self.totalDifficulty += data["difficulty"] as! Double
+                        self.totalCount += 1.0
+                        
+                        self.qualityLabel.text = "\(Double(round(100 * self.totalQuality/self.totalCount)/100))"
+                        self.difficultyLabel.text = "\(Double(round(100 * self.totalDifficulty/self.totalCount)/100))"
+                    }
+                })
+
             }
         })
         
