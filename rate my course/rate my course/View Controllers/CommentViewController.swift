@@ -69,16 +69,23 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         
         let uniqueId = UUID().uuidString
         
-        if !textView.text.isEmpty{
+        if !textView.text.isEmpty && textView.text != "Enter your comment here!"{
             //writing data to database
             let comment_data = ["user": username, "comment": textView.text!, "like": 0, "dislike": 0, "date": formattedDate, "id": uniqueId] as [String : Any]
             
             refs.databaseComments.child("\(global.classNumber as String)").childByAutoId().setValue(comment_data)
         }
         
-            //write statistics to database if user has not already done so
-        let statistics_data = ["quality": Int(self.qualitySlider.sliderTitleText)!, "difficulty": Int(self.difficultySlider.sliderTitleText)!, "usefulness": self.usefulness, "fun": self.fun] as [String : Any]
-        refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
+        let newUsername    = (Auth.auth().currentUser!.email! as String).replacingOccurrences(of: ".", with: "")
+
+        refs.databaseUsers.child("\(newUsername)").child("submitted").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if !snapshot.hasChild("\(global.classNumber as String)") {
+                        let statistics_data = ["quality": Int(self.qualitySlider.sliderTitleText)!, "difficulty": Int(self.difficultySlider.sliderTitleText)!, "usefulness": self.usefulness, "fun": self.fun] as [String : Any]
+                        refs.databaseStatistics.child("\(global.classNumber as String)").childByAutoId().setValue(statistics_data)
+            }
+        })
+        
     }
     
     func createSlides() -> [Slide] {
