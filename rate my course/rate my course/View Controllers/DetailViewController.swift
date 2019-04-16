@@ -302,6 +302,26 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
     }
     
+
+    @objc func deleteComment(sender: UIButton){
+        
+        var username = Auth.auth().currentUser!.email! as String
+        if let atRange = username.range(of: "@") {
+            username.removeSubrange(atRange.lowerBound..<username.endIndex)
+        }
+
+        refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let data = snapshot.value as? [String: Any]{
+                if data["user"] as! String == username{
+                    refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).removeValue()
+                    self.commentIds.remove(at: sender.tag)
+                    self.comments.remove(at: sender.tag)
+                    self.commentTableView.reloadData()
+                }
+            }
+        })
+    }
+    
     func incrementDislike(senderTag: Int){
         //increment dislike count
         refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[senderTag]).child("dislike").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
@@ -396,7 +416,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(like), for: .touchUpInside)
         
+        cell.deleteButton.tag = indexPath.row
+        cell.deleteButton.addTarget(self, action: #selector(deleteComment), for: .touchUpInside)
+
         return cell
     }
-    
 }
+
