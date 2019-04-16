@@ -159,6 +159,9 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         textView.backgroundColor        = .white
         textView.isScrollEnabled        = true
         textView.font                   = UIFont(name: "Noway", size: 18)
+        textView.text                   = "Enter your comment here!"
+        textView.textColor              = UIColor.lightGray
+
         slide2.addSubview(textView)
         return [slide1, slide2]
     }
@@ -186,6 +189,20 @@ class CommentViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             return false
         }
         return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text       = nil
+            textView.textColor  = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text       = "Enter your comment here!"
+            textView.textColor  = UIColor.lightGray
+        }
     }
     
     func incrementSlider(slider: SnappingSlider){
