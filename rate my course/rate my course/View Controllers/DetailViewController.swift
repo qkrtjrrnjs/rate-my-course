@@ -68,17 +68,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //unhide statistic labels
         self.hideOrUnhide(boolean: false)
-
-        //display empty animation if there are no comments
-        refs.databaseComments.observeSingleEvent(of: .value, with: { (snapshot) in
-            if !snapshot.hasChild(global.classNumber as String){
-                self.view.addSubview(self.emptyAnimation)
-                self.emptyAnimation.play()
-            }
-            else{
-                self.emptyAnimation.removeFromSuperview()
-            }
-        })
+        
+        displayEmptyAnimation()
         
         refs.databaseUsers.child("\(self.newUsername)").child("submitted").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -105,6 +96,20 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         
     }
+    
+    func displayEmptyAnimation(){
+        //display empty animation if there are no comments
+        refs.databaseComments.observeSingleEvent(of: .value, with: { (snapshot) in
+            if !snapshot.hasChild(global.classNumber as String){
+                self.view.addSubview(self.emptyAnimation)
+                self.emptyAnimation.play()
+            }
+            else{
+                self.emptyAnimation.removeFromSuperview()
+            }
+        })
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         
         refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
@@ -313,6 +318,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.commentIds.remove(at: sender.tag)
                     self.comments.remove(at: sender.tag)
                     self.commentTableView.reloadData()
+                    self.displayEmptyAnimation()
                 }
             }
         })
