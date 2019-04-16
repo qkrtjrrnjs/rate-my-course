@@ -83,7 +83,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     else{
                         self.displayStatistics()
-                    refs.databaseUsers.child(self.newUsername).child("submitted").child("\(global.classNumber as String)").setValue(["submitted": "submitted"])
+                       
+                    }
+                })
+                
+                refs.databaseStatistics.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
+                    if let data = snapshot.value as? [String: Any]{
+                        if data["user"] as! String == self.newUsername{                            refs.databaseUsers.child(self.newUsername).child("submitted").child("\(global.classNumber as String)").setValue(["submitted": "submitted"])
+                        }
                     }
                 })
                 
@@ -111,7 +118,15 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        refs.databaseComments.child("\(global.classNumber as String)").observe(.childRemoved, with: {(removedData) in
+            self.commentIds.removeAll()
+            self.comments.removeAll()
+            self.commentTableView.reloadData()
+            self.view.addSubview(self.emptyAnimation)
+            self.emptyAnimation.play()
+        })
+     
+        //add comments in to dictionary
         refs.databaseComments.child("\(global.classNumber as String)").observe(.childAdded, with: { (snapshot) in
             if let data = snapshot.value as? [String: Any]{
                 self.commentIds.append(snapshot.key)
@@ -437,7 +452,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.deleteButton.tag = indexPath.row
         cell.deleteButton.addTarget(self, action: #selector(deleteComment), for: .touchUpInside)
-
+        
+        if !comments.isEmpty{
+            emptyAnimation.removeFromSuperview()
+        }
+        
         return cell
     }
 }
