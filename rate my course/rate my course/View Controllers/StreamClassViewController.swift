@@ -23,6 +23,7 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
     
     var emptyAnimation:LOTAnimationView!
     var majorAbbreviation: String!
+    var majorName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,8 @@ class StreamClassViewController: UIViewController, UITableViewDataSource, UITabl
         classTableView.separatorColor = .clear
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.navigationItem.title = majorName
+        
         loadData()
     }
     

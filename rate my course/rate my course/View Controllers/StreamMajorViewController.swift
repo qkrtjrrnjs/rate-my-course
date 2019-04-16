@@ -157,6 +157,7 @@ class StreamMajorViewController: UIViewController, UITableViewDelegate, UITableV
         
         let streamClassViewController                 = segue.destination as! StreamClassViewController
         streamClassViewController.majorAbbreviation   = majorAbbreviation
+        streamClassViewController.majorName           = filteredMajors[indexPath.row]
         
         majorTableView.deselectRow(at: indexPath, animated: true)
     }
