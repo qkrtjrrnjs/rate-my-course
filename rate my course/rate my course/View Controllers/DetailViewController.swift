@@ -233,34 +233,31 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc func like(sender: UIButton){
         
-        let tempUsername    = Auth.auth().currentUser!.email! as String
-        let newUsername     = tempUsername.replacingOccurrences(of: ".", with: "")
-        
         refs.databaseUsers.child("\(newUsername)").child("dislike").observeSingleEvent(of: .value, with: { (snapshot) in
             
             //if user has not disliked the comment
             if !snapshot.hasChild(self.comments[sender.tag]["id"] as! String){
-                refs.databaseUsers.child("\(newUsername)").child("like").observeSingleEvent(of: .value, with: { (snapshot) in
+                refs.databaseUsers.child("\(self.newUsername)").child("like").observeSingleEvent(of: .value, with: { (snapshot) in
                     
                     //if user has not liked the comment
                     if !snapshot.hasChild(self.comments[sender.tag]["id"] as! String){
-                        refs.databaseUsers.child("\(newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
+                        refs.databaseUsers.child("\(self.newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
                         
                         self.incrementLike(senderTag: sender.tag)
                     }
                     else{
-                        refs.databaseUsers.child("\(newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
+                        refs.databaseUsers.child("\(self.newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
                         
                         self.decrementLike(senderTag: sender.tag)
                     }
                 })
             }
             else{
-                refs.databaseUsers.child("\(newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
+                refs.databaseUsers.child("\(self.newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
                 
                 self.decrementDislike(senderTag: sender.tag)
                 
-                refs.databaseUsers.child("\(newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
+                refs.databaseUsers.child("\(self.newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
                 
                 self.incrementLike(senderTag: sender.tag)
             }
@@ -268,34 +265,32 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func dislike(sender: UIButton){
-        let tempUsername    = Auth.auth().currentUser!.email! as String
-        let newUsername     = tempUsername.replacingOccurrences(of: ".", with: "")
         
         refs.databaseUsers.child("\(newUsername)").child("like").observeSingleEvent(of: .value, with: { (snapshot) in
             
             //if user has not liked the comment
             if !snapshot.hasChild(self.comments[sender.tag]["id"] as! String){
-                refs.databaseUsers.child("\(newUsername)").child("dislike").observeSingleEvent(of: .value, with: { (snapshot) in
+                refs.databaseUsers.child("\(self.newUsername)").child("dislike").observeSingleEvent(of: .value, with: { (snapshot) in
                     
                     //if user has not disliked the comment
                     if !snapshot.hasChild(self.comments[sender.tag]["id"] as! String){
-                        refs.databaseUsers.child("\(newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
+                        refs.databaseUsers.child("\(self.newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
                         
                         self.incrementDislike(senderTag: sender.tag)
                     }
                     else{
-                        refs.databaseUsers.child("\(newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
+                        refs.databaseUsers.child("\(self.newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
                         
                         self.decrementDislike(senderTag: sender.tag)
                     }
                 })
             }
             else{
-                refs.databaseUsers.child("\(newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
+                refs.databaseUsers.child("\(self.newUsername)").child("like").child(self.comments[sender.tag]["id"] as! String).setValue(nil)
                 
                 self.decrementLike(senderTag: sender.tag)
                 
-                refs.databaseUsers.child("\(newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
+                refs.databaseUsers.child("\(self.newUsername)").child("dislike").child(self.comments[sender.tag]["id"] as! String).setValue(["rated":"rated"])
                 
                 self.incrementDislike(senderTag: sender.tag)
             }
@@ -309,15 +304,33 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let atRange = username.range(of: "@") {
             username.removeSubrange(atRange.lowerBound..<username.endIndex)
         }
-
+        
         refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).observeSingleEvent(of: .value, with: { (snapshot) in
             if let data = snapshot.value as? [String: Any]{
                 if data["user"] as! String == username{
+                    self.deleteRating(id: data["id"] as! String, senderTag: sender.tag)
                     refs.databaseComments.child("\(global.classNumber as String)").child(self.commentIds[sender.tag]).removeValue()
                     self.commentIds.remove(at: sender.tag)
                     self.comments.remove(at: sender.tag)
                     self.commentTableView.reloadData()
                 }
+            }
+        })
+    }
+    
+    func deleteRating(id: String, senderTag: Int){
+        //delete like and dislike status
+        refs.databaseUsers.child("\(newUsername)").child("dislike").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.hasChild(id){
+                refs.databaseUsers.child("\(self.newUsername)").child("dislike").child(id).removeValue()
+            }
+        })
+        
+        refs.databaseUsers.child("\(newUsername)").child("like").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.hasChild(id){
+                refs.databaseUsers.child("\(self.newUsername)").child("like").child(id).removeValue()
             }
         })
     }
