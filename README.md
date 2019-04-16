@@ -26,8 +26,8 @@ We are making a service to allow students to rate classes, similar to RateMyProf
 
  * [x] User can login
  * [x] User can search for classes
- * [ ] User can create ratings/posts
- * [ ] User can see ratings/posts
+ * [x] User can create ratings/posts
+ * [x] User can see ratings/posts
 
 **Optional Nice-to-have Stories**
 
