@@ -81,7 +81,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16I-m9-Ldc">
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16I-m9-Ldc">
                                                             <rect key="frame" x="322" y="6" width="30" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="2sP-at-NAp"/>
@@ -116,6 +116,7 @@
                                                         <constraint firstItem="rVj-uL-19F" firstAttribute="top" secondItem="nre-ic-C0z" secondAttribute="bottom" constant="26" id="aQs-4t-9Cb"/>
                                                         <constraint firstItem="yU4-J9-EZc" firstAttribute="top" secondItem="eOy-gL-Lf3" secondAttribute="bottom" constant="3" id="bcM-gN-ttK"/>
                                                         <constraint firstItem="16I-m9-Ldc" firstAttribute="top" secondItem="uso-jC-1kU" secondAttribute="top" constant="6" id="bz3-DQ-2qx"/>
+                                                        <constraint firstAttribute="trailing" secondItem="eOy-gL-Lf3" secondAttribute="trailing" constant="275" id="d0w-3J-mYv"/>
                                                         <constraint firstItem="eOy-gL-Lf3" firstAttribute="top" secondItem="uso-jC-1kU" secondAttribute="top" constant="7" id="ge4-G5-jnj"/>
                                                         <constraint firstItem="nre-ic-C0z" firstAttribute="top" secondItem="16I-m9-Ldc" secondAttribute="bottom" constant="8" id="hoB-v5-UjP"/>
                                                         <constraint firstItem="rVj-uL-19F" firstAttribute="leading" secondItem="nbZ-LK-fXU" secondAttribute="trailing" constant="5" id="kNz-oz-5gR"/>
