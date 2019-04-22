@@ -38,7 +38,7 @@
                                                     <rect key="frame" x="8" y="11" width="360" height="116"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOy-gL-Lf3">
-                                                            <rect key="frame" x="12" y="7" width="73" height="17"/>
+                                                            <rect key="frame" x="12" y="7" width="302" height="17"/>
                                                             <fontDescription key="fontDescription" name="Noway" family="Noway" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -94,7 +94,6 @@
                                                     <constraints>
                                                         <constraint firstItem="nre-ic-C0z" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="1qm-ix-uab"/>
                                                         <constraint firstAttribute="trailing" secondItem="rVj-uL-19F" secondAttribute="trailing" constant="8" id="224-Qb-0W9"/>
-                                                        <constraint firstAttribute="trailing" secondItem="eOy-gL-Lf3" secondAttribute="trailing" constant="275" id="2pj-w3-kcB"/>
                                                         <constraint firstItem="nre-ic-C0z" firstAttribute="top" secondItem="yU4-J9-EZc" secondAttribute="bottom" constant="4" id="3rv-vO-o85"/>
                                                         <constraint firstItem="eOy-gL-Lf3" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="5sS-L4-MQ1"/>
                                                         <constraint firstItem="yU4-J9-EZc" firstAttribute="leading" secondItem="uso-jC-1kU" secondAttribute="leading" constant="12" id="8ll-ZV-CUR"/>
@@ -116,9 +115,9 @@
                                                         <constraint firstItem="rVj-uL-19F" firstAttribute="top" secondItem="nre-ic-C0z" secondAttribute="bottom" constant="26" id="aQs-4t-9Cb"/>
                                                         <constraint firstItem="yU4-J9-EZc" firstAttribute="top" secondItem="eOy-gL-Lf3" secondAttribute="bottom" constant="3" id="bcM-gN-ttK"/>
                                                         <constraint firstItem="16I-m9-Ldc" firstAttribute="top" secondItem="uso-jC-1kU" secondAttribute="top" constant="6" id="bz3-DQ-2qx"/>
-                                                        <constraint firstAttribute="trailing" secondItem="eOy-gL-Lf3" secondAttribute="trailing" constant="275" id="d0w-3J-mYv"/>
                                                         <constraint firstItem="eOy-gL-Lf3" firstAttribute="top" secondItem="uso-jC-1kU" secondAttribute="top" constant="7" id="ge4-G5-jnj"/>
                                                         <constraint firstItem="nre-ic-C0z" firstAttribute="top" secondItem="16I-m9-Ldc" secondAttribute="bottom" constant="8" id="hoB-v5-UjP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="eOy-gL-Lf3" secondAttribute="trailing" constant="46" id="htC-92-Rmh"/>
                                                         <constraint firstItem="rVj-uL-19F" firstAttribute="leading" secondItem="nbZ-LK-fXU" secondAttribute="trailing" constant="5" id="kNz-oz-5gR"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
