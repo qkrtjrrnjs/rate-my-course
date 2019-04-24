@@ -1,4 +1,4 @@
-# rate my course * Purdue CS edition *
+# rate my course
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -9,7 +9,7 @@
 
 ## Overview
 ### Description
-We are making a service to allow students to rate classes, similar to RateMyProfessor. We are going to limit classes to Purdue CS courses to simplify it for a demo.
+We are making a service to allow students to rate classes, similar to RateMyProfessor.
 
 - **Category:** Education
 - **Mobile:** real-time, audio
